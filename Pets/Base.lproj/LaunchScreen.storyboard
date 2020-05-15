@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pets " translatesAutoresizingMaskIntoConstraints="NO" id="zMV-WP-Yk0">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pets" translatesAutoresizingMaskIntoConstraints="NO" id="zMV-WP-Yk0">
                                 <rect key="frame" x="75" y="157.5" width="225" height="352"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zMV-WP-Yk0" secondAttribute="height" multiplier="415:650" id="CFN-XY-CIB"/>
@@ -37,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Pets " width="207.5" height="325"/>
+        <image name="Pets" width="311.5" height="487.5"/>
     </resources>
 </document>

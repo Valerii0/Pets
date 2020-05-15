@@ -6,7 +6,7 @@
 //  Copyright © 2020 Valerii. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum State {
     case login
@@ -40,6 +40,13 @@ enum TabBarImages: String {
     case settings = "TabBarTitles/Settings"
 }
 
+enum AssetsPathConstants: String {
+    case pets = "Pets"
+    case chooseYourSide = "ChooseYourSide"
+    case dog = "Dog"
+    case cat = "Cat"
+}
+
 enum Api: String {
     case catUrl = "https://api.thecatapi.com"
     case catKey = "3352e3fa-4091-4891-9bb6-af69bed52536"
@@ -52,4 +59,15 @@ enum Api: String {
     case favourites = "/favourites"
     case images = "/images"
     case search = "/search"
+}
+
+enum LogInConstants: String {
+    case generate = "Generate"
+    case logIn = "Log In"
+    case userId = "User ID"
+}
+
+struct CommonValues {
+    static let mainSound = "original"
+    static let standartCornerRadius: CGFloat = 10
 }

@@ -19,4 +19,9 @@ class LogInPresenter {
         self.view = view
         self.coordinator = coordinator
     }
+    
+    func logIn(id: String) {
+        AccountManager.setLoginId(id: id)
+        coordinator?.pushChooseYourSideViewController()
+    }
 }

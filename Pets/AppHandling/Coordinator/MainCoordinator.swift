@@ -41,9 +41,10 @@ final class MainCoordinator: Coordinatable {
         window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         self.tabBarController = UITabBarController()
-        self.tabBarController.tabBar.barTintColor = UIColor(red: 12/255.0, green: 19/255.0, blue: 55/255.0, alpha: 1)
-        self.tabBarController.tabBar.tintColor = .white
+        //self.tabBarController.tabBar.barTintColor = UIColor(red: 12/255.0, green: 19/255.0, blue: 55/255.0, alpha: 1)
+        self.tabBarController.tabBar.tintColor = .black
         self.signInRouter = RouterType.signIn.router
+        self.signInRouter.navigationController.navigationBar.isHidden = true
         
         self.tabVoteRouter = RouterType.tabVote.router
         self.tabVoteRouter.navigationController.navigationBar.isHidden = true
@@ -120,7 +121,7 @@ final class MainCoordinator: Coordinatable {
     func voteViewController() -> UINavigationController {
         let viewController = VoteViewController.instantiate(storyboardName: StoryboardsName.tabVote.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.vote.rawValue,
-                                                 image: UIImage(named: TabBarImages.vote.rawValue),
+                                                 image: UIImage(named: TabBarImages.vote.rawValue)?.withRenderingMode(.alwaysOriginal),
                                                  tag: 0)
         let configurator = VoteConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)
@@ -131,7 +132,7 @@ final class MainCoordinator: Coordinatable {
     func breedsViewController() -> UINavigationController {
         let viewController = BreedsViewController.instantiate(storyboardName: StoryboardsName.tabBreeds.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.breeds.rawValue,
-                                                 image: UIImage(named: TabBarImages.breeds.rawValue),
+                                                 image: UIImage(named: TabBarImages.breeds.rawValue)?.withRenderingMode(.alwaysOriginal),
                                                  tag: 1)
         let configurator = BreedsConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)
@@ -142,7 +143,7 @@ final class MainCoordinator: Coordinatable {
     func imagesViewController() -> UINavigationController {
         let viewController = ImagesViewController.instantiate(storyboardName: StoryboardsName.tabImages.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.images.rawValue,
-                                                 image: UIImage(named: TabBarImages.images.rawValue),
+                                                 image: UIImage(named: TabBarImages.images.rawValue)?.withRenderingMode(.alwaysOriginal),
                                                  tag: 2)
         let configurator = ImagesConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)
@@ -153,7 +154,7 @@ final class MainCoordinator: Coordinatable {
     func quizViewController() -> UINavigationController {
         let viewController = QuizViewController.instantiate(storyboardName: StoryboardsName.tabQuiz.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.quiz.rawValue,
-                                                 image: UIImage(named: TabBarImages.quiz.rawValue),
+                                                 image: UIImage(named: TabBarImages.quiz.rawValue)?.withRenderingMode(.alwaysOriginal),
                                                  tag: 3)
         let configurator = QuizConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)
@@ -164,7 +165,7 @@ final class MainCoordinator: Coordinatable {
     func settingsViewController() -> UINavigationController {
         let viewController = SettingsViewController.instantiate(storyboardName: StoryboardsName.tabSettings.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.settings.rawValue,
-                                                 image: UIImage(named: TabBarImages.settings.rawValue),
+                                                 image: UIImage(named: TabBarImages.settings.rawValue)?.withRenderingMode(.alwaysOriginal),
                                                  tag: 4)
         let configurator = SettingsConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)

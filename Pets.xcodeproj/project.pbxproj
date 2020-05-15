@@ -31,6 +31,7 @@
 		38A820F4246DBFBB00FB9519 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A820F3246DBFBB00FB9519 /* SettingsPresenter.swift */; };
 		38A820F6246DC34400FB9519 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A820F5246DC34400FB9519 /* LogInPresenter.swift */; };
 		38A820F8246DC35200FB9519 /* ChooseYourSidePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A820F7246DC35200FB9519 /* ChooseYourSidePresenter.swift */; };
+		38B8A21E246DECD800556A20 /* extensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B8A21D246DECD800556A20 /* extensionUIViewController.swift */; };
 		38E328F7246C098400FB8945 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E328F6246C098400FB8945 /* AppDelegate.swift */; };
 		38E328F9246C098400FB8945 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E328F8246C098400FB8945 /* SceneDelegate.swift */; };
 		38E328FB246C098400FB8945 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E328FA246C098400FB8945 /* ViewController.swift */; };
@@ -66,6 +67,7 @@
 		38A820F3246DBFBB00FB9519 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		38A820F5246DC34400FB9519 /* LogInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
 		38A820F7246DC35200FB9519 /* ChooseYourSidePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseYourSidePresenter.swift; sourceTree = "<group>"; };
+		38B8A21D246DECD800556A20 /* extensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionUIViewController.swift; sourceTree = "<group>"; };
 		38E328F3246C098400FB8945 /* Pets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38E328F6246C098400FB8945 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38E328F8246C098400FB8945 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,14 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		38B8A21C246DECBC00556A20 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				38B8A21D246DECD800556A20 /* extensionUIViewController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		38E328EA246C098400FB8945 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +186,7 @@
 				38077908246C8CF900E6C2B4 /* Images */,
 				3807790B246C8D1000E6C2B4 /* Quiz */,
 				3807790E246C8D4C00E6C2B4 /* Settings */,
+				38B8A21C246DECBC00556A20 /* Extensions */,
 				38E328F6246C098400FB8945 /* AppDelegate.swift */,
 				38E328F8246C098400FB8945 /* SceneDelegate.swift */,
 				38E328FA246C098400FB8945 /* ViewController.swift */,
@@ -298,6 +309,7 @@
 				38A820E8246DBF7300FB9519 /* BreedsPresenter.swift in Sources */,
 				388417B6246C74680092A98F /* ChooseYourSideViewController.swift in Sources */,
 				38A820EC246DBF8D00FB9519 /* ImagesPresenter.swift in Sources */,
+				38B8A21E246DECD800556A20 /* extensionUIViewController.swift in Sources */,
 				38E328F7246C098400FB8945 /* AppDelegate.swift in Sources */,
 				388417B8246C74AB0092A98F /* LogInViewController.swift in Sources */,
 				38A820EA246DBF8500FB9519 /* ImagesViewController.swift in Sources */,

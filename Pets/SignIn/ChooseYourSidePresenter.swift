@@ -19,4 +19,9 @@ class ChooseYourSidePresenter {
         self.view = view
         self.coordinator = coordinator
     }
+    
+    func chooseSide(side: String) {
+        AccountManager.setSide(side: side)
+        coordinator?.configure()
+    }
 }
