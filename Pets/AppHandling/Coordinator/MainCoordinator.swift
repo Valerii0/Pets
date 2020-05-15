@@ -47,7 +47,7 @@ final class MainCoordinator: Coordinatable {
         self.signInRouter.navigationController.navigationBar.isHidden = true
         
         self.tabVoteRouter = RouterType.tabVote.router
-        self.tabVoteRouter.navigationController.navigationBar.isHidden = true
+        self.tabVoteRouter.navigationController.navigationBar.backgroundColor = .clear
         
         self.tabBreedsRouter = RouterType.tabBreeds.router
         self.tabBreedsRouter.navigationController.navigationBar.isHidden = true

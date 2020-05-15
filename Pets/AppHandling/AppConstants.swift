@@ -41,7 +41,8 @@ enum TabBarImages: String {
 }
 
 enum AssetsPathConstants: String {
-    case pets = "Pets"
+    case petsLogo = "PetsLogo"
+    case petsTitle = "PetsTitle"
     case chooseYourSide = "ChooseYourSide"
     case dog = "Dog"
     case cat = "Cat"
@@ -61,6 +62,24 @@ enum Api: String {
     case search = "/search"
 }
 
+enum ImageSizes: String {
+    case small = "small"
+    case med = "med"
+    case full = "full"
+}
+
+enum ImageTypes: String {
+    case jpg = "jpg"
+    case png = "png"
+    case gif = "gif"
+}
+
+enum ImageOrder: String {
+    case Random = "Random"
+    case Asc = "Asc"
+    case Desc = "Desc"
+}
+
 enum LogInConstants: String {
     case generate = "Generate"
     case logIn = "Log In"
@@ -68,6 +87,7 @@ enum LogInConstants: String {
 }
 
 struct CommonValues {
-    static let mainSound = "original"
     static let standartCornerRadius: CGFloat = 10
+    static let bgColor = UIColor(red: 255/255.0, green: 251/255.0, blue: 247/255.0, alpha: 1)
+    static let buttonsColor = UIColor(red: 255/255.0, green: 149/255.0, blue: 0/255.0, alpha: 1)
 }

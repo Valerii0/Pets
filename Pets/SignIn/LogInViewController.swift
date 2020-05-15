@@ -22,8 +22,8 @@ class LogInViewController: UIViewController, Storyboarded {
     }
     
     private func setUpUI() {
-        view.backgroundColor = UIColor(red: 255/255.0, green: 251/255.0, blue: 247/255.0, alpha: 1)
-        logoImage.image = UIImage(named: AssetsPathConstants.pets.rawValue)
+        view.backgroundColor = CommonValues.bgColor
+        logoImage.image = UIImage(named: AssetsPathConstants.petsLogo.rawValue)
         logoImage.contentMode = .scaleAspectFit
         
         setUpButtons()
@@ -39,7 +39,7 @@ class LogInViewController: UIViewController, Storyboarded {
     private func setUpButton(button: UIButton, title: String) {
         button.setTitle(title, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor(red: 255/255.0, green: 149/255.0, blue: 0/255.0, alpha: 1)
+        button.backgroundColor = CommonValues.buttonsColor
         button.layer.cornerRadius = CommonValues.standartCornerRadius
     }
     
