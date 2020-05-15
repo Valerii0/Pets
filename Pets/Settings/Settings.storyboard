@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,11 +12,26 @@
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" id="msS-yN-QZI" customClass="SettingsViewController" customModule="Pets" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QyD-y5-BO5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1z6-8g-fls">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="1z6-8g-fls" firstAttribute="top" secondItem="iJB-JR-h8c" secondAttribute="top" id="1bv-1v-aSI"/>
+                            <constraint firstItem="1z6-8g-fls" firstAttribute="leading" secondItem="iJB-JR-h8c" secondAttribute="leading" id="QRU-RR-6mk"/>
+                            <constraint firstItem="iJB-JR-h8c" firstAttribute="trailing" secondItem="1z6-8g-fls" secondAttribute="trailing" id="ara-nM-lFS"/>
+                            <constraint firstItem="iJB-JR-h8c" firstAttribute="bottom" secondItem="1z6-8g-fls" secondAttribute="bottom" id="gMN-5N-Dhp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iJB-JR-h8c"/>
                     </view>
+                    <connections>
+                        <outlet property="settingsTableView" destination="1z6-8g-fls" id="RQE-Hm-sTZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RhQ-cw-vqI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -22,12 +22,8 @@ class VoteViewController: UIViewController, Storyboarded {
     }
     
     private func setUpUI() {
-        view.backgroundColor = CommonValues.bgColor
-        
-        let logo = UIImage(named: AssetsPathConstants.petsTitle.rawValue)
-        let imageView = UIImageView(image: logo)
-        //imageView.contentMode = .scaleAspectFit
-        self.navigationItem.titleView = imageView
+        coloredBg()
+        addLogoToNavigation()
         
         setUpImageView(imageView: petImage)
         setUpButtons()

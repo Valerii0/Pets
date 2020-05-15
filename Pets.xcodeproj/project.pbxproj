@@ -16,6 +16,14 @@
 		38077910246C8E7F00E6C2B4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3807790F246C8E7F00E6C2B4 /* Settings.storyboard */; };
 		38077912246C929500E6C2B4 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38077911246C929500E6C2B4 /* AppConstants.swift */; };
 		38077914246C92D100E6C2B4 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38077913246C92D100E6C2B4 /* AccountManager.swift */; };
+		385B027E246F102200F751E4 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385B027C246F102200F751E4 /* ImagesCollectionViewCell.swift */; };
+		385B027F246F102200F751E4 /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385B027D246F102200F751E4 /* ImagesCollectionViewCell.xib */; };
+		385B0282246F135E00F751E4 /* KeyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385B0280246F135E00F751E4 /* KeyTableViewCell.swift */; };
+		385B0283246F135E00F751E4 /* KeyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385B0281246F135E00F751E4 /* KeyTableViewCell.xib */; };
+		385B028D246F2B7900F751E4 /* AppStateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385B028B246F2B7900F751E4 /* AppStateTableViewCell.swift */; };
+		385B028E246F2B7900F751E4 /* AppStateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385B028C246F2B7900F751E4 /* AppStateTableViewCell.xib */; };
+		385B0291246F2BDD00F751E4 /* UserDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385B028F246F2BDD00F751E4 /* UserDataTableViewCell.swift */; };
+		385B0292246F2BDD00F751E4 /* UserDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385B0290246F2BDD00F751E4 /* UserDataTableViewCell.xib */; };
 		388417B4246C706A0092A98F /* Breeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 388417B3246C706A0092A98F /* Breeds.storyboard */; };
 		388417B6246C74680092A98F /* ChooseYourSideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388417B5246C74680092A98F /* ChooseYourSideViewController.swift */; };
 		388417B8246C74AB0092A98F /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388417B7246C74AB0092A98F /* LogInViewController.swift */; };
@@ -59,6 +67,14 @@
 		3807790F246C8E7F00E6C2B4 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		38077911246C929500E6C2B4 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		38077913246C92D100E6C2B4 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		385B027C246F102200F751E4 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		385B027D246F102200F751E4 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
+		385B0280246F135E00F751E4 /* KeyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTableViewCell.swift; sourceTree = "<group>"; };
+		385B0281246F135E00F751E4 /* KeyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyTableViewCell.xib; sourceTree = "<group>"; };
+		385B028B246F2B7900F751E4 /* AppStateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTableViewCell.swift; sourceTree = "<group>"; };
+		385B028C246F2B7900F751E4 /* AppStateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppStateTableViewCell.xib; sourceTree = "<group>"; };
+		385B028F246F2BDD00F751E4 /* UserDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataTableViewCell.swift; sourceTree = "<group>"; };
+		385B0290246F2BDD00F751E4 /* UserDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDataTableViewCell.xib; sourceTree = "<group>"; };
 		388417B3246C706A0092A98F /* Breeds.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Breeds.storyboard; sourceTree = "<group>"; };
 		388417B5246C74680092A98F /* ChooseYourSideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseYourSideViewController.swift; sourceTree = "<group>"; };
 		388417B7246C74AB0092A98F /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -110,8 +126,8 @@
 			children = (
 				38077911246C929500E6C2B4 /* AppConstants.swift */,
 				38077913246C92D100E6C2B4 /* AccountManager.swift */,
-				38A820F9246DCC5300FB9519 /* Coordinator */,
 				38AAB9C3246EEB7A00DCE69B /* ImageCache.swift */,
+				38A820F9246DCC5300FB9519 /* Coordinator */,
 			);
 			path = AppHandling;
 			sourceTree = "<group>";
@@ -119,9 +135,9 @@
 		38077908246C8CF900E6C2B4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				385B0284246F1DD700F751E4 /* ImagesScreen */,
+				385B0286246F1E3200F751E4 /* OpenImageScreen */,
 				38077909246C8D0600E6C2B4 /* Images.storyboard */,
-				38A820E9246DBF8500FB9519 /* ImagesViewController.swift */,
-				38A820EB246DBF8D00FB9519 /* ImagesPresenter.swift */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -139,11 +155,59 @@
 		3807790E246C8D4C00E6C2B4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				385B0289246F298900F751E4 /* SettingsScreen */,
 				3807790F246C8E7F00E6C2B4 /* Settings.storyboard */,
-				38A820F1246DBFAF00FB9519 /* SettingsViewController.swift */,
-				38A820F3246DBFBB00FB9519 /* SettingsPresenter.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		385B0284246F1DD700F751E4 /* ImagesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				38A820E9246DBF8500FB9519 /* ImagesViewController.swift */,
+				38A820EB246DBF8D00FB9519 /* ImagesPresenter.swift */,
+				385B0285246F1DF100F751E4 /* Cell */,
+			);
+			path = ImagesScreen;
+			sourceTree = "<group>";
+		};
+		385B0285246F1DF100F751E4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				385B027C246F102200F751E4 /* ImagesCollectionViewCell.swift */,
+				385B027D246F102200F751E4 /* ImagesCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		385B0286246F1E3200F751E4 /* OpenImageScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OpenImageScreen;
+			sourceTree = "<group>";
+		};
+		385B0289246F298900F751E4 /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				38A820F1246DBFAF00FB9519 /* SettingsViewController.swift */,
+				38A820F3246DBFBB00FB9519 /* SettingsPresenter.swift */,
+				385B028A246F299B00F751E4 /* Cells */,
+			);
+			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		385B028A246F299B00F751E4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				385B028F246F2BDD00F751E4 /* UserDataTableViewCell.swift */,
+				385B0290246F2BDD00F751E4 /* UserDataTableViewCell.xib */,
+				385B028B246F2B7900F751E4 /* AppStateTableViewCell.swift */,
+				385B028C246F2B7900F751E4 /* AppStateTableViewCell.xib */,
+				385B0280246F135E00F751E4 /* KeyTableViewCell.swift */,
+				385B0281246F135E00F751E4 /* KeyTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		388417B2246C70570092A98F /* Breeds */ = {
@@ -315,15 +379,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				385B027F246F102200F751E4 /* ImagesCollectionViewCell.xib in Resources */,
 				38E3290E246C0C0900FB8945 /* SignIn.storyboard in Resources */,
 				38E32903246C098900FB8945 /* LaunchScreen.storyboard in Resources */,
+				385B028E246F2B7900F751E4 /* AppStateTableViewCell.xib in Resources */,
 				38E32900246C098900FB8945 /* Assets.xcassets in Resources */,
 				3807790A246C8D0600E6C2B4 /* Images.storyboard in Resources */,
 				388417B4246C706A0092A98F /* Breeds.storyboard in Resources */,
 				38E32911246C166F00FB8945 /* Vote.storyboard in Resources */,
 				38077910246C8E7F00E6C2B4 /* Settings.storyboard in Resources */,
 				38E328FE246C098400FB8945 /* Main.storyboard in Resources */,
+				385B0283246F135E00F751E4 /* KeyTableViewCell.xib in Resources */,
 				3807790D246C8D4800E6C2B4 /* Quiz.storyboard in Resources */,
+				385B0292246F2BDD00F751E4 /* UserDataTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +409,7 @@
 				38A820F2246DBFAF00FB9519 /* SettingsViewController.swift in Sources */,
 				38AAB9C2246EE0EE00DCE69B /* Image.swift in Sources */,
 				38A820F6246DC34400FB9519 /* LogInPresenter.swift in Sources */,
+				385B0282246F135E00F751E4 /* KeyTableViewCell.swift in Sources */,
 				38A820F0246DBFA400FB9519 /* QuizPresenter.swift in Sources */,
 				38A820E4246DBA6300FB9519 /* VotePresenter.swift in Sources */,
 				38AAB9BE246EDEFC00DCE69B /* PostVote.swift in Sources */,
@@ -355,7 +424,9 @@
 				38AAB9BC246EDED600DCE69B /* Vote.swift in Sources */,
 				38AAB9B9246EDE8400DCE69B /* VotesRequestService.swift in Sources */,
 				38A820EA246DBF8500FB9519 /* ImagesViewController.swift in Sources */,
+				385B0291246F2BDD00F751E4 /* UserDataTableViewCell.swift in Sources */,
 				38077903246C836600E6C2B4 /* Configurator.swift in Sources */,
+				385B027E246F102200F751E4 /* ImagesCollectionViewCell.swift in Sources */,
 				38E328F9246C098400FB8945 /* SceneDelegate.swift in Sources */,
 				38077907246C88E500E6C2B4 /* Routable.swift in Sources */,
 				38A820EE246DBF9800FB9519 /* QuizViewController.swift in Sources */,
@@ -365,6 +436,7 @@
 				38077912246C929500E6C2B4 /* AppConstants.swift in Sources */,
 				38A820F4246DBFBB00FB9519 /* SettingsPresenter.swift in Sources */,
 				38AAB9C6246EEC5D00DCE69B /* Breed.swift in Sources */,
+				385B028D246F2B7900F751E4 /* AppStateTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

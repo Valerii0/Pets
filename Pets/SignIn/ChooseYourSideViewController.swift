@@ -22,7 +22,7 @@ class ChooseYourSideViewController: UIViewController, Storyboarded {
     }
     
     private func setUpUI() {
-        view.backgroundColor = CommonValues.bgColor
+        coloredBg()
         logoImage.image = UIImage(named: AssetsPathConstants.petsLogo.rawValue)
         logoImage.contentMode = .scaleAspectFit
         titleImage.image = UIImage(named: AssetsPathConstants.chooseYourSide.rawValue)

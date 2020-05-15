@@ -41,8 +41,8 @@ final class MainCoordinator: Coordinatable {
         window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         self.tabBarController = UITabBarController()
-        //self.tabBarController.tabBar.barTintColor = UIColor(red: 12/255.0, green: 19/255.0, blue: 55/255.0, alpha: 1)
-        self.tabBarController.tabBar.tintColor = .black
+        self.tabBarController.tabBar.barTintColor = CommonValues.bgColor
+        self.tabBarController.tabBar.tintColor = CommonValues.buttonsColor
         self.signInRouter = RouterType.signIn.router
         self.signInRouter.navigationController.navigationBar.isHidden = true
         
@@ -50,29 +50,35 @@ final class MainCoordinator: Coordinatable {
         self.tabVoteRouter.navigationController.navigationBar.backgroundColor = .clear
         
         self.tabBreedsRouter = RouterType.tabBreeds.router
-        self.tabBreedsRouter.navigationController.navigationBar.isHidden = true
+        self.tabBreedsRouter.navigationController.navigationBar.backgroundColor = .clear
+        //self.tabBreedsRouter.navigationController.navigationBar.isHidden = true
         
         self.tabImagesRouter = RouterType.tabImages.router
-        self.tabImagesRouter.navigationController.navigationBar.isHidden = true
+        self.tabImagesRouter.navigationController.navigationBar.backgroundColor = .clear
+        //self.tabImagesRouter.navigationController.navigationBar.isHidden = true
         
         self.tabQuizRouter = RouterType.tabQuiz.router
-        self.tabQuizRouter.navigationController.navigationBar.isHidden = true
+        self.tabQuizRouter.navigationController.navigationBar.backgroundColor = .clear
+        //self.tabQuizRouter.navigationController.navigationBar.isHidden = true
         
         self.tabSettingsRouter = RouterType.tabSettings.router
-        self.tabSettingsRouter.navigationController.navigationBar.isHidden = true
+        self.tabSettingsRouter.navigationController.navigationBar.backgroundColor = .clear
+        //self.tabSettingsRouter.navigationController.navigationBar.isHidden = true
     }
     
     func configure() {
         window.rootViewController = UIStoryboard.init(name: "LaunchScreen", bundle: nil).instantiateInitialViewController()
         
-        let state = AccountManager.stateToStart()
-        switch state {
-        case .login:
-            makeLogInRoot()
-        case .side:
-            makeChooseYourSideRoot()
-        case .app:
-            makeTabBarRoot()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let state = AccountManager.stateToStart()
+            switch state {
+            case .login:
+                self.makeLogInRoot()
+            case .side:
+                self.makeChooseYourSideRoot()
+            case .app:
+                self.makeTabBarRoot()
+            }
         }
     }
     
@@ -93,6 +99,7 @@ final class MainCoordinator: Coordinatable {
             quizViewController(),
             settingsViewController()
         ]
+        tabBarController.selectedIndex = 0
     }
     
     func logInViewController() -> UINavigationController {
@@ -122,7 +129,7 @@ final class MainCoordinator: Coordinatable {
         let viewController = VoteViewController.instantiate(storyboardName: StoryboardsName.tabVote.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.vote.rawValue,
                                                  image: UIImage(named: TabBarImages.vote.rawValue)?.withRenderingMode(.alwaysOriginal),
-                                                 tag: 0)
+                                                 selectedImage: UIImage(named: TabBarImages.voteSelected.rawValue)?.withRenderingMode(.alwaysOriginal))
         let configurator = VoteConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)
         tabVoteRouter.navigationController.viewControllers = [viewController]
@@ -133,7 +140,7 @@ final class MainCoordinator: Coordinatable {
         let viewController = BreedsViewController.instantiate(storyboardName: StoryboardsName.tabBreeds.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.breeds.rawValue,
                                                  image: UIImage(named: TabBarImages.breeds.rawValue)?.withRenderingMode(.alwaysOriginal),
-                                                 tag: 1)
+                                                 selectedImage: UIImage(named: TabBarImages.breedsSelected.rawValue)?.withRenderingMode(.alwaysOriginal))
         let configurator = BreedsConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)
         tabBreedsRouter.navigationController.viewControllers = [viewController]
@@ -144,7 +151,7 @@ final class MainCoordinator: Coordinatable {
         let viewController = ImagesViewController.instantiate(storyboardName: StoryboardsName.tabImages.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.images.rawValue,
                                                  image: UIImage(named: TabBarImages.images.rawValue)?.withRenderingMode(.alwaysOriginal),
-                                                 tag: 2)
+                                                 selectedImage: UIImage(named: TabBarImages.imagesSelected.rawValue)?.withRenderingMode(.alwaysOriginal))
         let configurator = ImagesConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)
         tabImagesRouter.navigationController.viewControllers = [viewController]
@@ -155,7 +162,7 @@ final class MainCoordinator: Coordinatable {
         let viewController = QuizViewController.instantiate(storyboardName: StoryboardsName.tabQuiz.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.quiz.rawValue,
                                                  image: UIImage(named: TabBarImages.quiz.rawValue)?.withRenderingMode(.alwaysOriginal),
-                                                 tag: 3)
+                                                 selectedImage: UIImage(named: TabBarImages.quizSelected.rawValue)?.withRenderingMode(.alwaysOriginal))
         let configurator = QuizConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)
         tabQuizRouter.navigationController.viewControllers = [viewController]
@@ -166,7 +173,7 @@ final class MainCoordinator: Coordinatable {
         let viewController = SettingsViewController.instantiate(storyboardName: StoryboardsName.tabSettings.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.settings.rawValue,
                                                  image: UIImage(named: TabBarImages.settings.rawValue)?.withRenderingMode(.alwaysOriginal),
-                                                 tag: 4)
+                                                 selectedImage: UIImage(named: TabBarImages.settingsSelected.rawValue)?.withRenderingMode(.alwaysOriginal))
         let configurator = SettingsConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)
         tabSettingsRouter.navigationController.viewControllers = [viewController]

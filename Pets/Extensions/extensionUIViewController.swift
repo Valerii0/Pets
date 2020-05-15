@@ -30,6 +30,17 @@ extension UIViewController {
         present(alert, animated: true)
     }
     
+    func coloredBg() {
+        view.backgroundColor = CommonValues.bgColor
+    }
+    
+    func addLogoToNavigation() {
+        let logo = UIImage(named: AssetsPathConstants.petsTitle.rawValue)
+        let imageView = UIImageView(image: logo)
+        //imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+    }
+    
 //    func errorHandle(error: Error, callBack: @escaping (_ invalidAccessToken: Bool) -> Void) {
 //        var errorBody = error.localizedDescription
 //        var invalidAccessToken: Bool = false

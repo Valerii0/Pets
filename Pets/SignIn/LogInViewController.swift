@@ -22,7 +22,7 @@ class LogInViewController: UIViewController, Storyboarded {
     }
     
     private func setUpUI() {
-        view.backgroundColor = CommonValues.bgColor
+        coloredBg()
         logoImage.image = UIImage(named: AssetsPathConstants.petsLogo.rawValue)
         logoImage.contentMode = .scaleAspectFit
         

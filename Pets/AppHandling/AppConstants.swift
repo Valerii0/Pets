@@ -34,10 +34,15 @@ enum TabBarTitles: String {
 
 enum TabBarImages: String {
     case vote = "TabBarTitles/Vote"
+    case voteSelected = "TabBarTitles/VoteSelected"
     case breeds = "TabBarTitles/Breeds"
+    case breedsSelected = "TabBarTitles/BreedsSelected"
     case images = "TabBarTitles/Images"
+    case imagesSelected = "TabBarTitles/ImagesSelected"
     case quiz = "TabBarTitles/Quiz"
+    case quizSelected = "TabBarTitles/QuizSelected"
     case settings = "TabBarTitles/Settings"
+    case settingsSelected = "TabBarTitles/SettingsSelected"
 }
 
 enum AssetsPathConstants: String {
@@ -86,8 +91,32 @@ enum LogInConstants: String {
     case userId = "User ID"
 }
 
+enum ImagesConstants: String {
+    case imagesCollectionViewCell = "ImagesCollectionViewCell"
+    case order = "Order: "
+    case type = "Type: "
+    case category = "Category: "
+    case breed = "Breed: "
+}
+
+enum SettingsConstants: String {
+    case userDataTableViewCell = "UserDataTableViewCell"
+    case appStateTableViewCell = "AppStateTableViewCell"
+    case keyTableViewCell = "KeyTableViewCell"
+    case likedPic = "Pictures you've liked"
+    case votedPic = "Pictures you've voted"
+    case highScore = "High Score"
+    case chooseSide = "Choose your Side"
+    case logOut = "Log out"
+    case key = "Key: "
+    
+    static let standartTableViewCellHeight: CGFloat = 44
+    static let keyTableViewCellHeight: CGFloat = 88
+}
+
 struct CommonValues {
     static let standartCornerRadius: CGFloat = 10
+    static let collectionCellsCornerRadius: CGFloat = 3
     static let bgColor = UIColor(red: 255/255.0, green: 251/255.0, blue: 247/255.0, alpha: 1)
     static let buttonsColor = UIColor(red: 255/255.0, green: 149/255.0, blue: 0/255.0, alpha: 1)
 }

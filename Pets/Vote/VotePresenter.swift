@@ -29,7 +29,9 @@ class VotePresenter {
                 self.image = image
                 self.view?.loadImage(imageUrl: image.url)
             } else if let error = error {
-                self.view?.showError(title: "Error", message: error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                }
             }
         }
     }
@@ -39,7 +41,9 @@ class VotePresenter {
             let vote = PostVote(image_id: image.id, value: isLiked, sub_id: AccountManager.UserId())
             VotesRequestService.postVote(vote: vote) { (error) in
                 if let error = error {
-                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                    DispatchQueue.main.async {
+                        self.view?.showError(title: "Error", message: error.localizedDescription)
+                    }
                 }
                 self.loadImage()
             }
