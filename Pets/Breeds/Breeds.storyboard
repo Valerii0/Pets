@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,15 +12,49 @@
             <objects>
                 <viewController storyboardIdentifier="BreedsViewController" id="MzW-XO-8yf" customClass="BreedsViewController" customModule="Pets" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IiW-vG-RQm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNO-Hy-tun">
+                                <rect key="frame" x="10" y="10" width="300" height="441"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hmx-tL-RKA">
+                                <rect key="frame" x="140.5" y="461" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9K-dy-0PB">
+                                <rect key="frame" x="10" y="508" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="BtC-xX-Poo"/>
+                                    <constraint firstAttribute="width" secondItem="h9K-dy-0PB" secondAttribute="height" multiplier="6:1" id="y8x-vj-beV"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="breedsAction:" destination="MzW-XO-8yf" eventType="touchUpInside" id="7Hq-xo-2Mk"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wsQ-vt-MqP" firstAttribute="trailing" secondItem="nNO-Hy-tun" secondAttribute="trailing" constant="10" id="3rK-fV-EDe"/>
+                            <constraint firstItem="hmx-tL-RKA" firstAttribute="top" secondItem="nNO-Hy-tun" secondAttribute="bottom" constant="10" id="PgH-Km-Ukv"/>
+                            <constraint firstItem="nNO-Hy-tun" firstAttribute="top" secondItem="wsQ-vt-MqP" secondAttribute="top" constant="10" id="SUY-NO-gCE"/>
+                            <constraint firstItem="h9K-dy-0PB" firstAttribute="top" secondItem="hmx-tL-RKA" secondAttribute="bottom" constant="10" id="b7L-D4-iZl"/>
+                            <constraint firstItem="h9K-dy-0PB" firstAttribute="centerX" secondItem="IiW-vG-RQm" secondAttribute="centerX" id="bhs-DK-SFF"/>
+                            <constraint firstItem="wsQ-vt-MqP" firstAttribute="bottom" secondItem="h9K-dy-0PB" secondAttribute="bottom" constant="10" id="fJN-tT-ckM"/>
+                            <constraint firstItem="hmx-tL-RKA" firstAttribute="centerX" secondItem="IiW-vG-RQm" secondAttribute="centerX" id="hSD-jN-3C0"/>
+                            <constraint firstItem="nNO-Hy-tun" firstAttribute="leading" secondItem="wsQ-vt-MqP" secondAttribute="leading" constant="10" id="hoj-NY-zDW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wsQ-vt-MqP"/>
                     </view>
+                    <connections>
+                        <outlet property="breedsButton" destination="h9K-dy-0PB" id="sfi-dj-CCL"/>
+                        <outlet property="imagesScrollView" destination="nNO-Hy-tun" id="YQp-V4-U0d"/>
+                        <outlet property="pageControl" destination="hmx-tL-RKA" id="xdJ-vM-6mc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="toB-P4-6ki" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="132"/>
+            <point key="canvasLocation" x="63.75" y="130.98591549295776"/>
         </scene>
     </scenes>
 </document>

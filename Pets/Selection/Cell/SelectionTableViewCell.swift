@@ -1,14 +1,14 @@
 //
-//  AppStateTableViewCell.swift
+//  SelectionTableViewCell.swift
 //  Pets
 //
-//  Created by Valerii Petrychenko on 5/15/20.
+//  Created by Valerii Petrychenko on 5/17/20.
 //  Copyright © 2020 Valerii. All rights reserved.
 //
 
 import UIKit
 
-class AppStateTableViewCell: UITableViewCell {
+class SelectionTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {

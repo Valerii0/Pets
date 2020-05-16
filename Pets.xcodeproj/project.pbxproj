@@ -27,6 +27,7 @@
 		388417B4246C706A0092A98F /* Breeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 388417B3246C706A0092A98F /* Breeds.storyboard */; };
 		388417B6246C74680092A98F /* ChooseYourSideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388417B5246C74680092A98F /* ChooseYourSideViewController.swift */; };
 		388417B8246C74AB0092A98F /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388417B7246C74AB0092A98F /* LogInViewController.swift */; };
+		389A6691247015D3003F8916 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A6690247015D3003F8916 /* ProgressView.swift */; };
 		38A820E2246DBA5000FB9519 /* VoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A820E1246DBA5000FB9519 /* VoteViewController.swift */; };
 		38A820E4246DBA6300FB9519 /* VotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A820E3246DBA6300FB9519 /* VotePresenter.swift */; };
 		38A820E6246DBF6900FB9519 /* BreedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A820E5246DBF6900FB9519 /* BreedsViewController.swift */; };
@@ -47,6 +48,20 @@
 		38AAB9C4246EEB7A00DCE69B /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AAB9C3246EEB7A00DCE69B /* ImageCache.swift */; };
 		38AAB9C6246EEC5D00DCE69B /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AAB9C5246EEC5D00DCE69B /* Breed.swift */; };
 		38B8A21E246DECD800556A20 /* extensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B8A21D246DECD800556A20 /* extensionUIViewController.swift */; };
+		38D60B9F24706FEB00D0117C /* BreedsRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D60B9E24706FEB00D0117C /* BreedsRequestService.swift */; };
+		38D60BA2247090FD00D0117C /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D60BA1247090FD00D0117C /* SelectionViewController.swift */; };
+		38D60BA42470910600D0117C /* SelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D60BA32470910600D0117C /* SelectionPresenter.swift */; };
+		38D60BA62470910C00D0117C /* Selection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38D60BA52470910C00D0117C /* Selection.storyboard */; };
+		38D60BAA2470930000D0117C /* SelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D60BA82470930000D0117C /* SelectionTableViewCell.swift */; };
+		38D60BAB2470930000D0117C /* SelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38D60BA92470930000D0117C /* SelectionTableViewCell.xib */; };
+		38D60BAE2470935600D0117C /* LikedVotedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D60BAD2470935600D0117C /* LikedVotedViewController.swift */; };
+		38D60BB02470935F00D0117C /* LikedVotedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D60BAF2470935F00D0117C /* LikedVotedPresenter.swift */; };
+		38D60BB4247096A700D0117C /* LikedVotedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D60BB2247096A700D0117C /* LikedVotedCollectionViewCell.swift */; };
+		38D60BB5247096A700D0117C /* LikedVotedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38D60BB3247096A700D0117C /* LikedVotedCollectionViewCell.xib */; };
+		38D60BB724709BAF00D0117C /* FavouritesRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D60BB624709BAF00D0117C /* FavouritesRequestService.swift */; };
+		38D60BB924709BE500D0117C /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D60BB824709BE500D0117C /* Favourite.swift */; };
+		38D60BBB24709C0800D0117C /* FavouriteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D60BBA24709C0800D0117C /* FavouriteImage.swift */; };
+		38D60BBD24709C2700D0117C /* PostFavourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D60BBC24709C2700D0117C /* PostFavourite.swift */; };
 		38E328F7246C098400FB8945 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E328F6246C098400FB8945 /* AppDelegate.swift */; };
 		38E328F9246C098400FB8945 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E328F8246C098400FB8945 /* SceneDelegate.swift */; };
 		38E328FB246C098400FB8945 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E328FA246C098400FB8945 /* ViewController.swift */; };
@@ -55,6 +70,8 @@
 		38E32903246C098900FB8945 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38E32901246C098900FB8945 /* LaunchScreen.storyboard */; };
 		38E3290E246C0C0900FB8945 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38E3290D246C0C0900FB8945 /* SignIn.storyboard */; };
 		38E32911246C166F00FB8945 /* Vote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38E32910246C166F00FB8945 /* Vote.storyboard */; };
+		38F57AAC246FFBBA00E7CADC /* QuizStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F57AAB246FFBBA00E7CADC /* QuizStartViewController.swift */; };
+		38F57AAE246FFBD000E7CADC /* QuizStartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F57AAD246FFBD000E7CADC /* QuizStartPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +95,7 @@
 		388417B3246C706A0092A98F /* Breeds.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Breeds.storyboard; sourceTree = "<group>"; };
 		388417B5246C74680092A98F /* ChooseYourSideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseYourSideViewController.swift; sourceTree = "<group>"; };
 		388417B7246C74AB0092A98F /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		389A6690247015D3003F8916 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		38A820E1246DBA5000FB9519 /* VoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteViewController.swift; sourceTree = "<group>"; };
 		38A820E3246DBA6300FB9519 /* VotePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotePresenter.swift; sourceTree = "<group>"; };
 		38A820E5246DBF6900FB9519 /* BreedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +116,20 @@
 		38AAB9C3246EEB7A00DCE69B /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		38AAB9C5246EEC5D00DCE69B /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
 		38B8A21D246DECD800556A20 /* extensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionUIViewController.swift; sourceTree = "<group>"; };
+		38D60B9E24706FEB00D0117C /* BreedsRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsRequestService.swift; sourceTree = "<group>"; };
+		38D60BA1247090FD00D0117C /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
+		38D60BA32470910600D0117C /* SelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPresenter.swift; sourceTree = "<group>"; };
+		38D60BA52470910C00D0117C /* Selection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Selection.storyboard; sourceTree = "<group>"; };
+		38D60BA82470930000D0117C /* SelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTableViewCell.swift; sourceTree = "<group>"; };
+		38D60BA92470930000D0117C /* SelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionTableViewCell.xib; sourceTree = "<group>"; };
+		38D60BAD2470935600D0117C /* LikedVotedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedVotedViewController.swift; sourceTree = "<group>"; };
+		38D60BAF2470935F00D0117C /* LikedVotedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedVotedPresenter.swift; sourceTree = "<group>"; };
+		38D60BB2247096A700D0117C /* LikedVotedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedVotedCollectionViewCell.swift; sourceTree = "<group>"; };
+		38D60BB3247096A700D0117C /* LikedVotedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikedVotedCollectionViewCell.xib; sourceTree = "<group>"; };
+		38D60BB624709BAF00D0117C /* FavouritesRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesRequestService.swift; sourceTree = "<group>"; };
+		38D60BB824709BE500D0117C /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
+		38D60BBA24709C0800D0117C /* FavouriteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteImage.swift; sourceTree = "<group>"; };
+		38D60BBC24709C2700D0117C /* PostFavourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFavourite.swift; sourceTree = "<group>"; };
 		38E328F3246C098400FB8945 /* Pets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38E328F6246C098400FB8945 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38E328F8246C098400FB8945 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +140,8 @@
 		38E32904246C098900FB8945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38E3290D246C0C0900FB8945 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		38E32910246C166F00FB8945 /* Vote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Vote.storyboard; sourceTree = "<group>"; };
+		38F57AAB246FFBBA00E7CADC /* QuizStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStartViewController.swift; sourceTree = "<group>"; };
+		38F57AAD246FFBD000E7CADC /* QuizStartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStartPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,9 +179,9 @@
 		3807790B246C8D1000E6C2B4 /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
+				38F57AA9246FFAE200E7CADC /* QuizStartScreen */,
+				38F57AAA246FFAF300E7CADC /* QuizScreen */,
 				3807790C246C8D4800E6C2B4 /* Quiz.storyboard */,
-				38A820ED246DBF9800FB9519 /* QuizViewController.swift */,
-				38A820EF246DBFA400FB9519 /* QuizPresenter.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -156,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				385B0289246F298900F751E4 /* SettingsScreen */,
+				38D60BAC2470930A00D0117C /* LikedVotedScreen */,
 				3807790F246C8E7F00E6C2B4 /* Settings.storyboard */,
 			);
 			path = Settings;
@@ -213,9 +248,9 @@
 		388417B2246C70570092A98F /* Breeds */ = {
 			isa = PBXGroup;
 			children = (
-				388417B3246C706A0092A98F /* Breeds.storyboard */,
 				38A820E5246DBF6900FB9519 /* BreedsViewController.swift */,
 				38A820E7246DBF7300FB9519 /* BreedsPresenter.swift */,
+				388417B3246C706A0092A98F /* Breeds.storyboard */,
 			);
 			path = Breeds;
 			sourceTree = "<group>";
@@ -236,6 +271,8 @@
 			children = (
 				38AAB9B8246EDE8400DCE69B /* VotesRequestService.swift */,
 				38AAB9BF246EE0B500DCE69B /* ImagesRequestService.swift */,
+				38D60B9E24706FEB00D0117C /* BreedsRequestService.swift */,
+				38D60BB624709BAF00D0117C /* FavouritesRequestService.swift */,
 			);
 			path = RequestServices;
 			sourceTree = "<group>";
@@ -247,6 +284,9 @@
 				38AAB9BD246EDEFC00DCE69B /* PostVote.swift */,
 				38AAB9C1246EE0EE00DCE69B /* Image.swift */,
 				38AAB9C5246EEC5D00DCE69B /* Breed.swift */,
+				38D60BB824709BE500D0117C /* Favourite.swift */,
+				38D60BBA24709C0800D0117C /* FavouriteImage.swift */,
+				38D60BBC24709C2700D0117C /* PostFavourite.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -257,6 +297,45 @@
 				38B8A21D246DECD800556A20 /* extensionUIViewController.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		38D60BA02470909900D0117C /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				38D60BA1247090FD00D0117C /* SelectionViewController.swift */,
+				38D60BA32470910600D0117C /* SelectionPresenter.swift */,
+				38D60BA7247092EB00D0117C /* Cell */,
+				38D60BA52470910C00D0117C /* Selection.storyboard */,
+			);
+			path = Selection;
+			sourceTree = "<group>";
+		};
+		38D60BA7247092EB00D0117C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				38D60BA82470930000D0117C /* SelectionTableViewCell.swift */,
+				38D60BA92470930000D0117C /* SelectionTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		38D60BAC2470930A00D0117C /* LikedVotedScreen */ = {
+			isa = PBXGroup;
+			children = (
+				38D60BAD2470935600D0117C /* LikedVotedViewController.swift */,
+				38D60BAF2470935F00D0117C /* LikedVotedPresenter.swift */,
+				38D60BB12470967900D0117C /* Cell */,
+			);
+			path = LikedVotedScreen;
+			sourceTree = "<group>";
+		};
+		38D60BB12470967900D0117C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				38D60BB2247096A700D0117C /* LikedVotedCollectionViewCell.swift */,
+				38D60BB3247096A700D0117C /* LikedVotedCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		38E328EA246C098400FB8945 = {
@@ -285,6 +364,7 @@
 				38077908246C8CF900E6C2B4 /* Images */,
 				3807790B246C8D1000E6C2B4 /* Quiz */,
 				3807790E246C8D4C00E6C2B4 /* Settings */,
+				38D60BA02470909900D0117C /* Selection */,
 				38B8A21C246DECBC00556A20 /* Extensions */,
 				38AAB9B7246EDE4200DCE69B /* RequestServices */,
 				38AAB9BA246EDEBC00DCE69B /* Models */,
@@ -319,6 +399,25 @@
 				38A820E3246DBA6300FB9519 /* VotePresenter.swift */,
 			);
 			path = Vote;
+			sourceTree = "<group>";
+		};
+		38F57AA9246FFAE200E7CADC /* QuizStartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				38F57AAB246FFBBA00E7CADC /* QuizStartViewController.swift */,
+				38F57AAD246FFBD000E7CADC /* QuizStartPresenter.swift */,
+			);
+			path = QuizStartScreen;
+			sourceTree = "<group>";
+		};
+		38F57AAA246FFAF300E7CADC /* QuizScreen */ = {
+			isa = PBXGroup;
+			children = (
+				38A820ED246DBF9800FB9519 /* QuizViewController.swift */,
+				38A820EF246DBFA400FB9519 /* QuizPresenter.swift */,
+				389A6690247015D3003F8916 /* ProgressView.swift */,
+			);
+			path = QuizScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,14 +479,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				385B027F246F102200F751E4 /* ImagesCollectionViewCell.xib in Resources */,
+				38D60BAB2470930000D0117C /* SelectionTableViewCell.xib in Resources */,
 				38E3290E246C0C0900FB8945 /* SignIn.storyboard in Resources */,
 				38E32903246C098900FB8945 /* LaunchScreen.storyboard in Resources */,
 				385B028E246F2B7900F751E4 /* AppStateTableViewCell.xib in Resources */,
 				38E32900246C098900FB8945 /* Assets.xcassets in Resources */,
+				38D60BB5247096A700D0117C /* LikedVotedCollectionViewCell.xib in Resources */,
 				3807790A246C8D0600E6C2B4 /* Images.storyboard in Resources */,
 				388417B4246C706A0092A98F /* Breeds.storyboard in Resources */,
 				38E32911246C166F00FB8945 /* Vote.storyboard in Resources */,
 				38077910246C8E7F00E6C2B4 /* Settings.storyboard in Resources */,
+				38D60BA62470910C00D0117C /* Selection.storyboard in Resources */,
 				38E328FE246C098400FB8945 /* Main.storyboard in Resources */,
 				385B0283246F135E00F751E4 /* KeyTableViewCell.xib in Resources */,
 				3807790D246C8D4800E6C2B4 /* Quiz.storyboard in Resources */,
@@ -404,14 +506,18 @@
 			files = (
 				38AAB9C4246EEB7A00DCE69B /* ImageCache.swift in Sources */,
 				38A820E2246DBA5000FB9519 /* VoteViewController.swift in Sources */,
+				38D60BB924709BE500D0117C /* Favourite.swift in Sources */,
+				38D60BB4247096A700D0117C /* LikedVotedCollectionViewCell.swift in Sources */,
 				38E328FB246C098400FB8945 /* ViewController.swift in Sources */,
 				38077914246C92D100E6C2B4 /* AccountManager.swift in Sources */,
 				38A820F2246DBFAF00FB9519 /* SettingsViewController.swift in Sources */,
+				38D60BA2247090FD00D0117C /* SelectionViewController.swift in Sources */,
 				38AAB9C2246EE0EE00DCE69B /* Image.swift in Sources */,
 				38A820F6246DC34400FB9519 /* LogInPresenter.swift in Sources */,
 				385B0282246F135E00F751E4 /* KeyTableViewCell.swift in Sources */,
 				38A820F0246DBFA400FB9519 /* QuizPresenter.swift in Sources */,
 				38A820E4246DBA6300FB9519 /* VotePresenter.swift in Sources */,
+				38F57AAC246FFBBA00E7CADC /* QuizStartViewController.swift in Sources */,
 				38AAB9BE246EDEFC00DCE69B /* PostVote.swift in Sources */,
 				38077905246C83D800E6C2B4 /* MainCoordinator.swift in Sources */,
 				38A820E6246DBF6900FB9519 /* BreedsViewController.swift in Sources */,
@@ -421,20 +527,30 @@
 				38B8A21E246DECD800556A20 /* extensionUIViewController.swift in Sources */,
 				38E328F7246C098400FB8945 /* AppDelegate.swift in Sources */,
 				388417B8246C74AB0092A98F /* LogInViewController.swift in Sources */,
+				38D60BBB24709C0800D0117C /* FavouriteImage.swift in Sources */,
 				38AAB9BC246EDED600DCE69B /* Vote.swift in Sources */,
+				38D60BAE2470935600D0117C /* LikedVotedViewController.swift in Sources */,
 				38AAB9B9246EDE8400DCE69B /* VotesRequestService.swift in Sources */,
 				38A820EA246DBF8500FB9519 /* ImagesViewController.swift in Sources */,
+				38D60BAA2470930000D0117C /* SelectionTableViewCell.swift in Sources */,
 				385B0291246F2BDD00F751E4 /* UserDataTableViewCell.swift in Sources */,
+				38D60BB02470935F00D0117C /* LikedVotedPresenter.swift in Sources */,
 				38077903246C836600E6C2B4 /* Configurator.swift in Sources */,
 				385B027E246F102200F751E4 /* ImagesCollectionViewCell.swift in Sources */,
 				38E328F9246C098400FB8945 /* SceneDelegate.swift in Sources */,
 				38077907246C88E500E6C2B4 /* Routable.swift in Sources */,
 				38A820EE246DBF9800FB9519 /* QuizViewController.swift in Sources */,
+				38F57AAE246FFBD000E7CADC /* QuizStartPresenter.swift in Sources */,
 				38A820F8246DC35200FB9519 /* ChooseYourSidePresenter.swift in Sources */,
+				38D60BA42470910600D0117C /* SelectionPresenter.swift in Sources */,
+				38D60BB724709BAF00D0117C /* FavouritesRequestService.swift in Sources */,
 				38077901246C833C00E6C2B4 /* Storyboarded.swift in Sources */,
 				38AAB9C0246EE0B500DCE69B /* ImagesRequestService.swift in Sources */,
 				38077912246C929500E6C2B4 /* AppConstants.swift in Sources */,
+				38D60BBD24709C2700D0117C /* PostFavourite.swift in Sources */,
 				38A820F4246DBFBB00FB9519 /* SettingsPresenter.swift in Sources */,
+				38D60B9F24706FEB00D0117C /* BreedsRequestService.swift in Sources */,
+				389A6691247015D3003F8916 /* ProgressView.swift in Sources */,
 				38AAB9C6246EEC5D00DCE69B /* Breed.swift in Sources */,
 				385B028D246F2B7900F751E4 /* AppStateTableViewCell.swift in Sources */,
 			);

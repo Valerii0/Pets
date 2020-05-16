@@ -61,6 +61,17 @@ class ImagesConfigurator: ImagesConfigurable {
     }
 }
 
+protocol QuizStartConfigurable {
+    func configure(viewController: QuizStartViewController, coordinator: MainCoordinator)
+}
+
+class QuizStartConfigurator: QuizStartConfigurable {
+    func configure(viewController: QuizStartViewController, coordinator: MainCoordinator) {
+        let quizStartPresenter = QuizStartPresenter(view: viewController, coordinator: coordinator)
+        viewController.presenter = quizStartPresenter
+    }
+}
+
 protocol QuizConfigurable {
     func configure(viewController: QuizViewController, coordinator: MainCoordinator)
 }
@@ -80,5 +91,27 @@ class SettingsConfigurator: SettingsConfigurable {
     func configure(viewController: SettingsViewController, coordinator: MainCoordinator) {
         let settingsPresenter = SettingsPresenter(view: viewController, coordinator: coordinator)
         viewController.presenter = settingsPresenter
+    }
+}
+
+protocol LikedVotedConfigurable {
+    func configure(viewController: LikedVotedViewController, coordinator: MainCoordinator)
+}
+
+class LikedVotedConfigurator: LikedVotedConfigurable {
+    func configure(viewController: LikedVotedViewController, coordinator: MainCoordinator) {
+        let likedVotedPresenter = LikedVotedPresenter(view: viewController, coordinator: coordinator)
+        viewController.presenter = likedVotedPresenter
+    }
+}
+
+protocol SelectionConfigurable {
+    func configure(viewController: SelectionViewController, coordinator: MainCoordinator)
+}
+
+class SelectionConfigurator: SelectionConfigurable {
+    func configure(viewController: SelectionViewController, coordinator: MainCoordinator) {
+        let selectionPresenter = SelectionPresenter(view: viewController, coordinator: coordinator)
+        viewController.presenter = selectionPresenter
     }
 }

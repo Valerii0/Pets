@@ -17,13 +17,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nep-UD-idL">
-                        <rect key="frame" x="10" y="11.5" width="42" height="21"/>
+                        <rect key="frame" x="20" y="11.5" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h3w-62-Aic">
-                        <rect key="frame" x="52" y="5" width="258" height="34"/>
+                        <rect key="frame" x="62" y="5" width="248" height="34"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -31,11 +31,10 @@
                     </textView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="h3w-62-Aic" secondAttribute="bottom" constant="5" id="1BP-kR-RT6"/>
                     <constraint firstItem="h3w-62-Aic" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5n4-I6-TvJ"/>
-                    <constraint firstItem="nep-UD-idL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="8KR-g3-o52"/>
+                    <constraint firstItem="nep-UD-idL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="8KR-g3-o52"/>
+                    <constraint firstItem="h3w-62-Aic" firstAttribute="height" secondItem="nep-UD-idL" secondAttribute="height" multiplier="1.61905" id="95j-B6-jam"/>
                     <constraint firstItem="nep-UD-idL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BiT-Jj-eFe"/>
-                    <constraint firstItem="h3w-62-Aic" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Lkl-m3-42g"/>
                     <constraint firstItem="h3w-62-Aic" firstAttribute="leading" secondItem="nep-UD-idL" secondAttribute="trailing" id="fYX-TL-Nlh"/>
                     <constraint firstAttribute="trailing" secondItem="h3w-62-Aic" secondAttribute="trailing" constant="10" id="xIq-a6-hhJ"/>
                 </constraints>

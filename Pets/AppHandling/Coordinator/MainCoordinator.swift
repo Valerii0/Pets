@@ -35,6 +35,7 @@ final class MainCoordinator: Coordinatable {
         case tabImages = "Images"
         case tabQuiz = "Quiz"
         case tabSettings = "Settings"
+        case selection = "Selection"
     }
     
     init() {
@@ -96,7 +97,7 @@ final class MainCoordinator: Coordinatable {
             voteViewController(),
             breedsViewController(),
             imagesViewController(),
-            quizViewController(),
+            quizStartViewController(),
             settingsViewController()
         ]
         tabBarController.selectedIndex = 0
@@ -147,6 +148,13 @@ final class MainCoordinator: Coordinatable {
         return tabBreedsRouter.navigationController
     }
     
+    func pushSelectionViewController() {
+        let viewController = SelectionViewController.instantiate(storyboardName: StoryboardsName.selection.rawValue)
+        let configurator = SelectionConfigurator()
+        configurator.configure(viewController: viewController, coordinator: self)
+        tabBreedsRouter.push(controller: viewController, animated: true)
+    }
+    
     func imagesViewController() -> UINavigationController {
         let viewController = ImagesViewController.instantiate(storyboardName: StoryboardsName.tabImages.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.images.rawValue,
@@ -158,15 +166,23 @@ final class MainCoordinator: Coordinatable {
         return tabImagesRouter.navigationController
     }
     
-    func quizViewController() -> UINavigationController {
-        let viewController = QuizViewController.instantiate(storyboardName: StoryboardsName.tabQuiz.rawValue)
+    func quizStartViewController() -> UINavigationController {
+        let viewController = QuizStartViewController.instantiate(storyboardName: StoryboardsName.tabQuiz.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.quiz.rawValue,
                                                  image: UIImage(named: TabBarImages.quiz.rawValue)?.withRenderingMode(.alwaysOriginal),
                                                  selectedImage: UIImage(named: TabBarImages.quizSelected.rawValue)?.withRenderingMode(.alwaysOriginal))
-        let configurator = QuizConfigurator()
+        let configurator = QuizStartConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)
         tabQuizRouter.navigationController.viewControllers = [viewController]
         return tabQuizRouter.navigationController
+    }
+    
+    func presentQuizViewController() {
+        let viewController = QuizViewController.instantiate(storyboardName: StoryboardsName.tabQuiz.rawValue)
+        viewController.modalPresentationStyle = .overFullScreen
+        let configurator = QuizConfigurator()
+        configurator.configure(viewController: viewController, coordinator: self)
+        tabQuizRouter.present(controller: viewController, animated: true)
     }
     
     func settingsViewController() -> UINavigationController {
@@ -178,5 +194,12 @@ final class MainCoordinator: Coordinatable {
         configurator.configure(viewController: viewController, coordinator: self)
         tabSettingsRouter.navigationController.viewControllers = [viewController]
         return tabSettingsRouter.navigationController
+    }
+    
+    func pushLikedVotedViewController() {
+        let viewController = LikedVotedViewController.instantiate(storyboardName: StoryboardsName.tabSettings.rawValue)
+        let configurator = LikedVotedConfigurator()
+        configurator.configure(viewController: viewController, coordinator: self)
+        tabSettingsRouter.push(controller: viewController, animated: true)
     }
 }

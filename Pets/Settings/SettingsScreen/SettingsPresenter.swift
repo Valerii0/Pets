@@ -53,4 +53,8 @@ class SettingsPresenter {
         AccountManager.removeSide()
         coordinator?.configure()
     }
+    
+    func pushLikedVotedViewController() {
+        coordinator?.pushLikedVotedViewController()
+    }
 }

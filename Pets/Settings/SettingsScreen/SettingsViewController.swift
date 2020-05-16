@@ -32,7 +32,7 @@ class SettingsViewController: UIViewController, Storyboarded {
     private func setUpTableView(tableView: UITableView) {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .clear//UIColor(red: 241/255.0, green: 241/255.0, blue: 241/255.0, alpha: 1)
+        tableView.backgroundColor = CommonValues.standardGrayColor
         tableView.tableFooterView = UIView()
         //tableView.separatorStyle = .none
         //tableView.layer.cornerRadius = AppConstants.CommonConstants.learningCornerRadius
@@ -102,7 +102,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case .appState:
             return SettingsConstants.standartTableViewCellHeight
         case .info:
-            return SettingsConstants.keyTableViewCellHeight
+            return SettingsConstants.standartTableViewCellHeight
         }
     }
     
@@ -121,6 +121,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             switch userData {
             case .liked:
                 print("cell.configure(title: SettingsConstants.likedPic.rawValue)")
+                presenter.pushLikedVotedViewController()
             case .voted:
                 print("cell.configure(title: SettingsConstants.votedPic.rawValue)")
             case .highScore:

@@ -37,5 +37,42 @@
             </objects>
             <point key="canvasLocation" x="-4" y="123"/>
         </scene>
+        <!--Liked Voted View Controller-->
+        <scene sceneID="4Eo-IS-m0Q">
+            <objects>
+                <viewController storyboardIdentifier="LikedVotedViewController" id="LLv-un-Xdb" customClass="LikedVotedViewController" customModule="Pets" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wF8-0z-1Hd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qyn-Hl-ziy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eqj-UW-r3A">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qyn-Hl-ziy" firstAttribute="top" secondItem="cxK-Xh-MPG" secondAttribute="top" id="2eW-j6-OjK"/>
+                            <constraint firstItem="cxK-Xh-MPG" firstAttribute="trailing" secondItem="qyn-Hl-ziy" secondAttribute="trailing" id="JZc-ST-QJs"/>
+                            <constraint firstItem="cxK-Xh-MPG" firstAttribute="bottom" secondItem="qyn-Hl-ziy" secondAttribute="bottom" id="MEq-e3-LCZ"/>
+                            <constraint firstItem="qyn-Hl-ziy" firstAttribute="leading" secondItem="cxK-Xh-MPG" secondAttribute="leading" id="yMO-hp-7Gn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cxK-Xh-MPG"/>
+                    </view>
+                    <connections>
+                        <outlet property="likedVotedCollectionView" destination="qyn-Hl-ziy" id="uCv-gd-3Gw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JPG-PE-Acf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1044" y="123"/>
+        </scene>
     </scenes>
 </document>

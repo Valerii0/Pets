@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOv-qI-BdV">
-                        <rect key="frame" x="10" y="11.5" width="42" height="21"/>
+                        <rect key="frame" x="20" y="11.5" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -32,7 +32,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="cdU-PQ-AiY" secondAttribute="trailing" constant="10" id="BiG-dJ-fD9"/>
-                    <constraint firstItem="uOv-qI-BdV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="D4x-Os-b1F"/>
+                    <constraint firstItem="uOv-qI-BdV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="D4x-Os-b1F"/>
                     <constraint firstItem="uOv-qI-BdV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="G6h-Qh-kGO"/>
                     <constraint firstItem="cdU-PQ-AiY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HsQ-HO-iZV"/>
                 </constraints>

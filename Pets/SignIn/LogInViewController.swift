@@ -54,17 +54,61 @@ class LogInViewController: UIViewController, Storyboarded {
         bottomLine.frame = CGRect(x: 0, y: textField.frame.height - 1, width: textField.frame.width, height: 1.0)
         bottomLine.backgroundColor = UIColor.gray.cgColor
         textField.layer.addSublayer(bottomLine)
+        
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        textField.delegate = self
     }
     
-    @IBAction func genarateAction(_ sender: UIButton) {
-        let uuid = UUID().uuidString
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        checkForMaxLength(textField: textField)
+    }
+    
+    private func checkForMaxLength(textField: UITextField) {
+        guard let text = textField.text else { return }
+        if text.count > LogInConstants.maxUserIdLength {
+            textField.deleteBackward()
+        }
+    }
+    
+    private func generateUserId() {
+        var uuid = UUID().uuidString
+        if uuid.count > LogInConstants.maxUserIdLength {
+            uuid = String(uuid.prefix(LogInConstants.maxUserIdLength))
+        }
         idTextField.text = uuid
     }
     
-    @IBAction func logInAction(_ sender: UIButton) {
-        if let text = idTextField.text, text.count > 4 {
+    private func checkUserIdForLogIn() {
+        guard let text = idTextField.text else { return }
+        if text.count >= LogInConstants.minUserIdLength && text.count <= LogInConstants.maxUserIdLength {
             presenter.logIn(id: text)
+        } else {
+            self.showAlert(title: "Error", message: "Please fill at least \(LogInConstants.minUserIdLength) characters, but not more \(LogInConstants.maxUserIdLength).")
         }
+    }
+    
+    @IBAction func genarateAction(_ sender: UIButton) {
+        generateUserId()
+    }
+    
+    @IBAction func logInAction(_ sender: UIButton) {
+        checkUserIdForLogIn()
+    }
+}
+
+extension LogInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        checkUserIdForLogIn()
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let whitespaceSet = CharacterSet.whitespaces
+        if let _ = string.rangeOfCharacter(from: whitespaceSet) {
+            return false
+        }
+        return true
     }
 }
 

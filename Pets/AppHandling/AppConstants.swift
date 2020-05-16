@@ -47,6 +47,7 @@ enum TabBarImages: String {
 
 enum AssetsPathConstants: String {
     case petsLogo = "PetsLogo"
+    case petsShort = "PetsShort"
     case petsTitle = "PetsTitle"
     case chooseYourSide = "ChooseYourSide"
     case dog = "Dog"
@@ -89,6 +90,9 @@ enum LogInConstants: String {
     case generate = "Generate"
     case logIn = "Log In"
     case userId = "User ID"
+    
+    static let minUserIdLength = 13
+    static let maxUserIdLength = 23
 }
 
 enum ImagesConstants: String {
@@ -111,7 +115,7 @@ enum SettingsConstants: String {
     case key = "Key: "
     
     static let standartTableViewCellHeight: CGFloat = 44
-    static let keyTableViewCellHeight: CGFloat = 88
+    //static let keyTableViewCellHeight: CGFloat = 88
 }
 
 struct CommonValues {
@@ -119,4 +123,5 @@ struct CommonValues {
     static let collectionCellsCornerRadius: CGFloat = 3
     static let bgColor = UIColor(red: 255/255.0, green: 251/255.0, blue: 247/255.0, alpha: 1)
     static let buttonsColor = UIColor(red: 255/255.0, green: 149/255.0, blue: 0/255.0, alpha: 1)
+    static let standardGrayColor = UIColor(red: 232/255, green: 233/255, blue: 237/255, alpha: 1)
 }

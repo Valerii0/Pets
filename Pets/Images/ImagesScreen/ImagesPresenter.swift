@@ -26,7 +26,7 @@ class ImagesPresenter {
     }
     
     func loadImages() {
-        ImagesRequestService.getImages(limit: limit, page: page, size: ImageSizes.small.rawValue, order: nil, mimeTypes: ImageTypes.png.rawValue, categoryIds: nil, breedIds: nil) { (images, error) in
+        ImagesRequestService.getImages(limit: limit, page: page, size: ImageSizes.small.rawValue, order: nil, mimeTypes: ImageTypes.jpg.rawValue, categoryIds: nil, breedIds: nil) { (images, error) in
             if let images = images {
                 self.page += 1
                 self.images.append(contentsOf: images)

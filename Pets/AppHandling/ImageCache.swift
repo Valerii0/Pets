@@ -26,7 +26,7 @@ final class ImageCache {
             callBack(cachedImage, imageUrl)
         } else {
             DispatchQueue.global(qos: .userInitiated).async {
-                guard let url = URL(string: imageUrl) else { return }
+                guard let url = URL(string: imageUrl) else { callBack(self.defaultImage(imageUrl: imageUrl), imageUrl); return }
                 do {
                     let data = try Data.init(contentsOf: url)
                     if let image = UIImage.init(data: data) {
@@ -34,11 +34,19 @@ final class ImageCache {
                         callBack(image, imageUrl)
                     } else {
                         print("can't take an image from data")
+                        callBack(self.defaultImage(imageUrl: imageUrl), imageUrl)
                     }
                 } catch {
                     print("wrong url - " + "\(url)")
+                    callBack(self.defaultImage(imageUrl: imageUrl), imageUrl)
                 }
             }
         }
+    }
+    
+    func defaultImage(imageUrl: String) -> UIImage {
+        let image = UIImage(named: AssetsPathConstants.petsShort.rawValue) ?? UIImage()
+        saveImageInCache(image: image, imageName: imageUrl)
+        return image
     }
 }
