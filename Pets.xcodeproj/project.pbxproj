@@ -16,6 +16,8 @@
 		38077910246C8E7F00E6C2B4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3807790F246C8E7F00E6C2B4 /* Settings.storyboard */; };
 		38077912246C929500E6C2B4 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38077911246C929500E6C2B4 /* AppConstants.swift */; };
 		38077914246C92D100E6C2B4 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38077913246C92D100E6C2B4 /* AccountManager.swift */; };
+		3853A4A12471618200D5A260 /* VotedYesNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853A4A02471618200D5A260 /* VotedYesNoViewController.swift */; };
+		3853A4A32471618B00D5A260 /* VotedYesNoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853A4A22471618B00D5A260 /* VotedYesNoPresenter.swift */; };
 		385B027E246F102200F751E4 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385B027C246F102200F751E4 /* ImagesCollectionViewCell.swift */; };
 		385B027F246F102200F751E4 /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385B027D246F102200F751E4 /* ImagesCollectionViewCell.xib */; };
 		385B0282246F135E00F751E4 /* KeyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385B0280246F135E00F751E4 /* KeyTableViewCell.swift */; };
@@ -27,6 +29,8 @@
 		388417B4246C706A0092A98F /* Breeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 388417B3246C706A0092A98F /* Breeds.storyboard */; };
 		388417B6246C74680092A98F /* ChooseYourSideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388417B5246C74680092A98F /* ChooseYourSideViewController.swift */; };
 		388417B8246C74AB0092A98F /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388417B7246C74AB0092A98F /* LogInViewController.swift */; };
+		388B857A24716544004E7009 /* LikeDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B857924716544004E7009 /* LikeDeleteViewController.swift */; };
+		388B857C2471654D004E7009 /* LikeDeletePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B857B2471654D004E7009 /* LikeDeletePresenter.swift */; };
 		389A6691247015D3003F8916 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A6690247015D3003F8916 /* ProgressView.swift */; };
 		38A820E2246DBA5000FB9519 /* VoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A820E1246DBA5000FB9519 /* VoteViewController.swift */; };
 		38A820E4246DBA6300FB9519 /* VotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A820E3246DBA6300FB9519 /* VotePresenter.swift */; };
@@ -84,6 +88,8 @@
 		3807790F246C8E7F00E6C2B4 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		38077911246C929500E6C2B4 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		38077913246C92D100E6C2B4 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		3853A4A02471618200D5A260 /* VotedYesNoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedYesNoViewController.swift; sourceTree = "<group>"; };
+		3853A4A22471618B00D5A260 /* VotedYesNoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedYesNoPresenter.swift; sourceTree = "<group>"; };
 		385B027C246F102200F751E4 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		385B027D246F102200F751E4 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
 		385B0280246F135E00F751E4 /* KeyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,6 +101,8 @@
 		388417B3246C706A0092A98F /* Breeds.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Breeds.storyboard; sourceTree = "<group>"; };
 		388417B5246C74680092A98F /* ChooseYourSideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseYourSideViewController.swift; sourceTree = "<group>"; };
 		388417B7246C74AB0092A98F /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		388B857924716544004E7009 /* LikeDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDeleteViewController.swift; sourceTree = "<group>"; };
+		388B857B2471654D004E7009 /* LikeDeletePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDeletePresenter.swift; sourceTree = "<group>"; };
 		389A6690247015D3003F8916 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		38A820E1246DBA5000FB9519 /* VoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteViewController.swift; sourceTree = "<group>"; };
 		38A820E3246DBA6300FB9519 /* VotePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotePresenter.swift; sourceTree = "<group>"; };
@@ -170,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				385B0284246F1DD700F751E4 /* ImagesScreen */,
-				385B0286246F1E3200F751E4 /* OpenImageScreen */,
 				38077909246C8D0600E6C2B4 /* Images.storyboard */,
 			);
 			path = Images;
@@ -191,9 +198,47 @@
 			children = (
 				385B0289246F298900F751E4 /* SettingsScreen */,
 				38D60BAC2470930A00D0117C /* LikedVotedScreen */,
+				3853A49A2471610400D5A260 /* LikeDeleteScreen */,
+				3853A49B2471611900D5A260 /* VotedYesNoScreen */,
 				3807790F246C8E7F00E6C2B4 /* Settings.storyboard */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		3853A49A2471610400D5A260 /* LikeDeleteScreen */ = {
+			isa = PBXGroup;
+			children = (
+				388B857924716544004E7009 /* LikeDeleteViewController.swift */,
+				388B857B2471654D004E7009 /* LikeDeletePresenter.swift */,
+			);
+			path = LikeDeleteScreen;
+			sourceTree = "<group>";
+		};
+		3853A49B2471611900D5A260 /* VotedYesNoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3853A4A02471618200D5A260 /* VotedYesNoViewController.swift */,
+				3853A4A22471618B00D5A260 /* VotedYesNoPresenter.swift */,
+			);
+			path = VotedYesNoScreen;
+			sourceTree = "<group>";
+		};
+		3853A4A4247162A200D5A260 /* VoteScreen */ = {
+			isa = PBXGroup;
+			children = (
+				38A820E1246DBA5000FB9519 /* VoteViewController.swift */,
+				38A820E3246DBA6300FB9519 /* VotePresenter.swift */,
+			);
+			path = VoteScreen;
+			sourceTree = "<group>";
+		};
+		3853A4A5247162B700D5A260 /* BreedsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				38A820E5246DBF6900FB9519 /* BreedsViewController.swift */,
+				38A820E7246DBF7300FB9519 /* BreedsPresenter.swift */,
+			);
+			path = BreedsScreen;
 			sourceTree = "<group>";
 		};
 		385B0284246F1DD700F751E4 /* ImagesScreen */ = {
@@ -213,13 +258,6 @@
 				385B027D246F102200F751E4 /* ImagesCollectionViewCell.xib */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		385B0286246F1E3200F751E4 /* OpenImageScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OpenImageScreen;
 			sourceTree = "<group>";
 		};
 		385B0289246F298900F751E4 /* SettingsScreen */ = {
@@ -248,8 +286,7 @@
 		388417B2246C70570092A98F /* Breeds */ = {
 			isa = PBXGroup;
 			children = (
-				38A820E5246DBF6900FB9519 /* BreedsViewController.swift */,
-				38A820E7246DBF7300FB9519 /* BreedsPresenter.swift */,
+				3853A4A5247162B700D5A260 /* BreedsScreen */,
 				388417B3246C706A0092A98F /* Breeds.storyboard */,
 			);
 			path = Breeds;
@@ -394,9 +431,8 @@
 		38E3290F246C166300FB8945 /* Vote */ = {
 			isa = PBXGroup;
 			children = (
+				3853A4A4247162A200D5A260 /* VoteScreen */,
 				38E32910246C166F00FB8945 /* Vote.storyboard */,
-				38A820E1246DBA5000FB9519 /* VoteViewController.swift */,
-				38A820E3246DBA6300FB9519 /* VotePresenter.swift */,
 			);
 			path = Vote;
 			sourceTree = "<group>";
@@ -528,6 +564,7 @@
 				38E328F7246C098400FB8945 /* AppDelegate.swift in Sources */,
 				388417B8246C74AB0092A98F /* LogInViewController.swift in Sources */,
 				38D60BBB24709C0800D0117C /* FavouriteImage.swift in Sources */,
+				388B857A24716544004E7009 /* LikeDeleteViewController.swift in Sources */,
 				38AAB9BC246EDED600DCE69B /* Vote.swift in Sources */,
 				38D60BAE2470935600D0117C /* LikedVotedViewController.swift in Sources */,
 				38AAB9B9246EDE8400DCE69B /* VotesRequestService.swift in Sources */,
@@ -539,6 +576,7 @@
 				385B027E246F102200F751E4 /* ImagesCollectionViewCell.swift in Sources */,
 				38E328F9246C098400FB8945 /* SceneDelegate.swift in Sources */,
 				38077907246C88E500E6C2B4 /* Routable.swift in Sources */,
+				3853A4A32471618B00D5A260 /* VotedYesNoPresenter.swift in Sources */,
 				38A820EE246DBF9800FB9519 /* QuizViewController.swift in Sources */,
 				38F57AAE246FFBD000E7CADC /* QuizStartPresenter.swift in Sources */,
 				38A820F8246DC35200FB9519 /* ChooseYourSidePresenter.swift in Sources */,
@@ -549,7 +587,9 @@
 				38077912246C929500E6C2B4 /* AppConstants.swift in Sources */,
 				38D60BBD24709C2700D0117C /* PostFavourite.swift in Sources */,
 				38A820F4246DBFBB00FB9519 /* SettingsPresenter.swift in Sources */,
+				388B857C2471654D004E7009 /* LikeDeletePresenter.swift in Sources */,
 				38D60B9F24706FEB00D0117C /* BreedsRequestService.swift in Sources */,
+				3853A4A12471618200D5A260 /* VotedYesNoViewController.swift in Sources */,
 				389A6691247015D3003F8916 /* ProgressView.swift in Sources */,
 				38AAB9C6246EEC5D00DCE69B /* Breed.swift in Sources */,
 				385B028D246F2B7900F751E4 /* AppStateTableViewCell.swift in Sources */,

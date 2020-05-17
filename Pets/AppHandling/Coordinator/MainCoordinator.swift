@@ -103,6 +103,9 @@ final class MainCoordinator: Coordinatable {
         tabBarController.selectedIndex = 0
     }
     
+    
+    // SignInRouter
+    
     func logInViewController() -> UINavigationController {
         let viewController = LogInViewController.instantiate(storyboardName: StoryboardsName.signIn.rawValue)
         let configurator = LogInConfigurator()
@@ -126,6 +129,9 @@ final class MainCoordinator: Coordinatable {
         return signInRouter.navigationController
     }
     
+    
+    // TabVoteRouter
+    
     func voteViewController() -> UINavigationController {
         let viewController = VoteViewController.instantiate(storyboardName: StoryboardsName.tabVote.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.vote.rawValue,
@@ -136,6 +142,9 @@ final class MainCoordinator: Coordinatable {
         tabVoteRouter.navigationController.viewControllers = [viewController]
         return tabVoteRouter.navigationController
     }
+    
+    
+    // TabBreedsRouter
     
     func breedsViewController() -> UINavigationController {
         let viewController = BreedsViewController.instantiate(storyboardName: StoryboardsName.tabBreeds.rawValue)
@@ -148,12 +157,19 @@ final class MainCoordinator: Coordinatable {
         return tabBreedsRouter.navigationController
     }
     
-    func pushSelectionViewController() {
+    func pushBreedsSelectionViewController(delegate: SelectionPresenterDelegate, dataSource: [String]) {
         let viewController = SelectionViewController.instantiate(storyboardName: StoryboardsName.selection.rawValue)
         let configurator = SelectionConfigurator()
-        configurator.configure(viewController: viewController, coordinator: self)
+        configurator.configure(viewController: viewController, coordinator: self, delegate: delegate, dataSource: dataSource)
         tabBreedsRouter.push(controller: viewController, animated: true)
     }
+    
+    func breedsRouterPop() {
+        tabBreedsRouter.pop(animated: true)
+    }
+    
+    
+    // TabImagesRouter
     
     func imagesViewController() -> UINavigationController {
         let viewController = ImagesViewController.instantiate(storyboardName: StoryboardsName.tabImages.rawValue)
@@ -165,6 +181,9 @@ final class MainCoordinator: Coordinatable {
         tabImagesRouter.navigationController.viewControllers = [viewController]
         return tabImagesRouter.navigationController
     }
+    
+    
+    // TabQuizRouter
     
     func quizStartViewController() -> UINavigationController {
         let viewController = QuizStartViewController.instantiate(storyboardName: StoryboardsName.tabQuiz.rawValue)
@@ -185,6 +204,9 @@ final class MainCoordinator: Coordinatable {
         tabQuizRouter.present(controller: viewController, animated: true)
     }
     
+    
+    // TabSettingsRouter
+    
     func settingsViewController() -> UINavigationController {
         let viewController = SettingsViewController.instantiate(storyboardName: StoryboardsName.tabSettings.rawValue)
         viewController.tabBarItem = UITabBarItem(title: TabBarTitles.settings.rawValue,
@@ -196,9 +218,23 @@ final class MainCoordinator: Coordinatable {
         return tabSettingsRouter.navigationController
     }
     
-    func pushLikedVotedViewController() {
+    func pushLikedVotedViewController(state: LikedVoted) {
         let viewController = LikedVotedViewController.instantiate(storyboardName: StoryboardsName.tabSettings.rawValue)
         let configurator = LikedVotedConfigurator()
+        configurator.configure(viewController: viewController, coordinator: self, state: state)
+        tabSettingsRouter.push(controller: viewController, animated: true)
+    }
+    
+    func pushLikeDeleteViewController() {
+        let viewController = LikeDeleteViewController.instantiate(storyboardName: StoryboardsName.tabSettings.rawValue)
+        let configurator = LikeDeleteConfigurator()
+        configurator.configure(viewController: viewController, coordinator: self)
+        tabSettingsRouter.push(controller: viewController, animated: true)
+    }
+    
+    func pushVotedYesNoViewController() {
+        let viewController = VotedYesNoViewController.instantiate(storyboardName: StoryboardsName.tabSettings.rawValue)
+        let configurator = VotedYesNoConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)
         tabSettingsRouter.push(controller: viewController, animated: true)
     }

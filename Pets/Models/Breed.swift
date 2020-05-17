@@ -9,8 +9,8 @@
 import Foundation
 
 class Breed: Codable {
-    var id: String?
-    var name: String?
+    var id: String
+    var name: String
     var temperament: String?
     var life_span: String?
     var alt_names: String?

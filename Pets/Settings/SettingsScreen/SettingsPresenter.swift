@@ -54,7 +54,7 @@ class SettingsPresenter {
         coordinator?.configure()
     }
     
-    func pushLikedVotedViewController() {
-        coordinator?.pushLikedVotedViewController()
+    func pushLikedVotedViewController(state: LikedVoted) {
+        coordinator?.pushLikedVotedViewController(state: state)
     }
 }

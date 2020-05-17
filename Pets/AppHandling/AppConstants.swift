@@ -95,6 +95,13 @@ enum LogInConstants: String {
     static let maxUserIdLength = 23
 }
 
+enum BreedsConstants: String {
+    case category = "Category: "
+    case breed = "Breed: "
+    
+    static let infoViewColor = UIColor(red: 255/255.0, green: 149/255.0, blue: 0/255.0, alpha: 0.8)
+}
+
 enum ImagesConstants: String {
     case imagesCollectionViewCell = "ImagesCollectionViewCell"
     case order = "Order: "
@@ -114,8 +121,13 @@ enum SettingsConstants: String {
     case logOut = "Log out"
     case key = "Key: "
     
-    static let standartTableViewCellHeight: CGFloat = 44
+    //static let standartTableViewCellHeight: CGFloat = 44
     //static let keyTableViewCellHeight: CGFloat = 88
+}
+
+enum SelectionConstants: String {
+    case selectionTableViewCell = "SelectionTableViewCell"
+    case order = "Order: "
 }
 
 struct CommonValues {
@@ -124,4 +136,6 @@ struct CommonValues {
     static let bgColor = UIColor(red: 255/255.0, green: 251/255.0, blue: 247/255.0, alpha: 1)
     static let buttonsColor = UIColor(red: 255/255.0, green: 149/255.0, blue: 0/255.0, alpha: 1)
     static let standardGrayColor = UIColor(red: 232/255, green: 233/255, blue: 237/255, alpha: 1)
+    static let standartTableViewCellHeight: CGFloat = 44
+    static let defaultImage = UIImage(named: AssetsPathConstants.petsShort.rawValue) ?? UIImage()
 }

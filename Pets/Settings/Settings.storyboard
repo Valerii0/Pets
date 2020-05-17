@@ -72,7 +72,102 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JPG-PE-Acf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1044" y="123"/>
+            <point key="canvasLocation" x="1059" y="123"/>
+        </scene>
+        <!--Like Delete View Controller-->
+        <scene sceneID="RCx-jN-7P7">
+            <objects>
+                <viewController storyboardIdentifier="LikeDeleteViewController" id="yiH-hC-GPW" customClass="LikeDeleteViewController" customModule="Pets" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QBg-G8-JrW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hpq-Wh-vC2">
+                                <rect key="frame" x="10" y="10" width="300" height="478"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4SH-3d-tdM">
+                                <rect key="frame" x="130" y="458" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="77Q-W1-CmB"/>
+                                    <constraint firstAttribute="width" secondItem="4SH-3d-tdM" secondAttribute="height" multiplier="1:1" id="Bsa-nH-NTi"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="likeDeleteButton:" destination="yiH-hC-GPW" eventType="touchUpInside" id="nac-u5-Wd6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="4Xt-0H-4oI" firstAttribute="bottom" secondItem="Hpq-Wh-vC2" secondAttribute="bottom" constant="80" id="7lw-gg-RlL"/>
+                            <constraint firstItem="Hpq-Wh-vC2" firstAttribute="leading" secondItem="4Xt-0H-4oI" secondAttribute="leading" constant="10" id="aC1-iO-jVe"/>
+                            <constraint firstItem="4SH-3d-tdM" firstAttribute="centerX" secondItem="QBg-G8-JrW" secondAttribute="centerX" id="cgb-go-wiV"/>
+                            <constraint firstItem="4SH-3d-tdM" firstAttribute="bottom" secondItem="Hpq-Wh-vC2" secondAttribute="bottom" constant="30" id="iP0-io-wJ9"/>
+                            <constraint firstItem="4Xt-0H-4oI" firstAttribute="trailing" secondItem="Hpq-Wh-vC2" secondAttribute="trailing" constant="10" id="rZ5-09-aQg"/>
+                            <constraint firstItem="Hpq-Wh-vC2" firstAttribute="top" secondItem="4Xt-0H-4oI" secondAttribute="top" constant="10" id="vks-8r-b6H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4Xt-0H-4oI"/>
+                    </view>
+                    <connections>
+                        <outlet property="likeDeleteButton" destination="4SH-3d-tdM" id="WT6-Vg-8tt"/>
+                        <outlet property="petImage" destination="Hpq-Wh-vC2" id="Fm8-LE-rPG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TLk-aA-AAn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2091" y="123"/>
+        </scene>
+        <!--Voted Yes No View Controller-->
+        <scene sceneID="VOT-bX-j8m">
+            <objects>
+                <viewController storyboardIdentifier="VotedYesNoViewController" id="udE-F7-nku" customClass="VotedYesNoViewController" customModule="Pets" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Aw-Gw-M9c">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UCz-4b-auc">
+                                <rect key="frame" x="10" y="10" width="300" height="478"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZk-GX-dO6">
+                                <rect key="frame" x="10" y="10" width="300" height="478"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CId-gj-uNA">
+                                        <rect key="frame" x="50" y="139" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="RYY-DF-ngP"/>
+                                            <constraint firstAttribute="height" constant="200" id="kKJ-a7-Y20"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="CId-gj-uNA" firstAttribute="centerY" secondItem="iZk-GX-dO6" secondAttribute="centerY" id="fMd-xM-qdX"/>
+                                    <constraint firstItem="CId-gj-uNA" firstAttribute="centerX" secondItem="iZk-GX-dO6" secondAttribute="centerX" id="fs2-ZK-btZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="iZk-GX-dO6" firstAttribute="top" secondItem="UCz-4b-auc" secondAttribute="top" id="57X-0n-oIb"/>
+                            <constraint firstItem="UCz-4b-auc" firstAttribute="top" secondItem="Wh7-VH-Xi2" secondAttribute="top" constant="10" id="6ww-r3-AEL"/>
+                            <constraint firstItem="UCz-4b-auc" firstAttribute="leading" secondItem="Wh7-VH-Xi2" secondAttribute="leading" constant="10" id="IDL-AM-uSn"/>
+                            <constraint firstItem="iZk-GX-dO6" firstAttribute="bottom" secondItem="UCz-4b-auc" secondAttribute="bottom" id="Q1a-pp-7cX"/>
+                            <constraint firstItem="iZk-GX-dO6" firstAttribute="leading" secondItem="UCz-4b-auc" secondAttribute="leading" id="Sd0-xc-xg1"/>
+                            <constraint firstItem="iZk-GX-dO6" firstAttribute="trailing" secondItem="UCz-4b-auc" secondAttribute="trailing" id="a0n-l1-Usf"/>
+                            <constraint firstItem="Wh7-VH-Xi2" firstAttribute="trailing" secondItem="UCz-4b-auc" secondAttribute="trailing" constant="10" id="eW6-IR-0wP"/>
+                            <constraint firstItem="Wh7-VH-Xi2" firstAttribute="bottom" secondItem="UCz-4b-auc" secondAttribute="bottom" constant="80" id="lSH-ph-1mb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wh7-VH-Xi2"/>
+                    </view>
+                    <connections>
+                        <outlet property="petImage" destination="UCz-4b-auc" id="Ugp-yp-3IN"/>
+                        <outlet property="stateImage" destination="CId-gj-uNA" id="TYl-bI-iwY"/>
+                        <outlet property="stateView" destination="iZk-GX-dO6" id="8d2-vj-H8d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kLR-Vo-xnU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3161" y="123"/>
         </scene>
     </scenes>
 </document>

@@ -19,7 +19,7 @@ class LikedVotedViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        presenter.getFavourites()
+        presenter.loadImages()
     }
     
     private func setUpUI() {
@@ -73,13 +73,9 @@ extension LikedVotedViewController: UICollectionViewDelegate, UICollectionViewDa
         if indexPath.row == presenter.votes.count - 1 { //&& isCardsExist {
             //presenter.getFilteredCards(skip: self.cardsArray.count, cefr: cefr, type: type, magic: magic, word: word, firstLoad: false)
             //loadDataSource()
-            presenter.getVotes()
+            presenter.loadImages()
         }
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        presenter.presentCardsModalBetweenCollectionAndExchange(card: cardsArray[indexPath.row])
-//    }
 }
 
 extension LikedVotedViewController: LikedVotedView {

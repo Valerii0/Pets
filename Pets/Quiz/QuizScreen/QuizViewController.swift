@@ -28,15 +28,20 @@ class QuizViewController: UIViewController, Storyboarded {
         setUpUI()
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        progressView.progressAnimation(duration: TimeInterval(self.timeLeft))
+//    }
+    
     private func setUpUI() {
         coloredBg()
         addLogoToNavigation()
         setUpButtons()
         setUpTimer()
-        //DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-        progressView.layoutIfNeeded()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//        //progressView.layoutIfNeeded()
             self.progressView.progressAnimation(duration: TimeInterval(self.timeLeft))
-        //}
+        }
         
         
     }

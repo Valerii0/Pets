@@ -9,7 +9,7 @@
 import Foundation
 
 final class ImagesRequestService {
-    static func getImages(limit: Int, page: Int?, size: String, order: String?, mimeTypes: String?, categoryIds: Int?, breedIds: Int?, callBack: @escaping (_ images: [Image]?, _ error: Error?) -> Void) {
+    static func getImages(limit: Int, page: Int?, size: String, order: String?, mimeTypes: String?, categoryIds: Int?, breedIds: String?, callBack: @escaping (_ images: [Image]?, _ error: Error?) -> Void) {
         var urlString = AccountManager.ApiUrl()
         urlString.append(Api.version.rawValue)
         urlString.append(Api.images.rawValue)
@@ -39,7 +39,7 @@ final class ImagesRequestService {
         }
         
         if let breedIds = breedIds {
-            urlComponents?.queryItems?.append(URLQueryItem(name: "breed_ids", value: "\(breedIds)"))
+            urlComponents?.queryItems?.append(URLQueryItem(name: "breed_ids", value: breedIds))
         }
         
         var request = URLRequest(url: (urlComponents?.url)!)

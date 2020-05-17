@@ -98,11 +98,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let settingsСategory = SettingsСategories(rawValue: indexPath.section) else { return 0 }
         switch settingsСategory {
         case .userData:
-            return SettingsConstants.standartTableViewCellHeight
+            return CommonValues.standartTableViewCellHeight
         case .appState:
-            return SettingsConstants.standartTableViewCellHeight
+            return CommonValues.standartTableViewCellHeight
         case .info:
-            return SettingsConstants.standartTableViewCellHeight
+            return CommonValues.standartTableViewCellHeight
         }
     }
     
@@ -120,10 +120,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             guard let userData = UserData(rawValue: indexPath.row) else { return }
             switch userData {
             case .liked:
-                print("cell.configure(title: SettingsConstants.likedPic.rawValue)")
-                presenter.pushLikedVotedViewController()
+                presenter.pushLikedVotedViewController(state: .liked)
             case .voted:
-                print("cell.configure(title: SettingsConstants.votedPic.rawValue)")
+                presenter.pushLikedVotedViewController(state: .voted)
             case .highScore:
                 print("cell.configure(title: SettingsConstants.highScore.rawValue)")
             }

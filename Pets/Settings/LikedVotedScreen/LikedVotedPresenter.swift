@@ -21,21 +21,32 @@ protocol LikedVotedView: class {
 class LikedVotedPresenter {
     private weak var view: LikedVotedView?
     private var coordinator: MainCoordinator?
+    private var state: LikedVoted
     private let limit = 20
     private var page = 0
     var votes = [Vote]()
     var favourites = [Favourite]()
 
-    init(view: LikedVotedView, coordinator: MainCoordinator) {
+    init(view: LikedVotedView, coordinator: MainCoordinator, state: LikedVoted) {
         self.view = view
         self.coordinator = coordinator
+        self.state = state
     }
     
-    func getVotes() {
-        VotesRequestService.getVotes(limit: limit, page: page) { (votes, error) in
-            if let votes = votes {
+    func loadImages() {
+        switch state {
+        case .liked:
+            getFavourites()
+        case .voted:
+            getVotes()
+        }
+    }
+    
+    private func getFavourites() {
+        FavouritesRequestService.getFavourites(limit: limit, page: page, order: "", size: "") { (favourites, error) in
+            if let favourites = favourites {
                 self.page += 1
-                self.votes.append(contentsOf: votes)
+                self.favourites.append(contentsOf: favourites)
                 DispatchQueue.main.async {
                     self.view?.reloadData()
                 }
@@ -47,11 +58,11 @@ class LikedVotedPresenter {
         }
     }
     
-    func getFavourites() {
-        FavouritesRequestService.getFavourites(limit: limit, page: page, order: "", size: "") { (favourites, error) in
-            if let favourites = favourites {
+    private func getVotes() {
+        VotesRequestService.getVotes(limit: limit, page: page) { (votes, error) in
+            if let votes = votes {
                 self.page += 1
-                self.favourites.append(contentsOf: favourites)
+                self.votes.append(contentsOf: votes)
                 DispatchQueue.main.async {
                     self.view?.reloadData()
                 }

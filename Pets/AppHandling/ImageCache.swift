@@ -45,7 +45,7 @@ final class ImageCache {
     }
     
     func defaultImage(imageUrl: String) -> UIImage {
-        let image = UIImage(named: AssetsPathConstants.petsShort.rawValue) ?? UIImage()
+        let image = CommonValues.defaultImage
         saveImageInCache(image: image, imageName: imageUrl)
         return image
     }

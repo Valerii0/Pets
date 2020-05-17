@@ -19,63 +19,41 @@ class ProgressView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //createCircularPath()
+        
+    }
+    
+    override func layoutSubviews() {
+        createCircularPath()
     }
     
     func createCircularPath() {
-        let circularPath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: self.frame.height / 2, startAngle: 3 * .pi / 2, endAngle: 3 * .pi / 1.95, clockwise: false)
+        self.backgroundColor = .clear
+        //let circularPath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: self.frame.height / 2, startAngle: 3 * .pi / 2, endAngle: 3 * .pi / 1.95, clockwise: false)
         //        circleLayer.path = circularPath.cgPath
         //        circleLayer.fillColor = UIColor.clear.cgColor
         //        circleLayer.lineCap = .round
         //        circleLayer.lineWidth = 10.0
         //        circleLayer.strokeColor = UIColor.black.cgColor
-        progressLayer.path = circularPath.cgPath
+        progressLayer.frame = CGRect(x: 0, y: 0, width: 50, height: self.frame.height)
+        //progressLayer.path = circularPath.cgPath
         progressLayer.fillColor = UIColor.black.cgColor
-        progressLayer.lineCap = .round
-        progressLayer.lineWidth = 15.0
-        progressLayer.strokeEnd = 10
-        progressLayer.strokeColor = UIColor.green.cgColor
+        //progressLayer.lineCap = .square
+        //progressLayer.lineWidth = 15.0
+        //progressLayer.strokeEnd = 10
+        //progressLayer.strokeColor = UIColor.green.cgColor
         //layer.addSublayer(circleLayer)
+        //progressLayer.
         layer.addSublayer(progressLayer)
     }
     
     func progressAnimation(duration: TimeInterval) {
-        let gradientLAyer = CAGradientLayer()
-                gradientLAyer.colors = [UIColor.white.cgColor, UIColor.blue.cgColor]
-                gradientLAyer.locations = [0, 1]
-                gradientLAyer.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-        
-                let animation = CABasicAnimation(keyPath: "transform.translation.y")
-                animation.duration = duration
-                animation.fromValue = -self.frame.height
-                animation.toValue = 0.0
-        
-                gradientLAyer.add(animation, forKey: nil)
-        
-                self.layer.addSublayer(gradientLAyer)
-        
-//        let circularPath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: self.frame.height / 2, startAngle: 3 * .pi / 2, endAngle: 3 * .pi / 1.95, clockwise: false)
-//               //        circleLayer.path = circularPath.cgPath
-//               //        circleLayer.fillColor = UIColor.clear.cgColor
-//               //        circleLayer.lineCap = .round
-//               //        circleLayer.lineWidth = 10.0
-//               //        circleLayer.strokeColor = UIColor.black.cgColor
-//               progressLayer.path = circularPath.cgPath
-//               progressLayer.fillColor = UIColor.black.cgColor
-//               progressLayer.lineCap = .round
-//               progressLayer.lineWidth = 15.0
-//               progressLayer.strokeEnd = 10
-//               progressLayer.strokeColor = UIColor.green.cgColor
-//               //layer.addSublayer(circleLayer)
-//               layer.addSublayer(progressLayer)
-//        
-//        let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
-//        circularProgressAnimation.duration = duration
-//        circularProgressAnimation.fromValue = 1.0
-//        circularProgressAnimation.toValue = 0.0
-//        //circularProgressAnimation.fillMode = .forwards
-//        //circularProgressAnimation.isRemovedOnCompletion = false
-//        progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
+        let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        circularProgressAnimation.duration = duration
+        circularProgressAnimation.fromValue = 1.0
+        circularProgressAnimation.toValue = 0.0
+        //circularProgressAnimation.fillMode = .forwards
+        //circularProgressAnimation.isRemovedOnCompletion = false
+        progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
     }
 }
 

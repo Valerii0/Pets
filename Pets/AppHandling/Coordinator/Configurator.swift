@@ -95,23 +95,50 @@ class SettingsConfigurator: SettingsConfigurable {
 }
 
 protocol LikedVotedConfigurable {
-    func configure(viewController: LikedVotedViewController, coordinator: MainCoordinator)
+    func configure(viewController: LikedVotedViewController, coordinator: MainCoordinator,
+                   state: LikedVoted)
 }
 
 class LikedVotedConfigurator: LikedVotedConfigurable {
-    func configure(viewController: LikedVotedViewController, coordinator: MainCoordinator) {
-        let likedVotedPresenter = LikedVotedPresenter(view: viewController, coordinator: coordinator)
+    func configure(viewController: LikedVotedViewController, coordinator: MainCoordinator,
+                   state: LikedVoted) {
+        let likedVotedPresenter = LikedVotedPresenter(view: viewController, coordinator: coordinator, state: state)
         viewController.presenter = likedVotedPresenter
     }
 }
 
+protocol LikeDeleteConfigurable {
+    func configure(viewController: LikeDeleteViewController, coordinator: MainCoordinator)
+}
+
+class LikeDeleteConfigurator: LikeDeleteConfigurable {
+    func configure(viewController: LikeDeleteViewController, coordinator: MainCoordinator) {
+        let likeDeletePresenter = LikeDeletePresenter(view: viewController, coordinator: coordinator)
+        viewController.presenter = likeDeletePresenter
+    }
+}
+
+protocol VotedYesNoConfigurable {
+    func configure(viewController: VotedYesNoViewController, coordinator: MainCoordinator)
+}
+
+class VotedYesNoConfigurator: VotedYesNoConfigurable {
+    func configure(viewController: VotedYesNoViewController, coordinator: MainCoordinator) {
+        let votedYesNoPresenter = VotedYesNoPresenter(view: viewController, coordinator: coordinator)
+        viewController.presenter = votedYesNoPresenter
+    }
+}
+
 protocol SelectionConfigurable {
-    func configure(viewController: SelectionViewController, coordinator: MainCoordinator)
+    func configure(viewController: SelectionViewController, coordinator: MainCoordinator,
+                   delegate: SelectionPresenterDelegate, dataSource: [String])
 }
 
 class SelectionConfigurator: SelectionConfigurable {
-    func configure(viewController: SelectionViewController, coordinator: MainCoordinator) {
-        let selectionPresenter = SelectionPresenter(view: viewController, coordinator: coordinator)
+    func configure(viewController: SelectionViewController, coordinator: MainCoordinator,
+                   delegate: SelectionPresenterDelegate, dataSource: [String]) {
+        let selectionPresenter = SelectionPresenter(view: viewController, coordinator: coordinator,
+                                                    delegate: delegate, dataSource: dataSource)
         viewController.presenter = selectionPresenter
     }
 }
