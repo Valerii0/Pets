@@ -21,45 +21,13 @@ protocol VotedYesNoView: class {
 class VotedYesNoPresenter {
     private weak var view: VotedYesNoView?
     private var coordinator: MainCoordinator?
-    private let limit = 20
-    private var page = 0
-    var votes = [Vote]()
-    var favourites = [Favourite]()
+    private var image: Image
+    private var state: VotedYesNo
 
-    init(view: VotedYesNoView, coordinator: MainCoordinator) {
+    init(view: VotedYesNoView, coordinator: MainCoordinator, image: Image, state: VotedYesNo) {
         self.view = view
         self.coordinator = coordinator
+        self.image = image
+        self.state = state
     }
-    
-//    func getVotes() {
-//        VotesRequestService.getVotes(limit: limit, page: page) { (votes, error) in
-//            if let votes = votes {
-//                self.page += 1
-//                self.votes.append(contentsOf: votes)
-//                DispatchQueue.main.async {
-//                    self.view?.reloadData()
-//                }
-//            } else if let error = error {
-//                DispatchQueue.main.async {
-//                    self.view?.showError(title: "Error", message: error.localizedDescription)
-//                }
-//            }
-//        }
-//    }
-//
-//    func getFavourites() {
-//        FavouritesRequestService.getFavourites(limit: limit, page: page, order: "", size: "") { (favourites, error) in
-//            if let favourites = favourites {
-//                self.page += 1
-//                self.favourites.append(contentsOf: favourites)
-//                DispatchQueue.main.async {
-//                    self.view?.reloadData()
-//                }
-//            } else if let error = error {
-//                DispatchQueue.main.async {
-//                    self.view?.showError(title: "Error", message: error.localizedDescription)
-//                }
-//            }
-//        }
-//    }
 }

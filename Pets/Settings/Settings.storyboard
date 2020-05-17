@@ -85,6 +85,23 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hpq-Wh-vC2">
                                 <rect key="frame" x="10" y="10" width="300" height="478"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnU-8w-nhm">
+                                <rect key="frame" x="10" y="10" width="300" height="478"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6TM-xi-PJz">
+                                        <rect key="frame" x="50" y="139" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="BbO-09-MRm"/>
+                                            <constraint firstAttribute="width" constant="200" id="IBp-wg-rHv"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="6TM-xi-PJz" firstAttribute="centerY" secondItem="nnU-8w-nhm" secondAttribute="centerY" id="PAS-l6-wct"/>
+                                    <constraint firstItem="6TM-xi-PJz" firstAttribute="centerX" secondItem="nnU-8w-nhm" secondAttribute="centerX" id="cOl-Z3-dZM"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4SH-3d-tdM">
                                 <rect key="frame" x="130" y="458" width="60" height="60"/>
                                 <constraints>
@@ -99,18 +116,24 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="nnU-8w-nhm" firstAttribute="leading" secondItem="Hpq-Wh-vC2" secondAttribute="leading" id="2WY-Kf-nOm"/>
                             <constraint firstItem="4Xt-0H-4oI" firstAttribute="bottom" secondItem="Hpq-Wh-vC2" secondAttribute="bottom" constant="80" id="7lw-gg-RlL"/>
+                            <constraint firstItem="nnU-8w-nhm" firstAttribute="bottom" secondItem="Hpq-Wh-vC2" secondAttribute="bottom" id="AiG-dS-awg"/>
+                            <constraint firstItem="nnU-8w-nhm" firstAttribute="trailing" secondItem="Hpq-Wh-vC2" secondAttribute="trailing" id="TxB-BF-HyN"/>
                             <constraint firstItem="Hpq-Wh-vC2" firstAttribute="leading" secondItem="4Xt-0H-4oI" secondAttribute="leading" constant="10" id="aC1-iO-jVe"/>
                             <constraint firstItem="4SH-3d-tdM" firstAttribute="centerX" secondItem="QBg-G8-JrW" secondAttribute="centerX" id="cgb-go-wiV"/>
                             <constraint firstItem="4SH-3d-tdM" firstAttribute="bottom" secondItem="Hpq-Wh-vC2" secondAttribute="bottom" constant="30" id="iP0-io-wJ9"/>
                             <constraint firstItem="4Xt-0H-4oI" firstAttribute="trailing" secondItem="Hpq-Wh-vC2" secondAttribute="trailing" constant="10" id="rZ5-09-aQg"/>
                             <constraint firstItem="Hpq-Wh-vC2" firstAttribute="top" secondItem="4Xt-0H-4oI" secondAttribute="top" constant="10" id="vks-8r-b6H"/>
+                            <constraint firstItem="nnU-8w-nhm" firstAttribute="top" secondItem="Hpq-Wh-vC2" secondAttribute="top" id="wYC-Sp-Rsc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Xt-0H-4oI"/>
                     </view>
                     <connections>
                         <outlet property="likeDeleteButton" destination="4SH-3d-tdM" id="WT6-Vg-8tt"/>
                         <outlet property="petImage" destination="Hpq-Wh-vC2" id="Fm8-LE-rPG"/>
+                        <outlet property="stateImage" destination="6TM-xi-PJz" id="etT-u4-EvU"/>
+                        <outlet property="stateView" destination="nnU-8w-nhm" id="m4S-OV-biE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLk-aA-AAn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

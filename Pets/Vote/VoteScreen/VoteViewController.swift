@@ -25,23 +25,8 @@ class VoteViewController: UIViewController, Storyboarded {
         coloredBg()
         addLogoToNavigation()
         
-        setUpImageView(imageView: petImage)
+        setUpPetImageView(imageView: petImage)
         setUpButtons()
-    }
-    
-    private func setUpImageView(imageView: UIImageView) {
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = CommonValues.standartCornerRadius
-        
-//        let shadowLayer = CAShapeLayer()
-//        shadowLayer.path = UIBezierPath(roundedRect: imageView.bounds, cornerRadius: CommonValues.standartCornerRadius).cgPath
-//        shadowLayer.fillColor = UIColor.clear.cgColor
-//        shadowLayer.shadowColor = UIColor.black.cgColor
-//        shadowLayer.shadowPath = shadowLayer.path
-//        shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-//        shadowLayer.shadowOpacity = 0.2
-//        shadowLayer.shadowRadius = 3
-//        imageView.layer.insertSublayer(shadowLayer, at: 0)
     }
     
     private func setUpButtons() {

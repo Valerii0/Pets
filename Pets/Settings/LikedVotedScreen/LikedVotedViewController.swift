@@ -54,13 +54,12 @@ extension LikedVotedViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImagesConstants.imagesCollectionViewCell.rawValue, for: indexPath) as! ImagesCollectionViewCell
         cell.configure(imageUrl: presenter.favourites[indexPath.row].image.url)
+        //only jpg in votes
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if let learningBlock = LearningBlock(rawValue: indexPath.row) {
-//            presenter.selectModule(learningBlock: learningBlock)
-//        }
+        presenter.pushDeleteViewController(index: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

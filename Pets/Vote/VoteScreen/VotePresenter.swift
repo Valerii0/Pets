@@ -24,7 +24,7 @@ class VotePresenter {
     }
     
     func loadImage() {
-        ImagesRequestService.getImages(limit: 1, page: nil, size: ImageSizes.full.rawValue, order: nil, mimeTypes: ImageTypes.png.rawValue, categoryIds: nil, breedIds: nil) { (images, error) in
+        ImagesRequestService.getImages(limit: 1, page: nil, size: ImageSizes.full.rawValue, order: nil, mimeTypes: ImageTypes.jpg.rawValue, categoryIds: nil, breedIds: nil) { (images, error) in
             if let images = images, let image = images.first {
                 self.image = image
                 self.view?.loadImage(imageUrl: image.url)

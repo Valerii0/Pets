@@ -90,9 +90,7 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if let learningBlock = LearningBlock(rawValue: indexPath.row) {
-//            presenter.selectModule(learningBlock: learningBlock)
-//        }
+        presenter.pushLikeViewController(index: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -108,10 +106,6 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
             presenter.loadImages()
         }
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        presenter.presentCardsModalBetweenCollectionAndExchange(card: cardsArray[indexPath.row])
-//    }
 }
 
 extension ImagesViewController: ImagesView {

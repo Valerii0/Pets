@@ -14,52 +14,62 @@ enum LikeDelete {
 }
 
 protocol LikeDeleteView: class {
-//    func showError(title: String, message: String)
-//    func reloadData()
+}
+
+protocol LikeDeletePresenterDelegate: class {
+    func updateAfterLikeDelete(id: String)
 }
 
 class LikeDeletePresenter {
     private weak var view: LikeDeleteView?
     private var coordinator: MainCoordinator?
-    private let limit = 20
-    private var page = 0
-    var votes = [Vote]()
-    var favourites = [Favourite]()
+    private var imageId: String
+    private var imageUrl: String
+    private var state: LikeDelete
+    private weak var delegate: LikeDeletePresenterDelegate?
 
-    init(view: LikeDeleteView, coordinator: MainCoordinator) {
+    init(view: LikeDeleteView, coordinator: MainCoordinator, imageId: String, imageUrl: String, state: LikeDelete, delegate: LikeDeletePresenterDelegate?) {
         self.view = view
         self.coordinator = coordinator
+        self.imageId = imageId
+        self.imageUrl = imageUrl
+        self.state = state
+        self.delegate = delegate
     }
     
-//    func getVotes() {
-//        VotesRequestService.getVotes(limit: limit, page: page) { (votes, error) in
-//            if let votes = votes {
-//                self.page += 1
-//                self.votes.append(contentsOf: votes)
-//                DispatchQueue.main.async {
-//                    self.view?.reloadData()
-//                }
-//            } else if let error = error {
-//                DispatchQueue.main.async {
-//                    self.view?.showError(title: "Error", message: error.localizedDescription)
-//                }
-//            }
-//        }
-//    }
-//
-//    func getFavourites() {
-//        FavouritesRequestService.getFavourites(limit: limit, page: page, order: "", size: "") { (favourites, error) in
-//            if let favourites = favourites {
-//                self.page += 1
-//                self.favourites.append(contentsOf: favourites)
-//                DispatchQueue.main.async {
-//                    self.view?.reloadData()
-//                }
-//            } else if let error = error {
-//                DispatchQueue.main.async {
-//                    self.view?.showError(title: "Error", message: error.localizedDescription)
-//                }
-//            }
-//        }
-//    }
+    func provideState() -> LikeDelete {
+        return state
+    }
+    
+    func provideImageUrl() -> String {
+        return imageUrl
+    }
+    
+    func performAction() {
+        switch state {
+        case .like:
+            postFavourite()
+        case .delete:
+            delFavourite()
+        }
+    }
+    
+    private func postFavourite() {
+        let postFavourite = PostFavourite(image_id: imageId, sub_id: AccountManager.UserId())
+        FavouritesRequestService.postFavourite(postFavourite: postFavourite) { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            self.delegate?.updateAfterLikeDelete(id: self.imageId)
+        }
+    }
+    
+    private func delFavourite() {
+        FavouritesRequestService.delFavourite(favouriteId: imageId) { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            self.delegate?.updateAfterLikeDelete(id: self.imageId)
+        }
+    }
 }

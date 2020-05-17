@@ -63,6 +63,11 @@ class LikedVotedPresenter {
             if let votes = votes {
                 self.page += 1
                 self.votes.append(contentsOf: votes)
+                
+//                VotesRequestService.getSpecificVote(voteId: votes[0].id) { (Error) in
+//                    print(error?.localizedDescription)
+//                }
+                
                 DispatchQueue.main.async {
                     self.view?.reloadData()
                 }
@@ -71,6 +76,24 @@ class LikedVotedPresenter {
                     self.view?.showError(title: "Error", message: error.localizedDescription)
                 }
             }
+        }
+    }
+    
+    func pushDeleteViewController(index: Int) {
+        coordinator?.pushDeleteViewController(imageId: String(favourites[index].id), imageUrl: favourites[index].image.url, state: .delete, delegate: self)
+    }
+    
+    private func removeDeletedElement(id: String) {
+        favourites.removeAll(where: { String($0.id) == id })
+    }
+}
+
+extension LikedVotedPresenter: LikeDeletePresenterDelegate {
+    func updateAfterLikeDelete(id: String) {
+        DispatchQueue.main.async {
+            self.coordinator?.settingsRouterPop()
+            self.removeDeletedElement(id: id)
+            self.view?.reloadData()
         }
     }
 }

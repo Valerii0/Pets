@@ -138,4 +138,9 @@ struct CommonValues {
     static let standardGrayColor = UIColor(red: 232/255, green: 233/255, blue: 237/255, alpha: 1)
     static let standartTableViewCellHeight: CGFloat = 44
     static let defaultImage = UIImage(named: AssetsPathConstants.petsShort.rawValue) ?? UIImage()
+    
+    
+    static let standardBlue = UIColor(red: 26/255, green: 191/255, blue: 251/255, alpha: 0.5)
+    static let standartRed = UIColor(red: 255/255, green: 105/255, blue: 91/255, alpha: 0.5)
+    static let standartGreen = UIColor(red: 96/255, green: 225/255, blue: 233/255, alpha: 1)
 }

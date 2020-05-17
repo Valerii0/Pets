@@ -108,23 +108,27 @@ class LikedVotedConfigurator: LikedVotedConfigurable {
 }
 
 protocol LikeDeleteConfigurable {
-    func configure(viewController: LikeDeleteViewController, coordinator: MainCoordinator)
+    func configure(viewController: LikeDeleteViewController, coordinator: MainCoordinator,
+                   imageId: String, imageUrl: String, state: LikeDelete, delegate: LikeDeletePresenterDelegate?)
 }
 
 class LikeDeleteConfigurator: LikeDeleteConfigurable {
-    func configure(viewController: LikeDeleteViewController, coordinator: MainCoordinator) {
-        let likeDeletePresenter = LikeDeletePresenter(view: viewController, coordinator: coordinator)
+    func configure(viewController: LikeDeleteViewController, coordinator: MainCoordinator,
+                   imageId: String, imageUrl: String, state: LikeDelete, delegate: LikeDeletePresenterDelegate?) {
+        let likeDeletePresenter = LikeDeletePresenter(view: viewController, coordinator: coordinator, imageId: imageId, imageUrl: imageUrl, state: state, delegate: delegate)
         viewController.presenter = likeDeletePresenter
     }
 }
 
 protocol VotedYesNoConfigurable {
-    func configure(viewController: VotedYesNoViewController, coordinator: MainCoordinator)
+    func configure(viewController: VotedYesNoViewController, coordinator: MainCoordinator,
+                   image: Image, state: VotedYesNo)
 }
 
 class VotedYesNoConfigurator: VotedYesNoConfigurable {
-    func configure(viewController: VotedYesNoViewController, coordinator: MainCoordinator) {
-        let votedYesNoPresenter = VotedYesNoPresenter(view: viewController, coordinator: coordinator)
+    func configure(viewController: VotedYesNoViewController, coordinator: MainCoordinator,
+                   image: Image, state: VotedYesNo) {
+        let votedYesNoPresenter = VotedYesNoPresenter(view: viewController, coordinator: coordinator, image: image, state: state)
         viewController.presenter = votedYesNoPresenter
     }
 }

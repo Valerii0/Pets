@@ -64,14 +64,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTQ-zO-Bbg" customClass="ProgressView" customModule="Pets" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="220" id="bo1-me-yHM"/>
+                                    <constraint firstAttribute="height" constant="50" id="bo1-me-yHM"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KsE-S3-KtD">
-                                <rect key="frame" x="10" y="230" width="300" height="248"/>
+                                <rect key="frame" x="10" y="60" width="300" height="418"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="w6u-F4-tSN">
                                 <rect key="frame" x="11.5" y="488" width="297" height="70"/>

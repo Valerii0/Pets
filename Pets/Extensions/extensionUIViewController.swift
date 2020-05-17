@@ -30,6 +30,15 @@ extension UIViewController {
         present(alert, animated: true)
     }
     
+    func showAlertWithAction(title: String, message: String, callBack: @escaping (_ finished: Bool) -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+            callBack(true)
+        })
+        alert.addAction(alertAction)
+        present(alert, animated: true)
+    }
+    
     func coloredBg() {
         view.backgroundColor = CommonValues.bgColor
     }
@@ -41,24 +50,29 @@ extension UIViewController {
         self.navigationItem.titleView = imageView
     }
     
-//    func errorHandle(error: Error, callBack: @escaping (_ invalidAccessToken: Bool) -> Void) {
-//        var errorBody = error.localizedDescription
-//        var invalidAccessToken: Bool = false
-//        if let errorIndex = Int(error.localizedDescription) {
-//            AppConstants.ErrorCode.allValues.forEach({ (errorCode) in
-//                if errorCode.rawValue == errorIndex {
-//                    errorBody = "\(errorCode) = \(errorIndex)"
-//                    invalidAccessToken = errorIndex == AppConstants.ErrorCode.InvalidAccessToken.rawValue ? true : false
-//                }
-//            })
-//        }
-//        let alert = UIAlertController(title: "Error", message: errorBody, preferredStyle: .alert)
-//        let alertAction = UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
-//            callBack(invalidAccessToken)
-//        })
-//        alert.addAction(alertAction)
-//        present(alert, animated: true)
-//    }
+    func setUpPetImageView(imageView: UIImageView) {
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = CommonValues.standartCornerRadius
+        
+        //        let shadowLayer = CAShapeLayer()
+        //        shadowLayer.path = UIBezierPath(roundedRect: imageView.bounds, cornerRadius: CommonValues.standartCornerRadius).cgPath
+        //        shadowLayer.fillColor = UIColor.clear.cgColor
+        //        shadowLayer.shadowColor = UIColor.black.cgColor
+        //        shadowLayer.shadowPath = shadowLayer.path
+        //        shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        //        shadowLayer.shadowOpacity = 0.2
+        //        shadowLayer.shadowRadius = 3
+        //        imageView.layer.insertSublayer(shadowLayer, at: 0)
+    }
+    
+    func loadImage(imageUrl: String, imageView: UIImageView) {
+        ImageCache.shared.loadImage(imageUrl: imageUrl) { (image, string) in
+            DispatchQueue.main.async {
+                imageView.image = image
+            }
+        }
+    }
+    
     
     
 //    func startLoadingScreen() -> UIImageView {

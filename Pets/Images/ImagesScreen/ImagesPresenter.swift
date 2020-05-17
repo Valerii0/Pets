@@ -40,4 +40,16 @@ class ImagesPresenter {
             }
         }
     }
+    
+    func pushLikeViewController(index: Int) {
+        coordinator?.pushLikeViewController(imageId: images[index].id, imageUrl: images[index].url, state: .like, delegate: self)
+    }
+}
+
+extension ImagesPresenter: LikeDeletePresenterDelegate {
+    func updateAfterLikeDelete(id: String) {
+        DispatchQueue.main.async {
+            self.coordinator?.imagesRouterPop()
+        }
+    }
 }

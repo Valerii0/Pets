@@ -78,4 +78,21 @@ final class VotesRequestService {
         }
         task.resume()
     }
+    
+    static func getSpecificVote(voteId: Int, callBack: @escaping (_ error: Error?) -> Void) {
+        var urlString = AccountManager.ApiUrl()
+        urlString.append(Api.version.rawValue)
+        urlString.append(Api.votes.rawValue)
+        urlString.append("/\(voteId)")
+        
+        var request = URLRequest(url: URL(string: urlString)!)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(AccountManager.ApiKey(), forHTTPHeaderField: "x-api-key")
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            callBack(error)
+        }
+        task.resume()
+    }
 }

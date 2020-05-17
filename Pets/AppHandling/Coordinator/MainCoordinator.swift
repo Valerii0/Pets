@@ -182,6 +182,17 @@ final class MainCoordinator: Coordinatable {
         return tabImagesRouter.navigationController
     }
     
+    func pushLikeViewController(imageId: String, imageUrl: String, state: LikeDelete, delegate: LikeDeletePresenterDelegate?) {
+        let viewController = LikeDeleteViewController.instantiate(storyboardName: StoryboardsName.tabSettings.rawValue)
+        let configurator = LikeDeleteConfigurator()
+        configurator.configure(viewController: viewController, coordinator: self, imageId: imageId, imageUrl: imageUrl, state: state, delegate: delegate)
+        tabImagesRouter.push(controller: viewController, animated: true)
+    }
+    
+    func imagesRouterPop() {
+        tabImagesRouter.pop(animated: true)
+    }
+    
     
     // TabQuizRouter
     
@@ -202,6 +213,10 @@ final class MainCoordinator: Coordinatable {
         let configurator = QuizConfigurator()
         configurator.configure(viewController: viewController, coordinator: self)
         tabQuizRouter.present(controller: viewController, animated: true)
+    }
+    
+    func quizRouterDismiss() {
+        tabQuizRouter.dismiss(animated: true)
     }
     
     
@@ -225,17 +240,21 @@ final class MainCoordinator: Coordinatable {
         tabSettingsRouter.push(controller: viewController, animated: true)
     }
     
-    func pushLikeDeleteViewController() {
+    func pushDeleteViewController(imageId: String, imageUrl: String, state: LikeDelete, delegate: LikeDeletePresenterDelegate?) {
         let viewController = LikeDeleteViewController.instantiate(storyboardName: StoryboardsName.tabSettings.rawValue)
         let configurator = LikeDeleteConfigurator()
-        configurator.configure(viewController: viewController, coordinator: self)
+        configurator.configure(viewController: viewController, coordinator: self, imageId: imageId, imageUrl: imageUrl, state: state, delegate: delegate)
         tabSettingsRouter.push(controller: viewController, animated: true)
     }
     
-    func pushVotedYesNoViewController() {
+    func pushVotedYesNoViewController(image: Image, state: VotedYesNo) {
         let viewController = VotedYesNoViewController.instantiate(storyboardName: StoryboardsName.tabSettings.rawValue)
         let configurator = VotedYesNoConfigurator()
-        configurator.configure(viewController: viewController, coordinator: self)
+        configurator.configure(viewController: viewController, coordinator: self, image: image, state: state)
         tabSettingsRouter.push(controller: viewController, animated: true)
+    }
+    
+    func settingsRouterPop() {
+        tabSettingsRouter.pop(animated: true)
     }
 }

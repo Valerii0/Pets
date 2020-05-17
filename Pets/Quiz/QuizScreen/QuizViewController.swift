@@ -19,13 +19,14 @@ class QuizViewController: UIViewController, Storyboarded {
     var presenter: QuizPresenter!
     
     private var timer: Timer?
-    private var timeLeft: Int = 60
+    private var timeLeft: Int = 20
     private var totalPoints: Int = 0
     private var wordIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        presenter.getBreeds()
     }
     
 //    override func viewDidAppear(_ animated: Bool) {
@@ -36,25 +37,24 @@ class QuizViewController: UIViewController, Storyboarded {
     private func setUpUI() {
         coloredBg()
         addLogoToNavigation()
+        setUpPetImageView(imageView: breedImage)
         setUpButtons()
         setUpTimer()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 //        //progressView.layoutIfNeeded()
             self.progressView.progressAnimation(duration: TimeInterval(self.timeLeft))
         }
-        
-        
     }
     
     private func setUpButtons() {
-        setUpButton(button: firstBreedButton, title: ImagesConstants.order.rawValue)
-        setUpButton(button: secondBreedButton, title: ImagesConstants.type.rawValue)
-        setUpButton(button: thirdBreedButton, title: ImagesConstants.category.rawValue)
-        setUpButton(button: fourthBreedButton, title: ImagesConstants.breed.rawValue)
+        setUpButton(button: firstBreedButton)
+        setUpButton(button: secondBreedButton)
+        setUpButton(button: thirdBreedButton)
+        setUpButton(button: fourthBreedButton)
     }
     
-    private func setUpButton(button: UIButton, title: String) {
-        button.setTitle(title, for: .normal)
+    private func setUpButton(button: UIButton) {
+        button.setTitle(nil, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = CommonValues.buttonsColor
         button.layer.cornerRadius = CommonValues.standartCornerRadius
@@ -72,8 +72,9 @@ class QuizViewController: UIViewController, Storyboarded {
         if timeLeft <= 0 {
             timer?.invalidate()
             timer = nil
-            self.showAlert(title: "Done!", message: "Your score: \(totalPoints)")
-            //presenter.postSubmit(vocabularySprintWordsPoints: vocabularySprintWordsPoints)
+            self.showAlertWithAction(title: "Done!", message: "Your score: \(totalPoints)") { (finished) in
+                self.presenter.finish()
+            }
         }
     }
     
@@ -91,4 +92,20 @@ class QuizViewController: UIViewController, Storyboarded {
 }
 
 extension QuizViewController: QuizView {
+    func showError(title: String, message: String) {
+        self.showAlert(title: title, message: message)
+    }
+    
+    func loadImage(url: String) {
+        loadImage(imageUrl: url, imageView: breedImage)
+    }
+    
+    func loadTitles(title1: String, title2: String, title3: String, title4: String) {
+        DispatchQueue.main.async {
+            self.firstBreedButton.setTitle(title1, for: .normal)
+            self.secondBreedButton.setTitle(title2, for: .normal)
+            self.thirdBreedButton.setTitle(title3, for: .normal)
+            self.fourthBreedButton.setTitle(title4, for: .normal)
+        }
+    }
 }

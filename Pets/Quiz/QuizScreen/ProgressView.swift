@@ -27,20 +27,20 @@ class ProgressView: UIView {
     }
     
     func createCircularPath() {
-        self.backgroundColor = .clear
-        //let circularPath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: self.frame.height / 2, startAngle: 3 * .pi / 2, endAngle: 3 * .pi / 1.95, clockwise: false)
+        //self.backgroundColor = .clear
+        let circularPath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: self.frame.height / 2, startAngle: 3 * .pi / 2, endAngle: 3 * .pi / 1.95, clockwise: false)
         //        circleLayer.path = circularPath.cgPath
         //        circleLayer.fillColor = UIColor.clear.cgColor
         //        circleLayer.lineCap = .round
         //        circleLayer.lineWidth = 10.0
         //        circleLayer.strokeColor = UIColor.black.cgColor
-        progressLayer.frame = CGRect(x: 0, y: 0, width: 50, height: self.frame.height)
-        //progressLayer.path = circularPath.cgPath
+        //progressLayer.frame = CGRect(x: 0, y: 0, width: 50, height: self.frame.height)
+        progressLayer.path = circularPath.cgPath
         progressLayer.fillColor = UIColor.black.cgColor
-        //progressLayer.lineCap = .square
-        //progressLayer.lineWidth = 15.0
-        //progressLayer.strokeEnd = 10
-        //progressLayer.strokeColor = UIColor.green.cgColor
+        progressLayer.lineCap = .square
+        progressLayer.lineWidth = 15.0
+        progressLayer.strokeEnd = 10
+        progressLayer.strokeColor = UIColor.green.cgColor
         //layer.addSublayer(circleLayer)
         //progressLayer.
         layer.addSublayer(progressLayer)

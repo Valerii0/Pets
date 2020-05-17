@@ -42,7 +42,7 @@ final class FavouritesRequestService {
         task.resume()
     }
     
-    static func postFavourite(favourite: PostFavourite, callBack: @escaping (_ error: Error?) -> Void) {
+    static func postFavourite(postFavourite: PostFavourite, callBack: @escaping (_ error: Error?) -> Void) {
         var urlString = AccountManager.ApiUrl()
         urlString.append(Api.version.rawValue)
         urlString.append(Api.favourites.rawValue)
@@ -50,54 +50,33 @@ final class FavouritesRequestService {
         var request = URLRequest(url: URL(string: urlString)!)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(AccountManager.ApiKey(), forHTTPHeaderField: "x-api-key")
-        request.httpBody = try? JSONEncoder().encode(favourite)
+        request.httpBody = try? JSONEncoder().encode(postFavourite)
         request.httpMethod = "POST"
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                callBack(error)
-            }
-//            else if let data = data {
-//                do {
-//                    let breed = try JSONDecoder().decode([Breed].self, from: data)
-//                    //callBack(breed, nil)
-//                } catch {
-//                    print(error)
-//                    //callBack(nil, error)
-//                }
-//            }
+            callBack(error)
         }
         task.resume()
     }
     
-    static func delFavourite(favouriteId: Int, callBack: @escaping (_ error: Error?) -> Void) {
+    static func delFavourite(favouriteId: String, callBack: @escaping (_ error: Error?) -> Void) {
         var urlString = AccountManager.ApiUrl()
         urlString.append(Api.version.rawValue)
         urlString.append(Api.favourites.rawValue)
+        urlString.append("/\(favouriteId)")
         
-        var urlComponents = URLComponents(string: urlString)
-        urlComponents?.queryItems = [
-            URLQueryItem(name: "favourite_id", value: "\(favouriteId)")
-        ]
+//        var urlComponents = URLComponents(string: urlString)
+//        urlComponents?.queryItems = [
+//            URLQueryItem(name: "", value: "\(favouriteId)")
+//        ]
         
-        var request = URLRequest(url: (urlComponents?.url)!)
+        var request = URLRequest(url: URL(string: urlString)!)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(AccountManager.ApiKey(), forHTTPHeaderField: "x-api-key")
         request.httpMethod = "DELETE"
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                callBack(error)
-            }
-            //            else if let data = data {
-            //                do {
-            //                    let breed = try JSONDecoder().decode([Breed].self, from: data)
-            //                    //callBack(breed, nil)
-            //                } catch {
-            //                    print(error)
-            //                    //callBack(nil, error)
-            //                }
-            //            }
+            callBack(error)
         }
         task.resume()
     }
