@@ -77,4 +77,11 @@ final class AccountManager {
         }
         return "default"
     }
+    
+    static func UserScoreId() -> String {
+        if let loginId = getLoginId() {
+            return "\(loginId)Score"
+        }
+        return "defaultScore"
+    }
 }

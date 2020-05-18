@@ -24,6 +24,7 @@ class ImagesViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        presenter.getBreeds()
         presenter.loadImages()
     }
     
@@ -66,15 +67,19 @@ class ImagesViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func orderAction(_ sender: UIButton) {
+        presenter.pushImagesFilterSelectionViewController(filter: .order)
     }
     
     @IBAction func typeAction(_ sender: UIButton) {
+        presenter.pushImagesFilterSelectionViewController(filter: .type)
     }
     
     @IBAction func categoryAction(_ sender: UIButton) {
+        presenter.pushImagesFilterSelectionViewController(filter: .category)
     }
     
     @IBAction func breedAction(_ sender: UIButton) {
+        presenter.pushImagesFilterSelectionViewController(filter: .breed)
     }
 }
 
@@ -115,5 +120,9 @@ extension ImagesViewController: ImagesView {
     
     func reloadData() {
         imagesCollectionView.reloadData()
+    }
+    
+    func breedBu(breed: String) {
+        breedButton.setTitle("\(ImagesConstants.breed.rawValue) \(breed)", for: .normal)
     }
 }

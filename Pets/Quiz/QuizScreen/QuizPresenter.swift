@@ -26,6 +26,18 @@ class QuizPresenter {
         self.coordinator = coordinator
     }
     
+    private func postFavourite() {
+        let postFavourite = PostFavourite(image_id: "55", sub_id: AccountManager.UserScoreId())
+        ScoreRequestService.postScore(postScore: postFavourite) { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            ScoreRequestService.getScores(limit: 10, page: 0) { (favourites, error) in
+                print(favourites)
+            }
+        }
+    }
+    
     func getBreeds() {
         BreedsRequestService.getBreeds(limit: nil, page: nil) { (breeds, error) in
             if let breeds = breeds {
@@ -83,6 +95,7 @@ class QuizPresenter {
     }
     
     func finish() {
-        coordinator?.quizRouterDismiss()
+        postFavourite()
+        //coordinator?.quizRouterDismiss()
     }
 }

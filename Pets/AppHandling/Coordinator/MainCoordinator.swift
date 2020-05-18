@@ -189,6 +189,13 @@ final class MainCoordinator: Coordinatable {
         tabImagesRouter.push(controller: viewController, animated: true)
     }
     
+    func pushImagesFilterSelectionViewController(delegate: SelectionPresenterDelegate, dataSource: [String]) {
+        let viewController = SelectionViewController.instantiate(storyboardName: StoryboardsName.selection.rawValue)
+        let configurator = SelectionConfigurator()
+        configurator.configure(viewController: viewController, coordinator: self, delegate: delegate, dataSource: dataSource)
+        tabImagesRouter.push(controller: viewController, animated: true)
+    }
+    
     func imagesRouterPop() {
         tabImagesRouter.pop(animated: true)
     }

@@ -17,8 +17,17 @@ class VotedYesNoViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setUpUI()
+    }
+    
+    private func setUpUI() {
+//        coloredBg()
+//        addLogoToNavigation()
+//        customBackButton()
+//        setUpPetImageView(imageView: petImage)
+//        loadImage(imageUrl: presenter.provideImageUrl(), imageView: petImage)
+//        setUpStateView()
+//        setUpButtonByState()
     }
 }
 

@@ -48,6 +48,12 @@ extension UIViewController {
         let imageView = UIImageView(image: logo)
         //imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
+        
+//        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
+//        imageView.contentMode = .ScaleAspectFit
+//        let image = UIImage(named: "YOURIMAGE")
+//        imageView.image = image
+//        navigationItem.titleView = imageView
     }
     
     func setUpPetImageView(imageView: UIImageView) {
@@ -72,6 +78,16 @@ extension UIViewController {
             }
         }
     }
+    
+    func customBackButton() {
+        self.navigationController?.navigationBar.tintColor = CommonValues.buttonsColor
+//        let yourBackImage = UIImage(named: "Button Delete")
+//        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        //self.navigationController?.navigationBar.backItem?.title = "Custom"
+    }
+    
+    
     
     
     

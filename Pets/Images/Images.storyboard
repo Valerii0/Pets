@@ -16,15 +16,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iH4-yN-Fnx">
-                                <rect key="frame" x="11.5" y="10" width="297" height="70"/>
+                                <rect key="frame" x="10" y="10" width="300" height="68"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pwL-ZP-WR7">
-                                        <rect key="frame" x="0.0" y="0.0" width="297" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="29"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qC3-HU-bIs">
-                                                <rect key="frame" x="0.0" y="0.0" width="143.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="145" height="29"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="qC3-HU-bIs" secondAttribute="height" multiplier="172:36" id="jIL-Qn-PD0"/>
+                                                    <constraint firstAttribute="width" secondItem="qC3-HU-bIs" secondAttribute="height" multiplier="5:1" id="jIL-Qn-PD0"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
@@ -32,7 +32,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7D3-Q2-PTm">
-                                                <rect key="frame" x="153.5" y="0.0" width="143.5" height="30"/>
+                                                <rect key="frame" x="155" y="0.0" width="145" height="29"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
                                                     <action selector="typeAction:" destination="bW1-M6-SrS" eventType="touchUpInside" id="y16-4B-Ace"/>
@@ -45,17 +45,17 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zqb-0E-1oa">
-                                        <rect key="frame" x="0.0" y="40" width="297" height="30"/>
+                                        <rect key="frame" x="0.0" y="39" width="300" height="29"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mqe-Sv-uXp">
-                                                <rect key="frame" x="0.0" y="0.0" width="143.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="145" height="29"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
                                                     <action selector="categoryAction:" destination="bW1-M6-SrS" eventType="touchUpInside" id="GZL-C1-8Hs"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QC5-7s-mmf">
-                                                <rect key="frame" x="153.5" y="0.0" width="143.5" height="30"/>
+                                                <rect key="frame" x="155" y="0.0" width="145" height="29"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
                                                     <action selector="breedAction:" destination="bW1-M6-SrS" eventType="touchUpInside" id="5NT-Lg-DkI"/>
@@ -66,7 +66,7 @@
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x6c-IQ-Nyr">
-                                <rect key="frame" x="10" y="90" width="300" height="468"/>
+                                <rect key="frame" x="10" y="88" width="300" height="470"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YXw-ND-5nu">
                                     <size key="itemSize" width="128" height="128"/>
@@ -79,10 +79,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="iH4-yN-Fnx" firstAttribute="leading" secondItem="AQ5-as-yZa" secondAttribute="leading" constant="10" id="4lI-d7-Yrq"/>
                             <constraint firstItem="iH4-yN-Fnx" firstAttribute="top" secondItem="2f0-ej-Sdr" secondAttribute="top" constant="10" id="LQ5-A5-oO4"/>
                             <constraint firstItem="2f0-ej-Sdr" firstAttribute="trailing" secondItem="x6c-IQ-Nyr" secondAttribute="trailing" constant="10" id="dBR-gA-jis"/>
                             <constraint firstItem="x6c-IQ-Nyr" firstAttribute="top" secondItem="iH4-yN-Fnx" secondAttribute="bottom" constant="10" id="h9r-Fy-mUs"/>
-                            <constraint firstItem="iH4-yN-Fnx" firstAttribute="centerX" secondItem="AQ5-as-yZa" secondAttribute="centerX" id="hCO-VP-EP0"/>
+                            <constraint firstAttribute="trailing" secondItem="iH4-yN-Fnx" secondAttribute="trailing" constant="10" id="hKu-XT-HwS"/>
                             <constraint firstItem="2f0-ej-Sdr" firstAttribute="bottom" secondItem="x6c-IQ-Nyr" secondAttribute="bottom" constant="10" id="ktY-I9-n98"/>
                             <constraint firstItem="x6c-IQ-Nyr" firstAttribute="leading" secondItem="2f0-ej-Sdr" secondAttribute="leading" constant="10" id="mQK-he-xhW"/>
                         </constraints>

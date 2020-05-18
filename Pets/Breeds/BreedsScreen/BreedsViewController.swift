@@ -14,6 +14,7 @@ class BreedsViewController: UIViewController, Storyboarded {
     @IBOutlet weak var breedLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var breedsButton: UIButton!
+    @IBOutlet weak var breedTextView: UITextView!
     
     var presenter: BreedsPresenter!
     
@@ -27,45 +28,42 @@ class BreedsViewController: UIViewController, Storyboarded {
         coloredBg()
         addLogoToNavigation()
         
+        setUpInfoButton()
+        setUpImagesScrollView()
+        setUpPageControl()
         setUpButton(button: breedsButton, title: "Choose breed")
-        
-        let starImage = UIImage(named: "Icon Info Orange")?.withRenderingMode(.alwaysOriginal)
-        let starButton = UIBarButtonItem(image: starImage, style: .plain, target: self, action: #selector(favoriteTapped(sender:)))
-        navigationItem.rightBarButtonItem = starButton
-        
-        pageControl.pageIndicatorTintColor = CommonValues.standardGrayColor
-        pageControl.currentPageIndicatorTintColor = CommonValues.buttonsColor
-        pageControl.numberOfPages = 0
-        
+        setUpInfoView()
+        setUpNameLabel()
+        setUpTextView()
+    }
+    
+    private func setUpInfoButton() {
+        let infoImage = UIImage(named: "Icon Info Orange")?.withRenderingMode(.alwaysOriginal)
+        let infoButton = UIBarButtonItem(image: infoImage, style: .plain, target: self, action: #selector(infoTapped(sender:)))
+        navigationItem.rightBarButtonItem = infoButton
+        //                let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(closeViewController))
+        //                navigationItem.leftBarButtonItem = cancel
+        //            @objc private func closeViewController() {
+        //                dismiss(animated: true, completion: nil)
+        //            }
+    }
+    
+    @objc private func infoTapped(sender: UIBarButtonItem) {
+        infoView.isHidden = !infoView.isHidden
+    }
+    
+    private func setUpImagesScrollView() {
         imagesScrollView.layer.cornerRadius = CommonValues.standartCornerRadius
         imagesScrollView.isPagingEnabled = true
         imagesScrollView.showsHorizontalScrollIndicator = false
         //imagesScrollView.setZoomScale(1.0, animated: true)
         imagesScrollView.delegate = self
-        
-        infoView.isHidden = true
-        infoView.backgroundColor = BreedsConstants.infoViewColor
-        infoView.layer.cornerRadius = CommonValues.standartCornerRadius
-        breedLabel.text = "Random"
     }
     
-    //                let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(closeViewController))
-    //                navigationItem.leftBarButtonItem = cancel
-    
-    
-    //            @objc private func closeViewController() {
-    //                dismiss(animated: true, completion: nil)
-    //            }
-    
-    @objc private func favoriteTapped(sender: UIBarButtonItem) {
-        infoView.isHidden = !infoView.isHidden
-        //        if sender.tintColor == UIColor.orange {
-        //            deleteTeamFromRealm(teamDB: teamDB)
-        //            sender.tintColor = UIColor.gray
-        //        } else if sender.tintColor == UIColor.gray {
-        //            addTeamToRealm(teamDB: teamDB)
-        //            sender.tintColor = UIColor.orange
-        //        }
+    private func setUpPageControl() {
+        pageControl.pageIndicatorTintColor = CommonValues.standardGrayColor
+        pageControl.currentPageIndicatorTintColor = CommonValues.buttonsColor
+        pageControl.numberOfPages = 0
     }
     
     private func setUpButton(button: UIButton, title: String) {
@@ -75,17 +73,49 @@ class BreedsViewController: UIViewController, Storyboarded {
         button.layer.cornerRadius = CommonValues.standartCornerRadius
     }
     
-    @IBAction func breedsAction(_ sender: UIButton) {
-        presenter.pushBreedsSelectionViewController()
+    private func setUpInfoView() {
+        infoView.isHidden = true
+        infoView.backgroundColor = BreedsConstants.infoViewColor
+        infoView.layer.cornerRadius = CommonValues.standartCornerRadius
     }
     
-    private func loadImg(url: String, imageView: UIImageView) {
-        ImageCache.shared.loadImage(imageUrl: url) { (image, string) in
-            DispatchQueue.main.async {
-                imageView.image = image
-                imageView.contentMode = .scaleAspectFill
-            }
+    private func setUpNameLabel() {
+        breedLabel.textColor = .white
+        breedLabel.textAlignment = .left
+        breedLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+        breedLabel.numberOfLines = 0
+        breedLabel.text = nil
+    }
+    
+    private func setUpTextView() {
+        breedTextView.backgroundColor = .clear
+        breedTextView.textAlignment = .left
+        breedTextView.textColor = .white
+        breedTextView.isEditable = false
+        breedTextView.isSelectable = false
+    }
+    
+    private func configure(breed: Breed) {
+        breedLabel.text = breed.name
+        
+        var text = ""
+        if let description = breed.description {
+            text.append("• \(description)\n\n")
         }
+        if let temperament = breed.temperament {
+            text.append("• \(temperament)\n\n")
+        }
+        if let origin = breed.origin {
+            text.append("• \(origin)\n\n")
+        }
+        if let life_span = breed.life_span {
+            text.append("• \(life_span) years\n\n")
+        }
+        breedTextView.text = text
+    }
+    
+    @IBAction func breedsAction(_ sender: UIButton) {
+        presenter.pushBreedsSelectionViewController()
     }
 }
 
@@ -122,13 +152,18 @@ extension BreedsViewController: BreedsView {
             
             for i in 0..<presenter.images.count {
                 let imageView = UIImageView()
+                imageView.contentMode = .scaleAspectFill
                 imageView.clipsToBounds = true
-                loadImg(url: presenter.images[i].url, imageView: imageView)
+                loadImage(imageUrl: presenter.images[i].url, imageView: imageView)
                 let xPosition = imagesScrollView.frame.width * CGFloat(i)
                 imageView.frame = CGRect(x: xPosition, y: 0, width: self.imagesScrollView.frame.width, height: self.imagesScrollView.frame.height)
                 
                 imagesScrollView.addSubview(imageView)
             }
         }
+    }
+    
+    func loadBreedInfo(breed: Breed) {
+        configure(breed: breed)
     }
 }

@@ -16,11 +16,6 @@ class SettingsViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        
-//        let yourBackImage = UIImage(named: "back_button_image")
-//        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
-//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-//        self.navigationController?.navigationBar.backItem?.title = "Custom"
     }
     
     private func setUpUI() {

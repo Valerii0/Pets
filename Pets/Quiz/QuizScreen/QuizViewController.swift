@@ -19,7 +19,7 @@ class QuizViewController: UIViewController, Storyboarded {
     var presenter: QuizPresenter!
     
     private var timer: Timer?
-    private var timeLeft: Int = 20
+    private var timeLeft: Int = 3
     private var totalPoints: Int = 0
     private var wordIndex: Int = 0
     

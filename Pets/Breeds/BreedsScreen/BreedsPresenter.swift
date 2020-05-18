@@ -11,13 +11,14 @@ import Foundation
 protocol BreedsView: class {
     func showError(title: String, message: String)
     func reloadImages()
+    func loadBreedInfo(breed: Breed)
 }
 
 class BreedsPresenter {
     private weak var view: BreedsView?
     private var coordinator: MainCoordinator?
     private let limit = 5
-    private var breedId: String?
+    //private var breedId: String?
     private var breeds = [Breed]()
     var images = [Image]()
 
@@ -39,18 +40,16 @@ class BreedsPresenter {
         }
     }
     
-    private func loadImages() {
-        if let breedId = breedId {
-            ImagesRequestService.getImages(limit: limit, page: nil, size: ImageSizes.full.rawValue, order: nil, mimeTypes: nil, categoryIds: nil, breedIds: breedId) { (images, error) in
-                if let images = images {
-                    self.images = images
-                    DispatchQueue.main.async {
-                        self.view?.reloadImages()
-                    }
-                } else if let error = error {
-                    DispatchQueue.main.async {
-                        self.view?.showError(title: "Error", message: error.localizedDescription)
-                    }
+    private func loadImages(breedId: String) {
+        ImagesRequestService.getImages(limit: limit, page: nil, size: ImageSizes.full.rawValue, order: nil, mimeTypes: nil, categoryIds: nil, breedIds: breedId) { (images, error) in
+            if let images = images {
+                self.images = images
+                DispatchQueue.main.async {
+                    self.view?.reloadImages()
+                }
+            } else if let error = error {
+                DispatchQueue.main.async {
+                    self.view?.showError(title: "Error", message: error.localizedDescription)
                 }
             }
         }
@@ -64,8 +63,10 @@ class BreedsPresenter {
     
     private func selectBreedByIndex(index: Int) {
         if breeds.count > index {
-            breedId = breeds[index].id
-            loadImages()
+            loadImages(breedId: breeds[index].id)
+            DispatchQueue.main.async {
+                self.view?.loadBreedInfo(breed: self.breeds[index])
+            }
         }
     }
     
