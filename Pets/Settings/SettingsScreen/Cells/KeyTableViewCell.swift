@@ -40,5 +40,7 @@ class KeyTableViewCell: UITableViewCell {
     func configure(title: String) {
         titleLabel.text = title
         keyTextView.text = AccountManager.UserId()
+        //UIPasteboard.general.string = keyTextView.text
+        //.
     }
 }

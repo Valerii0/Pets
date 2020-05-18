@@ -18,6 +18,11 @@ class SettingsViewController: UIViewController, Storyboarded {
         setUpUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter.updateScore()
+    }
+    
     private func setUpUI() {
         coloredBg()
         addLogoToNavigation()
@@ -119,7 +124,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             case .voted:
                 presenter.pushLikedVotedViewController(state: .voted)
             case .highScore:
-                print("cell.configure(title: SettingsConstants.highScore.rawValue)")
+                presenter.pushScoreSelectionViewController()
             }
         case .appState:
             guard let appState = AppState(rawValue: indexPath.row) else { return }
@@ -127,7 +132,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             case .chooseSide:
                 presenter.chooseSide()
             case .logOut:
-                print("cell.configure(title: SettingsConstants.logOut.rawValue)")
+                self.showAlertWithOkCancelAction(title: SettingsConstants.logOut.rawValue, message: SettingsConstants.logOutAsk.rawValue) { (logOut) in
+                    self.presenter.logOut()
+                }
             }
         case .info:
             print("cell.configure(title: SettingsConstants.key.rawValue)")

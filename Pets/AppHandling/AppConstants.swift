@@ -120,9 +120,13 @@ enum SettingsConstants: String {
     case chooseSide = "Choose your Side"
     case logOut = "Log out"
     case key = "Key: "
+    case logOutAsk = "Are you sure you want to logout?"
     
     //static let standartTableViewCellHeight: CGFloat = 44
     //static let keyTableViewCellHeight: CGFloat = 88
+    
+    case dateFormatFrom = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    case dateFormatTo = "MMM d, h:mm a"
 }
 
 enum SelectionConstants: String {

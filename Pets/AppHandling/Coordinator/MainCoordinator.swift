@@ -261,6 +261,13 @@ final class MainCoordinator: Coordinatable {
         tabSettingsRouter.push(controller: viewController, animated: true)
     }
     
+    func pushScoreSelectionViewController(delegate: SelectionPresenterDelegate?, dataSource: [String]) {
+        let viewController = SelectionViewController.instantiate(storyboardName: StoryboardsName.selection.rawValue)
+        let configurator = SelectionConfigurator()
+        configurator.configure(viewController: viewController, coordinator: self, delegate: delegate, dataSource: dataSource)
+        tabSettingsRouter.push(controller: viewController, animated: true)
+    }
+    
     func settingsRouterPop() {
         tabSettingsRouter.pop(animated: true)
     }

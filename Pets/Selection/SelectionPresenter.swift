@@ -21,7 +21,7 @@ class SelectionPresenter {
     private weak var delegate: SelectionPresenterDelegate?
     var dataSource = [String]()
 
-    init(view: SelectionView, coordinator: MainCoordinator, delegate: SelectionPresenterDelegate, dataSource: [String]) {
+    init(view: SelectionView, coordinator: MainCoordinator, delegate: SelectionPresenterDelegate?, dataSource: [String]) {
         self.view = view
         self.coordinator = coordinator
         self.delegate = delegate

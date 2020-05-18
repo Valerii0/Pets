@@ -135,12 +135,12 @@ class VotedYesNoConfigurator: VotedYesNoConfigurable {
 
 protocol SelectionConfigurable {
     func configure(viewController: SelectionViewController, coordinator: MainCoordinator,
-                   delegate: SelectionPresenterDelegate, dataSource: [String])
+                   delegate: SelectionPresenterDelegate?, dataSource: [String])
 }
 
 class SelectionConfigurator: SelectionConfigurable {
     func configure(viewController: SelectionViewController, coordinator: MainCoordinator,
-                   delegate: SelectionPresenterDelegate, dataSource: [String]) {
+                   delegate: SelectionPresenterDelegate?, dataSource: [String]) {
         let selectionPresenter = SelectionPresenter(view: viewController, coordinator: coordinator,
                                                     delegate: delegate, dataSource: dataSource)
         viewController.presenter = selectionPresenter

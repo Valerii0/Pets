@@ -30,13 +30,22 @@ extension UIViewController {
         present(alert, animated: true)
     }
     
-    func showAlertWithAction(title: String, message: String, callBack: @escaping (_ finished: Bool) -> Void) {
+    func showAlertWithOkAction(title: String, message: String, callBack: @escaping (_ finished: Bool) -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
             callBack(true)
         })
         alert.addAction(alertAction)
         present(alert, animated: true)
+    }
+    
+    func showAlertWithOkCancelAction(title: String, message: String, callBack: @escaping (_ finished: Bool) -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+            callBack(true)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true, completion: nil)
     }
     
     func coloredBg() {

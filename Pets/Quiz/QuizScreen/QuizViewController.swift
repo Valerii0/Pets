@@ -72,7 +72,7 @@ class QuizViewController: UIViewController, Storyboarded {
         if timeLeft <= 0 {
             timer?.invalidate()
             timer = nil
-            self.showAlertWithAction(title: "Done!", message: "Your score: \(totalPoints)") { (finished) in
+            self.showAlertWithOkAction(title: "Done!", message: "Your score: \(totalPoints)") { (finished) in
                 self.presenter.finish()
             }
         }

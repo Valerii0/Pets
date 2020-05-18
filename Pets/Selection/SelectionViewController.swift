@@ -22,7 +22,6 @@ class SelectionViewController: UIViewController, Storyboarded {
         coloredBg()
         addLogoToNavigation()
         customBackButton()
-        
         setUpSelectionTableView(tableView: selectionTableView)
     }
     
@@ -31,7 +30,6 @@ class SelectionViewController: UIViewController, Storyboarded {
         tableView.dataSource = self
         tableView.backgroundColor = CommonValues.standardGrayColor
         tableView.tableFooterView = UIView()
-        //filterTableView.separatorStyle = .none
         tableView.register(UINib(nibName: SelectionConstants.selectionTableViewCell.rawValue, bundle: nil),
                                  forCellReuseIdentifier: SelectionConstants.selectionTableViewCell.rawValue)
     }

@@ -43,6 +43,7 @@ protocol SettingsView: class {
 class SettingsPresenter {
     private weak var view: SettingsView?
     private var coordinator: MainCoordinator?
+    private var scores = [Favourite]()
 
     init(view: SettingsView, coordinator: MainCoordinator) {
         self.view = view
@@ -54,7 +55,36 @@ class SettingsPresenter {
         coordinator?.configure()
     }
     
+    func logOut() {
+        AccountManager.removeLoginId()
+        coordinator?.configure()
+    }
+    
     func pushLikedVotedViewController(state: LikedVoted) {
         coordinator?.pushLikedVotedViewController(state: state)
+    }
+    
+    func pushScoreSelectionViewController() {
+        coordinator?.pushScoreSelectionViewController(delegate: nil, dataSource: dataSourceForSelection())
+    }
+    
+    func updateScore() {
+        ScoreRequestService.getScores { (scores, error) in
+            if let scores = scores {
+                self.scores = scores
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func dataSourceForSelection() -> [String] {
+        var dataSource = [String]()
+        let sortedScores = scores.sorted(by: {$0.image_id.localizedStandardCompare($1.image_id) == .orderedDescending})
+        sortedScores.forEach { (score) in
+            let scoreText = "\(score.image_id) points. \(score.created_at.stringDate(dateFormatFrom: SettingsConstants.dateFormatFrom.rawValue, dateFormatTo: SettingsConstants.dateFormatTo.rawValue))"
+            dataSource.append(scoreText)
+        }
+        return dataSource
     }
 }

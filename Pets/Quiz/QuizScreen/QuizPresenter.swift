@@ -27,14 +27,15 @@ class QuizPresenter {
     }
     
     private func postFavourite() {
-        let postFavourite = PostFavourite(image_id: "55", sub_id: AccountManager.UserScoreId())
+        let randomIndex = Int(arc4random_uniform(UInt32(99)))
+        let postFavourite = PostFavourite(image_id: "\(randomIndex)", sub_id: AccountManager.UserScoreId())
         ScoreRequestService.postScore(postScore: postFavourite) { (error) in
             if let error = error {
                 print(error.localizedDescription)
             }
-            ScoreRequestService.getScores(limit: 10, page: 0) { (favourites, error) in
-                print(favourites)
-            }
+            //            ScoreRequestService.getScores() { (favourites, error) in
+            //                print(favourites)
+            //            }
         }
     }
     

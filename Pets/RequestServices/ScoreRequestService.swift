@@ -9,15 +9,13 @@
 import Foundation
 
 final class ScoreRequestService {
-    static func getScores(limit: Int, page: Int, callBack: @escaping (_ favourites: [Favourite]?, _ error: Error?) -> Void) {
+    static func getScores(callBack: @escaping (_ favourites: [Favourite]?, _ error: Error?) -> Void) {
         var urlString = AccountManager.ApiUrl()
         urlString.append(Api.version.rawValue)
         urlString.append(Api.favourites.rawValue)
         
         var urlComponents = URLComponents(string: urlString)
         urlComponents?.queryItems = [
-            URLQueryItem(name: "limit", value: "\(limit)"),
-            URLQueryItem(name: "page", value: "\(page)"),
             URLQueryItem(name: "sub_id", value: AccountManager.UserScoreId())
         ]
         
