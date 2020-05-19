@@ -40,7 +40,7 @@ class LogInViewController: UIViewController, Storyboarded {
         button.setTitle(title, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = CommonValues.buttonsColor
-        button.layer.cornerRadius = CommonValues.standartCornerRadius
+        button.layer.cornerRadius = CommonValues.standardCornerRadius
     }
     
     private func setUpTextField(textField: UITextField) {

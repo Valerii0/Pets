@@ -122,13 +122,13 @@ class LikeDeleteConfigurator: LikeDeleteConfigurable {
 
 protocol VotedYesNoConfigurable {
     func configure(viewController: VotedYesNoViewController, coordinator: MainCoordinator,
-                   image: Image, state: VotedYesNo)
+                   vote: Vote, delegate: VotedYesNoPresenterDelegate?)
 }
 
 class VotedYesNoConfigurator: VotedYesNoConfigurable {
     func configure(viewController: VotedYesNoViewController, coordinator: MainCoordinator,
-                   image: Image, state: VotedYesNo) {
-        let votedYesNoPresenter = VotedYesNoPresenter(view: viewController, coordinator: coordinator, image: image, state: state)
+                   vote: Vote, delegate: VotedYesNoPresenterDelegate?) {
+        let votedYesNoPresenter = VotedYesNoPresenter(view: viewController, coordinator: coordinator, vote: vote, delegate: delegate)
         viewController.presenter = votedYesNoPresenter
     }
 }

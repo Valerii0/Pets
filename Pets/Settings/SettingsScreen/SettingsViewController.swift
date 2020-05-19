@@ -27,6 +27,7 @@ class SettingsViewController: UIViewController, Storyboarded {
         coloredBg()
         addLogoToNavigation()
         setUpTableView(tableView: settingsTableView)
+        hideKeyboardWhenTappedAround()
     }
     
     private func setUpTableView(tableView: UITableView) {
@@ -98,11 +99,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let settingsСategory = SettingsСategories(rawValue: indexPath.section) else { return 0 }
         switch settingsСategory {
         case .userData:
-            return CommonValues.standartTableViewCellHeight
+            return CommonValues.standardTableViewCellHeight
         case .appState:
-            return CommonValues.standartTableViewCellHeight
+            return CommonValues.standardTableViewCellHeight
         case .info:
-            return CommonValues.standartTableViewCellHeight
+            return CommonValues.standardTableViewCellHeight
         }
     }
     

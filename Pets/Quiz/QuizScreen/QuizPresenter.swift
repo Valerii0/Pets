@@ -28,7 +28,7 @@ class QuizPresenter {
     
     private func postFavourite() {
         let randomIndex = Int(arc4random_uniform(UInt32(99)))
-        let postFavourite = PostFavourite(image_id: "\(randomIndex)", sub_id: AccountManager.UserScoreId())
+        let postFavourite = PostFavourite(image_id: "\(randomIndex > 0 ? randomIndex : 99)", sub_id: AccountManager.UserScoreId())
         ScoreRequestService.postScore(postScore: postFavourite) { (error) in
             if let error = error {
                 print(error.localizedDescription)

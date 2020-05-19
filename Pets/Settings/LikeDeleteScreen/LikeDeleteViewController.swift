@@ -32,7 +32,7 @@ class LikeDeleteViewController: UIViewController, Storyboarded {
     }
     
     private func setUpStateView() {
-        stateView.layer.cornerRadius = CommonValues.standartCornerRadius
+        stateView.layer.cornerRadius = CommonValues.standardCornerRadius
         stateView.backgroundColor = .clear
     }
     
@@ -62,7 +62,7 @@ class LikeDeleteViewController: UIViewController, Storyboarded {
     private func setUpstateViewByState() {
         switch presenter.provideState() {
         case .like:
-            self.stateView.backgroundColor = CommonValues.standartRed
+            self.stateView.backgroundColor = CommonValues.standardRed
         case .delete:
             self.stateView.backgroundColor = CommonValues.standardBlue
         }

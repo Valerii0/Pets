@@ -65,7 +65,7 @@ class SettingsPresenter {
     }
     
     func pushScoreSelectionViewController() {
-        coordinator?.pushScoreSelectionViewController(delegate: nil, dataSource: dataSourceForSelection())
+        coordinator?.pushScoreSelectionViewController(delegate: nil, dataSource: scoreDataSource())
     }
     
     func updateScore() {
@@ -78,7 +78,7 @@ class SettingsPresenter {
         }
     }
     
-    private func dataSourceForSelection() -> [String] {
+    private func scoreDataSource() -> [String] {
         var dataSource = [String]()
         let sortedScores = scores.sorted(by: {$0.image_id.localizedStandardCompare($1.image_id) == .orderedDescending})
         sortedScores.forEach { (score) in

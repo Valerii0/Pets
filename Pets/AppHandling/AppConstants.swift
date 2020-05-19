@@ -116,17 +116,17 @@ enum SettingsConstants: String {
     case keyTableViewCell = "KeyTableViewCell"
     case likedPic = "Pictures you've liked"
     case votedPic = "Pictures you've voted"
-    case highScore = "High Score"
+    case highScore = "Quiz High Score"
     case chooseSide = "Choose your Side"
     case logOut = "Log out"
     case key = "Key: "
     case logOutAsk = "Are you sure you want to logout?"
-    
-    //static let standartTableViewCellHeight: CGFloat = 44
-    //static let keyTableViewCellHeight: CGFloat = 88
-    
     case dateFormatFrom = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
     case dateFormatTo = "MMM d, h:mm a"
+}
+
+enum LikedVotedConstants: String {
+    case likedVotedCollectionViewCell = "LikedVotedCollectionViewCell"
 }
 
 enum SelectionConstants: String {
@@ -135,16 +135,16 @@ enum SelectionConstants: String {
 }
 
 struct CommonValues {
-    static let standartCornerRadius: CGFloat = 10
+    static let standardCornerRadius: CGFloat = 10
     static let collectionCellsCornerRadius: CGFloat = 3
     static let bgColor = UIColor(red: 255/255.0, green: 251/255.0, blue: 247/255.0, alpha: 1)
     static let buttonsColor = UIColor(red: 255/255.0, green: 149/255.0, blue: 0/255.0, alpha: 1)
     static let standardGrayColor = UIColor(red: 232/255, green: 233/255, blue: 237/255, alpha: 1)
-    static let standartTableViewCellHeight: CGFloat = 44
+    static let standardTableViewCellHeight: CGFloat = 44
     static let defaultImage = UIImage(named: AssetsPathConstants.petsShort.rawValue) ?? UIImage()
     
     
     static let standardBlue = UIColor(red: 26/255, green: 191/255, blue: 251/255, alpha: 0.5)
-    static let standartRed = UIColor(red: 255/255, green: 105/255, blue: 91/255, alpha: 0.5)
-    static let standartGreen = UIColor(red: 96/255, green: 225/255, blue: 233/255, alpha: 1)
+    static let standardRed = UIColor(red: 255/255, green: 105/255, blue: 91/255, alpha: 0.5)
+    static let standardGreen = UIColor(red: 31/255, green: 227/255, blue: 162/255, alpha: 0.5)
 }

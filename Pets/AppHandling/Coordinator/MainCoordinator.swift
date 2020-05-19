@@ -254,10 +254,10 @@ final class MainCoordinator: Coordinatable {
         tabSettingsRouter.push(controller: viewController, animated: true)
     }
     
-    func pushVotedYesNoViewController(image: Image, state: VotedYesNo) {
+    func pushVotedYesNoViewController(vote: Vote, delegate: VotedYesNoPresenterDelegate?) {
         let viewController = VotedYesNoViewController.instantiate(storyboardName: StoryboardsName.tabSettings.rawValue)
         let configurator = VotedYesNoConfigurator()
-        configurator.configure(viewController: viewController, coordinator: self, image: image, state: state)
+        configurator.configure(viewController: viewController, coordinator: self, vote: vote, delegate: delegate)
         tabSettingsRouter.push(controller: viewController, animated: true)
     }
     

@@ -61,4 +61,30 @@ final class ImagesRequestService {
         }
         task.resume()
     }
+    
+    static func getSpecificImage(imageId: String, callBack: @escaping (_ image: Image?, _ error: Error?) -> Void) {
+        var urlString = AccountManager.ApiUrl()
+        urlString.append(Api.version.rawValue)
+        urlString.append(Api.images.rawValue)
+        urlString.append("/\(imageId)")
+        
+        var request = URLRequest(url: URL(string: urlString)!)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(AccountManager.ApiKey(), forHTTPHeaderField: "x-api-key")
+        request.httpMethod = "GET"
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                callBack(nil, error)
+            } else if let data = data {
+                do {
+                    let image = try JSONDecoder().decode(Image.self, from: data)
+                    callBack(image, nil)
+                } catch {
+                    callBack(nil, error)
+                }
+            }
+        }
+        task.resume()
+    }
 }

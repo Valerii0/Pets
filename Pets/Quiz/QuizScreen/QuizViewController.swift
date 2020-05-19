@@ -57,7 +57,7 @@ class QuizViewController: UIViewController, Storyboarded {
         button.setTitle(nil, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = CommonValues.buttonsColor
-        button.layer.cornerRadius = CommonValues.standartCornerRadius
+        button.layer.cornerRadius = CommonValues.standardCornerRadius
     }
     
     private func setUpTimer() {

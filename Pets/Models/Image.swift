@@ -13,6 +13,6 @@ class Image: Codable {
     var url: String
     var height: Int
     var width: Int
-    var breeds = [Breed]()
+    //var breeds = [Breed]()
     //var categories = [Category]()
 }

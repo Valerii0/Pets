@@ -168,21 +168,35 @@
                                     <constraint firstItem="CId-gj-uNA" firstAttribute="centerX" secondItem="iZk-GX-dO6" secondAttribute="centerX" id="fs2-ZK-btZ"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbB-Ym-RWB">
+                                <rect key="frame" x="130" y="458" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XbB-Ym-RWB" secondAttribute="height" multiplier="1:1" id="71W-zv-5O4"/>
+                                    <constraint firstAttribute="height" constant="60" id="nba-RQ-pvg"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="deleteAction:" destination="udE-F7-nku" eventType="touchUpInside" id="A74-cG-n5s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="iZk-GX-dO6" firstAttribute="top" secondItem="UCz-4b-auc" secondAttribute="top" id="57X-0n-oIb"/>
                             <constraint firstItem="UCz-4b-auc" firstAttribute="top" secondItem="Wh7-VH-Xi2" secondAttribute="top" constant="10" id="6ww-r3-AEL"/>
+                            <constraint firstItem="XbB-Ym-RWB" firstAttribute="bottom" secondItem="UCz-4b-auc" secondAttribute="bottom" constant="30" id="HW0-qR-ZVb"/>
                             <constraint firstItem="UCz-4b-auc" firstAttribute="leading" secondItem="Wh7-VH-Xi2" secondAttribute="leading" constant="10" id="IDL-AM-uSn"/>
                             <constraint firstItem="iZk-GX-dO6" firstAttribute="bottom" secondItem="UCz-4b-auc" secondAttribute="bottom" id="Q1a-pp-7cX"/>
                             <constraint firstItem="iZk-GX-dO6" firstAttribute="leading" secondItem="UCz-4b-auc" secondAttribute="leading" id="Sd0-xc-xg1"/>
                             <constraint firstItem="iZk-GX-dO6" firstAttribute="trailing" secondItem="UCz-4b-auc" secondAttribute="trailing" id="a0n-l1-Usf"/>
                             <constraint firstItem="Wh7-VH-Xi2" firstAttribute="trailing" secondItem="UCz-4b-auc" secondAttribute="trailing" constant="10" id="eW6-IR-0wP"/>
                             <constraint firstItem="Wh7-VH-Xi2" firstAttribute="bottom" secondItem="UCz-4b-auc" secondAttribute="bottom" constant="80" id="lSH-ph-1mb"/>
+                            <constraint firstItem="XbB-Ym-RWB" firstAttribute="centerX" secondItem="8Aw-Gw-M9c" secondAttribute="centerX" id="rIb-a4-Wvu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wh7-VH-Xi2"/>
                     </view>
                     <connections>
+                        <outlet property="deleteButton" destination="XbB-Ym-RWB" id="Yy7-eV-8oH"/>
                         <outlet property="petImage" destination="UCz-4b-auc" id="Ugp-yp-3IN"/>
                         <outlet property="stateImage" destination="CId-gj-uNA" id="TYl-bI-iwY"/>
                         <outlet property="stateView" destination="iZk-GX-dO6" id="8d2-vj-H8d"/>

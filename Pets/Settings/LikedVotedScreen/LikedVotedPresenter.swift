@@ -24,8 +24,10 @@ class LikedVotedPresenter {
     private var state: LikedVoted
     private let limit = 20
     private var page = 0
-    var votes = [Vote]()
-    var favourites = [Favourite]()
+    private var votes = [Vote]()
+    private var favourites = [Favourite]()
+    private var isImagesExist: Bool = true
+    private var sortType: ComparisonResult = .orderedAscending
 
     init(view: LikedVotedView, coordinator: MainCoordinator, state: LikedVoted) {
         self.view = view
@@ -42,9 +44,51 @@ class LikedVotedPresenter {
         }
     }
     
+    func imagesCount() -> Int {
+        switch state {
+        case .liked:
+            return favourites.count
+        case .voted:
+            return votes.count
+        }
+    }
+    
+    func imageUrl(index: Int) -> String {
+        switch state {
+        case .liked:
+            return favourites[index].image.url
+        case .voted:
+            return votes[index].image_id
+        }
+    }
+    
+    func imagePressed(index: Int) {
+        switch state {
+        case .liked:
+            pushDeleteViewController(index: index)
+        case .voted:
+            pushVotedYesNoViewController(index: index)
+        }
+    }
+    
+    func canLoad() -> Bool {
+        return isImagesExist
+    }
+    
+    func sort() {
+        sortType = sortType == .orderedAscending ? .orderedDescending : .orderedAscending
+        switch state {
+        case .liked:
+            favourites.sort(by: {$0.created_at.localizedStandardCompare($1.created_at) == sortType})
+        case .voted:
+            votes.sort(by: {$0.created_at.localizedStandardCompare($1.created_at) == sortType})
+        }
+        view?.reloadData()
+    }
+    
     private func getFavourites() {
         FavouritesRequestService.getFavourites(limit: limit, page: page, order: "", size: "") { (favourites, error) in
-            if let favourites = favourites {
+            if let favourites = favourites, favourites.count > 0 {
                 self.page += 1
                 self.favourites.append(contentsOf: favourites)
                 DispatchQueue.main.async {
@@ -54,20 +98,17 @@ class LikedVotedPresenter {
                 DispatchQueue.main.async {
                     self.view?.showError(title: "Error", message: error.localizedDescription)
                 }
+            } else {
+                self.isImagesExist = false
             }
         }
     }
     
     private func getVotes() {
         VotesRequestService.getVotes(limit: limit, page: page) { (votes, error) in
-            if let votes = votes {
+            if let votes = votes, votes.count > 0 {
                 self.page += 1
                 self.votes.append(contentsOf: votes)
-                
-//                VotesRequestService.getSpecificVote(voteId: votes[0].id) { (Error) in
-//                    print(error?.localizedDescription)
-//                }
-                
                 DispatchQueue.main.async {
                     self.view?.reloadData()
                 }
@@ -75,25 +116,48 @@ class LikedVotedPresenter {
                 DispatchQueue.main.async {
                     self.view?.showError(title: "Error", message: error.localizedDescription)
                 }
+            } else {
+                self.isImagesExist = false
             }
         }
     }
     
-    func pushDeleteViewController(index: Int) {
+    private func pushDeleteViewController(index: Int) {
         coordinator?.pushDeleteViewController(imageId: String(favourites[index].id), imageUrl: favourites[index].image.url, state: .delete, delegate: self)
     }
     
+    private func pushVotedYesNoViewController(index: Int) {
+        coordinator?.pushVotedYesNoViewController(vote: votes[index], delegate: self)
+    }
+    
+    private func closeAndUpdate(id: String) {
+        coordinator?.settingsRouterPop()
+        removeDeletedElement(id: id)
+        view?.reloadData()
+    }
+    
     private func removeDeletedElement(id: String) {
-        favourites.removeAll(where: { String($0.id) == id })
+        switch state {
+        case .liked:
+            favourites.removeAll(where: { String($0.id) == id })
+        case .voted:
+            votes.removeAll(where: { String($0.id) == id })
+        }
     }
 }
 
 extension LikedVotedPresenter: LikeDeletePresenterDelegate {
     func updateAfterLikeDelete(id: String) {
         DispatchQueue.main.async {
-            self.coordinator?.settingsRouterPop()
-            self.removeDeletedElement(id: id)
-            self.view?.reloadData()
+            self.closeAndUpdate(id: id)
+        }
+    }
+}
+
+extension LikedVotedPresenter: VotedYesNoPresenterDelegate {
+    func updateAfterVoteDelete(id: String) {
+        DispatchQueue.main.async {
+            self.closeAndUpdate(id: id)
         }
     }
 }

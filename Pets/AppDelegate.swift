@@ -11,11 +11,12 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    let coordinator = MainCoordinator()
+    var coordinator: MainCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    
-        coordinator.configure()
+        
+        coordinator = MainCoordinator()
+        coordinator?.configure()
         
         return true
     }

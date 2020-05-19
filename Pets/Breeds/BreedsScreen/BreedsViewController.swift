@@ -53,7 +53,7 @@ class BreedsViewController: UIViewController, Storyboarded {
     }
     
     private func setUpImagesScrollView() {
-        imagesScrollView.layer.cornerRadius = CommonValues.standartCornerRadius
+        imagesScrollView.layer.cornerRadius = CommonValues.standardCornerRadius
         imagesScrollView.isPagingEnabled = true
         imagesScrollView.showsHorizontalScrollIndicator = false
         //imagesScrollView.setZoomScale(1.0, animated: true)
@@ -70,13 +70,13 @@ class BreedsViewController: UIViewController, Storyboarded {
         button.setTitle(title, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = CommonValues.buttonsColor
-        button.layer.cornerRadius = CommonValues.standartCornerRadius
+        button.layer.cornerRadius = CommonValues.standardCornerRadius
     }
     
     private func setUpInfoView() {
         infoView.isHidden = true
         infoView.backgroundColor = BreedsConstants.infoViewColor
-        infoView.layer.cornerRadius = CommonValues.standartCornerRadius
+        infoView.layer.cornerRadius = CommonValues.standardCornerRadius
     }
     
     private func setUpNameLabel() {

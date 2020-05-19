@@ -65,11 +65,6 @@ final class FavouritesRequestService {
         urlString.append(Api.favourites.rawValue)
         urlString.append("/\(favouriteId)")
         
-//        var urlComponents = URLComponents(string: urlString)
-//        urlComponents?.queryItems = [
-//            URLQueryItem(name: "", value: "\(favouriteId)")
-//        ]
-        
         var request = URLRequest(url: URL(string: urlString)!)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(AccountManager.ApiKey(), forHTTPHeaderField: "x-api-key")

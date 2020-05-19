@@ -67,7 +67,7 @@ extension UIViewController {
     
     func setUpPetImageView(imageView: UIImageView) {
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = CommonValues.standartCornerRadius
+        imageView.layer.cornerRadius = CommonValues.standardCornerRadius
         
         //        let shadowLayer = CAShapeLayer()
         //        shadowLayer.path = UIBezierPath(roundedRect: imageView.bounds, cornerRadius: CommonValues.standartCornerRadius).cgPath

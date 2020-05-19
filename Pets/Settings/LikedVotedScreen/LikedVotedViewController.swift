@@ -26,8 +26,23 @@ class LikedVotedViewController: UIViewController, Storyboarded {
         coloredBg()
         addLogoToNavigation()
         customBackButton()
-        
+        setUpSortButton()
         setUpCollectionView(collectionView: likedVotedCollectionView)
+    }
+    
+    private func setUpSortButton() {
+        let sortImage = UIImage(named: "Order Icon Orange")?.withRenderingMode(.alwaysOriginal)
+        let sortButton = UIBarButtonItem(image: sortImage, style: .plain, target: self, action: #selector(sortTapped(sender:)))
+        navigationItem.rightBarButtonItem = sortButton
+        //                let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(closeViewController))
+        //                navigationItem.leftBarButtonItem = cancel
+        //            @objc private func closeViewController() {
+        //                dismiss(animated: true, completion: nil)
+        //            }
+    }
+    
+    @objc private func sortTapped(sender: UIBarButtonItem) {
+        presenter.sort()
     }
     
     private func setUpCollectionView(collectionView: UICollectionView) {
@@ -40,8 +55,8 @@ class LikedVotedViewController: UIViewController, Storyboarded {
         collectionView.collectionViewLayout = layout
         collectionView.layer.cornerRadius = CommonValues.collectionCellsCornerRadius
         collectionView.backgroundColor = .clear
-        collectionView.register(UINib(nibName: ImagesConstants.imagesCollectionViewCell.rawValue, bundle: nil),
-                                forCellWithReuseIdentifier: ImagesConstants.imagesCollectionViewCell.rawValue)
+        collectionView.register(UINib(nibName: LikedVotedConstants.likedVotedCollectionViewCell.rawValue, bundle: nil),
+                                forCellWithReuseIdentifier: LikedVotedConstants.likedVotedCollectionViewCell.rawValue)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -49,18 +64,17 @@ class LikedVotedViewController: UIViewController, Storyboarded {
 
 extension LikedVotedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.favourites.count
+        return presenter.imagesCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImagesConstants.imagesCollectionViewCell.rawValue, for: indexPath) as! ImagesCollectionViewCell
-        cell.configure(imageUrl: presenter.favourites[indexPath.row].image.url)
-        //only jpg in votes
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LikedVotedConstants.likedVotedCollectionViewCell.rawValue, for: indexPath) as! LikedVotedCollectionViewCell
+        cell.configure(imageUrl: presenter.imageUrl(index: indexPath.row))
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.pushDeleteViewController(index: indexPath.row)
+        presenter.imagePressed(index: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -70,9 +84,7 @@ extension LikedVotedViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == presenter.votes.count - 1 { //&& isCardsExist {
-            //presenter.getFilteredCards(skip: self.cardsArray.count, cefr: cefr, type: type, magic: magic, word: word, firstLoad: false)
-            //loadDataSource()
+        if indexPath.row == presenter.imagesCount() - 1 && presenter.canLoad() {
             presenter.loadImages()
         }
     }

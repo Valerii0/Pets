@@ -15,7 +15,6 @@ class LikedVotedCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.layer.cornerRadius = CommonValues.collectionCellsCornerRadius
         petImage.contentMode = .scaleAspectFill
     }

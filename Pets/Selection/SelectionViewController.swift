@@ -47,7 +47,7 @@ extension SelectionViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CommonValues.standartTableViewCellHeight
+        return CommonValues.standardTableViewCellHeight
     }
     
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
