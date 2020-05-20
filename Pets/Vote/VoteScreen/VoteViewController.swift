@@ -56,7 +56,10 @@ extension VoteViewController: VoteView {
     func loadImage(imageUrl: String) {
         ImageCache.shared.loadImage(imageUrl: imageUrl) { (image, string) in
             DispatchQueue.main.async {
-                self.petImage.image = image
+                self.petImage.image == nil ? self.petImage.image = image :
+                    UIView.transition(with: self.petImage, duration: 0.5, options: .transitionCurlUp, animations: {
+                    self.petImage.image = image
+                })
             }
         }
     }

@@ -45,8 +45,8 @@ class VotePresenter {
                         self.view?.showError(title: "Error", message: error.localizedDescription)
                     }
                 }
-                self.loadImage()
             }
         }
+        loadImage()
     }
 }

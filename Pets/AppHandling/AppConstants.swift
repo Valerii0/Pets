@@ -56,8 +56,10 @@ enum AssetsPathConstants: String {
 
 enum Api: String {
     case catUrl = "https://api.thecatapi.com"
+    case catPicUrl = "https://cdn2.thecatapi.com/images/"
     case catKey = "3352e3fa-4091-4891-9bb6-af69bed52536"
     case dogUrl = "https://api.thedogapi.com"
+    case dogPicUrl = "https://cdn2.thedogapi.com/images/"
     case dogKey = "fe910c38-1551-4247-b37a-8145afbdc41c"
     case version = "/v1"
     case breeds = "/breeds"
@@ -106,8 +108,8 @@ enum ImagesConstants: String {
     case imagesCollectionViewCell = "ImagesCollectionViewCell"
     case order = "Order: "
     case type = "Type: "
-    case category = "Category: "
-    case breed = "Breed: "
+    case category = "Category"
+    case breed = "Breed"
 }
 
 enum SettingsConstants: String {

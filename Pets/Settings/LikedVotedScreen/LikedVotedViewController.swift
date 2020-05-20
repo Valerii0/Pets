@@ -96,6 +96,8 @@ extension LikedVotedViewController: LikedVotedView {
     }
     
     func reloadData() {
-        likedVotedCollectionView.reloadData()
+        likedVotedCollectionView.performBatchUpdates({
+            likedVotedCollectionView.reloadSections(IndexSet(integer: 0))
+        })
     }
 }

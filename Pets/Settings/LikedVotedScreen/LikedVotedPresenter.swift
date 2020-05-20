@@ -58,7 +58,7 @@ class LikedVotedPresenter {
         case .liked:
             return favourites[index].image.url
         case .voted:
-            return votes[index].image_id
+            return "\(AccountManager.imagesUrl())\(votes[index].image_id).jpg"
         }
     }
     

@@ -19,6 +19,7 @@ protocol ImagesView: class {
     func showError(title: String, message: String)
     func reloadData()
     func breedBu(breed: String)
+    func categoriesDD(category: String)
 }
 
 class ImagesPresenter {
@@ -29,11 +30,18 @@ class ImagesPresenter {
     private var breedId: String?
     private let limit = 20
     private var page = 0
+    private var isImagesExist: Bool = true
     var images = [Image]()
+    private var categories = [Category]()
+    private var categoryId: Int?
     
     init(view: ImagesView, coordinator: MainCoordinator) {
         self.view = view
         self.coordinator = coordinator
+    }
+    
+    func canLoad() -> Bool {
+        return isImagesExist
     }
     
     func getBreeds() {
@@ -48,9 +56,21 @@ class ImagesPresenter {
         }
     }
     
+    func getCategories() {
+        CategoriesRequestService.getCategories { (categories, error) in
+            if let categories = categories {
+                self.categories = categories
+            } else if let error = error {
+                DispatchQueue.main.async {
+                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                }
+            }
+        }
+    }
+    
     func loadImages() {
-        ImagesRequestService.getImages(limit: limit, page: page, size: ImageSizes.small.rawValue, order: nil, mimeTypes: ImageTypes.jpg.rawValue, categoryIds: nil, breedIds: breedId) { (images, error) in
-            if let images = images {
+        ImagesRequestService.getImages(limit: limit, page: page, size: ImageSizes.small.rawValue, order: nil, mimeTypes: ImageTypes.jpg.rawValue, categoryIds: categoryId, breedIds: breedId) { (images, error) in
+            if let images = images, images.count > 0, !self.images.contains(where: { $0.id == images.first?.id }) {
                 self.page += 1
                 self.images.append(contentsOf: images)
                 DispatchQueue.main.async {
@@ -60,6 +80,8 @@ class ImagesPresenter {
                 DispatchQueue.main.async {
                     self.view?.showError(title: "Error", message: error.localizedDescription)
                 }
+            } else {
+                self.isImagesExist = false  ////problem of max 20 pic
             }
         }
     }
@@ -79,7 +101,7 @@ class ImagesPresenter {
         case .type:
             print("type")
         case .category:
-            print("category")
+            dataSource = categoriesDataSource()
         case .breed:
             dataSource = breedsDataSource()
         }
@@ -92,6 +114,20 @@ class ImagesPresenter {
             dataSource.append(breed.name)
         }
         return dataSource
+    }
+    
+    private func categoriesDataSource() -> [String] {
+        var dataSource = [String]()
+        categories.forEach { (category) in
+            dataSource.append(category.name)
+        }
+        return dataSource
+    }
+    
+    private func updateAfterFilterChanged() {
+        page = 0
+        images.removeAll()
+        loadImages()
     }
 }
 
@@ -107,20 +143,20 @@ extension ImagesPresenter: SelectionPresenterDelegate {
     func changeIndex(index: Int) {
         DispatchQueue.main.async {
             self.coordinator?.imagesRouterPop()
-            self.view?.breedBu(breed: self.breeds[index].name)
+            switch self.imagesFilter {
+            case .order:
+                print("order")
+            case .type:
+                print("type")
+            case .category:
+                self.view?.categoriesDD(category: self.categories[index].name)
+                self.categoryId = self.categories[index].id
+            case .breed:
+                self.view?.breedBu(breed: self.breeds[index].name)
+                self.breedId = self.breeds[index].id
+            }
+            self.updateAfterFilterChanged()
         }
-        switch imagesFilter {
-        case .order:
-            print("order")
-        case .type:
-            print("type")
-        case .category:
-            print("category")
-        case .breed:
-            breedId = breeds[index].id
-        }
-        page = 0
-        images.removeAll()
-        loadImages()
+        
     }
 }

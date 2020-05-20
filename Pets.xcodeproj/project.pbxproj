@@ -19,6 +19,8 @@
 		380E5EC72472AD97002E8F19 /* ScoreRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380E5EC62472AD97002E8F19 /* ScoreRequestService.swift */; };
 		3853A4A12471618200D5A260 /* VotedYesNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853A4A02471618200D5A260 /* VotedYesNoViewController.swift */; };
 		3853A4A32471618B00D5A260 /* VotedYesNoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853A4A22471618B00D5A260 /* VotedYesNoPresenter.swift */; };
+		3859930E247562DD0023AB45 /* CategoriesRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3859930D247562DD0023AB45 /* CategoriesRequestService.swift */; };
+		38599310247563B50023AB45 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3859930F247563B50023AB45 /* Category.swift */; };
 		385B027E246F102200F751E4 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385B027C246F102200F751E4 /* ImagesCollectionViewCell.swift */; };
 		385B027F246F102200F751E4 /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385B027D246F102200F751E4 /* ImagesCollectionViewCell.xib */; };
 		385B0282246F135E00F751E4 /* KeyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385B0280246F135E00F751E4 /* KeyTableViewCell.swift */; };
@@ -93,6 +95,8 @@
 		380E5EC62472AD97002E8F19 /* ScoreRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreRequestService.swift; sourceTree = "<group>"; };
 		3853A4A02471618200D5A260 /* VotedYesNoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedYesNoViewController.swift; sourceTree = "<group>"; };
 		3853A4A22471618B00D5A260 /* VotedYesNoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedYesNoPresenter.swift; sourceTree = "<group>"; };
+		3859930D247562DD0023AB45 /* CategoriesRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRequestService.swift; sourceTree = "<group>"; };
+		3859930F247563B50023AB45 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		385B027C246F102200F751E4 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		385B027D246F102200F751E4 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
 		385B0280246F135E00F751E4 /* KeyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTableViewCell.swift; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 				38D60B9E24706FEB00D0117C /* BreedsRequestService.swift */,
 				38D60BB624709BAF00D0117C /* FavouritesRequestService.swift */,
 				380E5EC62472AD97002E8F19 /* ScoreRequestService.swift */,
+				3859930D247562DD0023AB45 /* CategoriesRequestService.swift */,
 			);
 			path = RequestServices;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				38D60BB824709BE500D0117C /* Favourite.swift */,
 				38D60BBA24709C0800D0117C /* FavouriteImage.swift */,
 				38D60BBC24709C2700D0117C /* PostFavourite.swift */,
+				3859930F247563B50023AB45 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -548,6 +554,7 @@
 			files = (
 				38AAB9C4246EEB7A00DCE69B /* ImageCache.swift in Sources */,
 				38A820E2246DBA5000FB9519 /* VoteViewController.swift in Sources */,
+				38599310247563B50023AB45 /* Category.swift in Sources */,
 				38D60BB924709BE500D0117C /* Favourite.swift in Sources */,
 				38D60BB4247096A700D0117C /* LikedVotedCollectionViewCell.swift in Sources */,
 				38E328FB246C098400FB8945 /* ViewController.swift in Sources */,
@@ -563,6 +570,7 @@
 				38AAB9BE246EDEFC00DCE69B /* PostVote.swift in Sources */,
 				38077905246C83D800E6C2B4 /* MainCoordinator.swift in Sources */,
 				38A820E6246DBF6900FB9519 /* BreedsViewController.swift in Sources */,
+				3859930E247562DD0023AB45 /* CategoriesRequestService.swift in Sources */,
 				38A820E8246DBF7300FB9519 /* BreedsPresenter.swift in Sources */,
 				38F4D02D24731ABC00DC65A6 /* extensionString.swift in Sources */,
 				388417B6246C74680092A98F /* ChooseYourSideViewController.swift in Sources */,

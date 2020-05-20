@@ -9,6 +9,7 @@
 import UIKit
 
 class QuizViewController: UIViewController, Storyboarded {
+    @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressView: ProgressView!
     @IBOutlet weak var breedImage: UIImageView!
     @IBOutlet weak var firstBreedButton: UIButton!
@@ -19,31 +20,36 @@ class QuizViewController: UIViewController, Storyboarded {
     var presenter: QuizPresenter!
     
     private var timer: Timer?
-    private var timeLeft: Int = 3
-    private var totalPoints: Int = 0
-    private var wordIndex: Int = 0
+    private var timeLeft: Int = 60
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         presenter.getBreeds()
+        configure()
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        progressView.progressAnimation(duration: TimeInterval(self.timeLeft))
-//    }
     
     private func setUpUI() {
         coloredBg()
-        addLogoToNavigation()
+        //addLogoToNavigation()
         setUpPetImageView(imageView: breedImage)
+        setUpLabel(label: progressLabel, title: "\(timeLeft)")
         setUpButtons()
-        setUpTimer()
+    }
+    
+    private func configure() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//        //progressView.layoutIfNeeded()
+            self.setUpTimer()
             self.progressView.progressAnimation(duration: TimeInterval(self.timeLeft))
+            //self.progressView.makeAnimationRoad(duration: TimeInterval(self.timeLeft))
         }
+    }
+    
+    private func setUpLabel(label: UILabel, title: String) {
+        label.textColor = CommonValues.buttonsColor
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.text = title
     }
     
     private func setUpButtons() {
@@ -68,26 +74,30 @@ class QuizViewController: UIViewController, Storyboarded {
     
     @objc func onTimerFires() {
         timeLeft -= 1
-        //timerLabel.text = "\(timeLeft)"
+        progressLabel.text = "\(timeLeft)"
         if timeLeft <= 0 {
             timer?.invalidate()
             timer = nil
-            self.showAlertWithOkAction(title: "Done!", message: "Your score: \(totalPoints)") { (finished) in
+            showAlertWithOkAction(title: "Done!", message: "Your score: \(presenter.finalScore)") { (finished) in
                 self.presenter.finish()
             }
         }
     }
     
     @IBAction func firstAction(_ sender: UIButton) {
+        presenter.pressButton(pressButton: .first)
     }
     
     @IBAction func secondAction(_ sender: UIButton) {
+        presenter.pressButton(pressButton: .second)
     }
     
     @IBAction func thirdAction(_ sender: UIButton) {
+        presenter.pressButton(pressButton: .third)
     }
     
     @IBAction func fourthAction(_ sender: UIButton) {
+        presenter.pressButton(pressButton: .fourth)
     }
 }
 
@@ -97,7 +107,14 @@ extension QuizViewController: QuizView {
     }
     
     func loadImage(url: String) {
-        loadImage(imageUrl: url, imageView: breedImage)
+        ImageCache.shared.loadImage(imageUrl: url) { (image, string) in
+            DispatchQueue.main.async {
+                self.breedImage.image == nil ? self.breedImage.image = image :
+                    UIView.transition(with: self.breedImage, duration: 1.0, options: .transitionFlipFromLeft, animations: {
+                        self.breedImage.image = image
+                    })
+            }
+        }
     }
     
     func loadTitles(title1: String, title2: String, title3: String, title4: String) {

@@ -71,6 +71,18 @@ final class AccountManager {
         return Api.catKey.rawValue
     }
     
+    static func imagesUrl() -> String {
+        if let side = getSide() {
+            switch side {
+            case .cat:
+                return Api.catPicUrl.rawValue
+            case .dog:
+                return Api.dogPicUrl.rawValue
+            }
+        }
+        return Api.catPicUrl.rawValue
+    }
+    
     static func UserId() -> String {
         if let loginId = getLoginId() {
             return loginId

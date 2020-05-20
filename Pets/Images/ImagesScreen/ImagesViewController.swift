@@ -9,8 +9,8 @@
 import UIKit
 
 class ImagesViewController: UIViewController, Storyboarded {
-    @IBOutlet weak var orderButton: UIButton!
-    @IBOutlet weak var typeButton: UIButton!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var breedLabel: UILabel!
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var breedButton: UIButton!
     @IBOutlet weak var imagesCollectionView: UICollectionView!
@@ -19,11 +19,11 @@ class ImagesViewController: UIViewController, Storyboarded {
     
     private let countCellPerRow = 3
     private let indentWith: CGFloat = 3
-    //private var images = [Image]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        presenter.getCategories()
         presenter.getBreeds()
         presenter.loadImages()
     }
@@ -31,20 +31,33 @@ class ImagesViewController: UIViewController, Storyboarded {
     private func setUpUI() {
         coloredBg()
         addLogoToNavigation()
-        
+        setUpLabels()
         setUpButtons()
         setUpCollectionView(collectionView: imagesCollectionView)
     }
     
+    private func setUpLabels() {
+        setUpLabel(label: categoryLabel, title: ImagesConstants.category.rawValue)
+        setUpLabel(label: breedLabel, title: ImagesConstants.breed.rawValue)
+    }
+    
+    private func setUpLabel(label: UILabel, title: String) {
+        label.textColor = CommonValues.buttonsColor
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
+        //label.numberOfLines = 0
+        label.text = title
+    }
+    
     private func setUpButtons() {
-        setUpButton(button: orderButton, title: ImagesConstants.order.rawValue)
-        setUpButton(button: typeButton, title: ImagesConstants.type.rawValue)
-        setUpButton(button: categoryButton, title: ImagesConstants.category.rawValue)
-        setUpButton(button: breedButton, title: ImagesConstants.breed.rawValue)
+        setUpButton(button: categoryButton, title: "All")
+        setUpButton(button: breedButton, title: "All")
     }
     
     private func setUpButton(button: UIButton, title: String) {
         button.setTitle(title, for: .normal)
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = CommonValues.buttonsColor
         button.layer.cornerRadius = CommonValues.standardCornerRadius
@@ -66,13 +79,13 @@ class ImagesViewController: UIViewController, Storyboarded {
         collectionView.dataSource = self
     }
     
-    @IBAction func orderAction(_ sender: UIButton) {
-        presenter.pushImagesFilterSelectionViewController(filter: .order)
-    }
-    
-    @IBAction func typeAction(_ sender: UIButton) {
-        presenter.pushImagesFilterSelectionViewController(filter: .type)
-    }
+//    @IBAction func orderAction(_ sender: UIButton) {
+//        presenter.pushImagesFilterSelectionViewController(filter: .order)
+//    }
+//
+//    @IBAction func typeAction(_ sender: UIButton) {
+//        presenter.pushImagesFilterSelectionViewController(filter: .type)
+//    }
     
     @IBAction func categoryAction(_ sender: UIButton) {
         presenter.pushImagesFilterSelectionViewController(filter: .category)
@@ -105,24 +118,28 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == presenter.images.count - 1 { //&& isCardsExist {
-            //presenter.getFilteredCards(skip: self.cardsArray.count, cefr: cefr, type: type, magic: magic, word: word, firstLoad: false)
-            //loadDataSource()
+        if indexPath.row == presenter.images.count - 1 && presenter.canLoad() {
             presenter.loadImages()
         }
     }
 }
 
 extension ImagesViewController: ImagesView {
+    func categoriesDD(category: String) {
+        categoryButton.setTitle("\(category)", for: .normal)
+    }
+    
     func showError(title: String, message: String) {
         self.showAlert(title: title, message: message)
     }
     
     func reloadData() {
-        imagesCollectionView.reloadData()
+        imagesCollectionView.performBatchUpdates({
+            imagesCollectionView.reloadSections(IndexSet(integer: 0))
+        })
     }
     
     func breedBu(breed: String) {
-        breedButton.setTitle("\(ImagesConstants.breed.rawValue) \(breed)", for: .normal)
+        breedButton.setTitle("\(breed)", for: .normal)
     }
 }
