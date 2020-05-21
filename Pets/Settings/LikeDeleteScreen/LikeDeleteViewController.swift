@@ -24,7 +24,7 @@ class LikeDeleteViewController: UIViewController, Storyboarded {
     private func setUpUI() {
         coloredBg()
         addLogoToNavigation()
-        customBackButton()
+        setUpNavigationBarItemsColor()
         setUpPetImageView(imageView: petImage)
         loadImage(imageUrl: presenter.provideImageUrl(), imageView: petImage)
         setUpStateView()

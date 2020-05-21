@@ -25,7 +25,7 @@ class LikedVotedViewController: UIViewController, Storyboarded {
     private func setUpUI() {
         coloredBg()
         addLogoToNavigation()
-        customBackButton()
+        setUpNavigationBarItemsColor()
         setUpSortButton()
         setUpCollectionView(collectionView: likedVotedCollectionView)
     }

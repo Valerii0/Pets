@@ -41,11 +41,6 @@ class BreedsViewController: UIViewController, Storyboarded {
         let infoImage = UIImage(named: "Icon Info Orange")?.withRenderingMode(.alwaysOriginal)
         let infoButton = UIBarButtonItem(image: infoImage, style: .plain, target: self, action: #selector(infoTapped(sender:)))
         navigationItem.rightBarButtonItem = infoButton
-        //                let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(closeViewController))
-        //                navigationItem.leftBarButtonItem = cancel
-        //            @objc private func closeViewController() {
-        //                dismiss(animated: true, completion: nil)
-        //            }
     }
     
     @objc private func infoTapped(sender: UIBarButtonItem) {

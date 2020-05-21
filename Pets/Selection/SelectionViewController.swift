@@ -21,7 +21,7 @@ class SelectionViewController: UIViewController, Storyboarded {
     private func setUpUI() {
         coloredBg()
         addLogoToNavigation()
-        customBackButton()
+        setUpNavigationBarItemsColor()
         setUpSelectionTableView(tableView: selectionTableView)
     }
     

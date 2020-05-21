@@ -106,10 +106,9 @@ enum BreedsConstants: String {
 
 enum ImagesConstants: String {
     case imagesCollectionViewCell = "ImagesCollectionViewCell"
-    case order = "Order: "
-    case type = "Type: "
     case category = "Category"
     case breed = "Breed"
+    case defaultFill = "All"
 }
 
 enum SettingsConstants: String {

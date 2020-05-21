@@ -9,8 +9,6 @@
 import Foundation
 
 enum ImagesFilters {
-    case order
-    case type
     case category
     case breed
 }
@@ -18,36 +16,38 @@ enum ImagesFilters {
 protocol ImagesView: class {
     func showError(title: String, message: String)
     func reloadData()
-    func breedBu(breed: String)
-    func categoriesDD(category: String)
+    func changeCategory(category: String)
+    func changeBreed(breed: String)
 }
 
 class ImagesPresenter {
     private weak var view: ImagesView?
     private var coordinator: MainCoordinator?
-    private var imagesFilter: ImagesFilters = .order
-    private var breeds = [Breed]()
-    private var breedId: String?
+    private var imagesFilter: ImagesFilters = .category
     private let limit = 20
     private var page = 0
     private var isImagesExist: Bool = true
-    var images = [Image]()
+    private var images = [Image]()
     private var categories = [Category]()
     private var categoryId: Int?
+    private var breeds = [Breed]()
+    private var breedId: String?
+    var imagesToShow: [Image] {
+        return images
+    }
+    var canLoad: Bool {
+        return isImagesExist
+    }
     
     init(view: ImagesView, coordinator: MainCoordinator) {
         self.view = view
         self.coordinator = coordinator
     }
     
-    func canLoad() -> Bool {
-        return isImagesExist
-    }
-    
-    func getBreeds() {
-        BreedsRequestService.getBreeds(limit: nil, page: nil) { (breeds, error) in
-            if let breeds = breeds {
-                self.breeds = breeds
+    func getCategories() {
+        CategoriesRequestService.getCategories { (categories, error) in
+            if let categories = categories {
+                self.categories = categories
             } else if let error = error {
                 DispatchQueue.main.async {
                     self.view?.showError(title: "Error", message: error.localizedDescription)
@@ -56,10 +56,10 @@ class ImagesPresenter {
         }
     }
     
-    func getCategories() {
-        CategoriesRequestService.getCategories { (categories, error) in
-            if let categories = categories {
-                self.categories = categories
+    func getBreeds() {
+        BreedsRequestService.getBreeds(limit: nil, page: nil) { (breeds, error) in
+            if let breeds = breeds {
+                self.breeds = breeds
             } else if let error = error {
                 DispatchQueue.main.async {
                     self.view?.showError(title: "Error", message: error.localizedDescription)
@@ -81,7 +81,7 @@ class ImagesPresenter {
                     self.view?.showError(title: "Error", message: error.localizedDescription)
                 }
             } else {
-                self.isImagesExist = false  ////problem of max 20 pic
+                self.isImagesExist = false
             }
         }
     }
@@ -91,42 +91,65 @@ class ImagesPresenter {
     }
     
     func pushImagesFilterSelectionViewController(filter: ImagesFilters) {
-        imagesFilter = filter
-        
+        self.imagesFilter = filter
+        coordinator?.pushImagesFilterSelectionViewController(delegate: self, dataSource: createDataSource())
+    }
+    
+    private func createDataSource() -> [String] {
         var dataSource = [String]()
-        
         switch imagesFilter {
-        case .order:
-            print("order")
-        case .type:
-            print("type")
         case .category:
-            dataSource = categoriesDataSource()
+            categories.forEach { (category) in
+                dataSource.append(category.name)
+            }
         case .breed:
-            dataSource = breedsDataSource()
-        }
-        coordinator?.pushImagesFilterSelectionViewController(delegate: self, dataSource: dataSource)
-    }
-    
-    private func breedsDataSource() -> [String] {
-        var dataSource = [String]()
-        breeds.forEach { (breed) in
-            dataSource.append(breed.name)
+            breeds.forEach { (breed) in
+                dataSource.append(breed.name)
+            }
         }
         return dataSource
     }
     
-    private func categoriesDataSource() -> [String] {
-        var dataSource = [String]()
-        categories.forEach { (category) in
-            dataSource.append(category.name)
+    func clearFilters() {
+        changeCategoryFilter(index: nil)
+        changeBreedFilter(index: nil)
+        updateAfterFilterChanged()
+    }
+    
+    private func changeFilter(index: Int) {
+        switch imagesFilter {
+        case .category:
+            changeCategoryFilter(index: index)
+        case .breed:
+            changeBreedFilter(index: index)
         }
-        return dataSource
+    }
+    
+    private func changeCategoryFilter(index: Int?) {
+        if let index = index, categories.count > index {
+            view?.changeCategory(category: categories[index].name)
+            categoryId = categories[index].id
+        } else {
+            view?.changeCategory(category: ImagesConstants.defaultFill.rawValue)
+            categoryId = nil
+        }
+    }
+    
+    private func changeBreedFilter(index: Int?) {
+        if let index = index, breeds.count > index {
+            view?.changeBreed(breed: breeds[index].name)
+            breedId = breeds[index].id
+        } else {
+            view?.changeBreed(breed: ImagesConstants.defaultFill.rawValue)
+            breedId = nil
+        }
     }
     
     private func updateAfterFilterChanged() {
-        page = 0
         images.removeAll()
+        view?.reloadData()
+        isImagesExist = true
+        page = 0
         loadImages()
     }
 }
@@ -143,20 +166,8 @@ extension ImagesPresenter: SelectionPresenterDelegate {
     func changeIndex(index: Int) {
         DispatchQueue.main.async {
             self.coordinator?.imagesRouterPop()
-            switch self.imagesFilter {
-            case .order:
-                print("order")
-            case .type:
-                print("type")
-            case .category:
-                self.view?.categoriesDD(category: self.categories[index].name)
-                self.categoryId = self.categories[index].id
-            case .breed:
-                self.view?.breedBu(breed: self.breeds[index].name)
-                self.breedId = self.breeds[index].id
-            }
+            self.changeFilter(index: index)
             self.updateAfterFilterChanged()
         }
-        
     }
 }

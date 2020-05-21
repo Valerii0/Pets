@@ -25,7 +25,7 @@ class VotedYesNoViewController: UIViewController, Storyboarded {
     private func setUpUI() {
         coloredBg()
         addLogoToNavigation()
-        customBackButton()
+        setUpNavigationBarItemsColor()
         setUpPetImageView(imageView: petImage)
         setUpStateView()
         setUpButton(button: deleteButton, imagePath: "Button Delete")

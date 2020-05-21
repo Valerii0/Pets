@@ -31,9 +31,20 @@ class ImagesViewController: UIViewController, Storyboarded {
     private func setUpUI() {
         coloredBg()
         addLogoToNavigation()
+        setUpNavigationBarItemsColor()
+        setUpClearButton()
         setUpLabels()
         setUpButtons()
         setUpCollectionView(collectionView: imagesCollectionView)
+    }
+    
+    private func setUpClearButton() {
+        let clearButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(clearFilters(sender:)))
+        navigationItem.rightBarButtonItem = clearButton
+    }
+    
+    @objc private func clearFilters(sender: UIBarButtonItem) {
+        presenter.clearFilters()
     }
     
     private func setUpLabels() {
@@ -50,8 +61,8 @@ class ImagesViewController: UIViewController, Storyboarded {
     }
     
     private func setUpButtons() {
-        setUpButton(button: categoryButton, title: "All")
-        setUpButton(button: breedButton, title: "All")
+        setUpButton(button: categoryButton, title: ImagesConstants.defaultFill.rawValue)
+        setUpButton(button: breedButton, title: ImagesConstants.defaultFill.rawValue)
     }
     
     private func setUpButton(button: UIButton, title: String) {
@@ -98,12 +109,12 @@ class ImagesViewController: UIViewController, Storyboarded {
 
 extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.images.count
+        return presenter.imagesToShow.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImagesConstants.imagesCollectionViewCell.rawValue, for: indexPath) as! ImagesCollectionViewCell
-        cell.configure(imageUrl: presenter.images[indexPath.row].url)
+        cell.configure(imageUrl: presenter.imagesToShow[indexPath.row].url)
         return cell
     }
     
@@ -118,17 +129,13 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == presenter.images.count - 1 && presenter.canLoad() {
+        if indexPath.row == presenter.imagesToShow.count - 1 && presenter.canLoad {
             presenter.loadImages()
         }
     }
 }
 
 extension ImagesViewController: ImagesView {
-    func categoriesDD(category: String) {
-        categoryButton.setTitle("\(category)", for: .normal)
-    }
-    
     func showError(title: String, message: String) {
         self.showAlert(title: title, message: message)
     }
@@ -139,7 +146,11 @@ extension ImagesViewController: ImagesView {
         })
     }
     
-    func breedBu(breed: String) {
+    func changeCategory(category: String) {
+        categoryButton.setTitle("\(category)", for: .normal)
+    }
+    
+    func changeBreed(breed: String) {
         breedButton.setTitle("\(breed)", for: .normal)
     }
 }

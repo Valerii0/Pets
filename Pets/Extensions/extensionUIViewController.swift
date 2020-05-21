@@ -88,11 +88,11 @@ extension UIViewController {
         }
     }
     
-    func customBackButton() {
+    func setUpNavigationBarItemsColor() {
         self.navigationController?.navigationBar.tintColor = CommonValues.buttonsColor
-//        let yourBackImage = UIImage(named: "Button Delete")
-//        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
-//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        //        let yourBackImage = UIImage(named: "Button Delete")
+        //        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+        //        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
         //self.navigationController?.navigationBar.backItem?.title = "Custom"
     }
     
