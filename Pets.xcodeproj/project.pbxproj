@@ -300,6 +300,34 @@
 			path = Breeds;
 			sourceTree = "<group>";
 		};
+		389249392476A1F4000EE15F /* LogInScreen */ = {
+			isa = PBXGroup;
+			children = (
+				388417B7246C74AB0092A98F /* LogInViewController.swift */,
+				38A820F5246DC34400FB9519 /* LogInPresenter.swift */,
+			);
+			path = LogInScreen;
+			sourceTree = "<group>";
+		};
+		3892493A2476A215000EE15F /* ChooseYourSideScreen */ = {
+			isa = PBXGroup;
+			children = (
+				388417B5246C74680092A98F /* ChooseYourSideViewController.swift */,
+				38A820F7246DC35200FB9519 /* ChooseYourSidePresenter.swift */,
+			);
+			path = ChooseYourSideScreen;
+			sourceTree = "<group>";
+		};
+		3892493B2476A291000EE15F /* SelectionScreen */ = {
+			isa = PBXGroup;
+			children = (
+				38D60BA1247090FD00D0117C /* SelectionViewController.swift */,
+				38D60BA32470910600D0117C /* SelectionPresenter.swift */,
+				38D60BA7247092EB00D0117C /* Cell */,
+			);
+			path = SelectionScreen;
+			sourceTree = "<group>";
+		};
 		38A820F9246DCC5300FB9519 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,8 +342,8 @@
 		38AAB9B7246EDE4200DCE69B /* RequestServices */ = {
 			isa = PBXGroup;
 			children = (
-				38AAB9B8246EDE8400DCE69B /* VotesRequestService.swift */,
 				38AAB9BF246EE0B500DCE69B /* ImagesRequestService.swift */,
+				38AAB9B8246EDE8400DCE69B /* VotesRequestService.swift */,
 				38D60B9E24706FEB00D0117C /* BreedsRequestService.swift */,
 				38D60BB624709BAF00D0117C /* FavouritesRequestService.swift */,
 				380E5EC62472AD97002E8F19 /* ScoreRequestService.swift */,
@@ -327,9 +355,9 @@
 		38AAB9BA246EDEBC00DCE69B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				38AAB9C1246EE0EE00DCE69B /* Image.swift */,
 				38AAB9BB246EDED600DCE69B /* Vote.swift */,
 				38AAB9BD246EDEFC00DCE69B /* PostVote.swift */,
-				38AAB9C1246EE0EE00DCE69B /* Image.swift */,
 				38AAB9C5246EEC5D00DCE69B /* Breed.swift */,
 				38D60BB824709BE500D0117C /* Favourite.swift */,
 				38D60BBA24709C0800D0117C /* FavouriteImage.swift */,
@@ -351,9 +379,7 @@
 		38D60BA02470909900D0117C /* Selection */ = {
 			isa = PBXGroup;
 			children = (
-				38D60BA1247090FD00D0117C /* SelectionViewController.swift */,
-				38D60BA32470910600D0117C /* SelectionPresenter.swift */,
-				38D60BA7247092EB00D0117C /* Cell */,
+				3892493B2476A291000EE15F /* SelectionScreen */,
 				38D60BA52470910C00D0117C /* Selection.storyboard */,
 			);
 			path = Selection;
@@ -431,11 +457,9 @@
 		38E3290A246C0A3200FB8945 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				389249392476A1F4000EE15F /* LogInScreen */,
+				3892493A2476A215000EE15F /* ChooseYourSideScreen */,
 				38E3290D246C0C0900FB8945 /* SignIn.storyboard */,
-				388417B7246C74AB0092A98F /* LogInViewController.swift */,
-				38A820F5246DC34400FB9519 /* LogInPresenter.swift */,
-				388417B5246C74680092A98F /* ChooseYourSideViewController.swift */,
-				38A820F7246DC35200FB9519 /* ChooseYourSidePresenter.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";

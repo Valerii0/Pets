@@ -129,7 +129,7 @@ extension BreedsViewController: BreedsView {
     func reloadImages() {
         imagesScrollView.subviews.forEach({ $0.removeFromSuperview() })
         imagesScrollView.contentSize.width = imagesScrollView.frame.width * CGFloat(0)
-        if presenter.images.count == 0 {
+        if presenter.imagesToShow.count == 0 {
             imagesScrollView.contentSize.width = imagesScrollView.frame.width * CGFloat(0)
             pageControl.numberOfPages = 1
             
@@ -141,15 +141,15 @@ extension BreedsViewController: BreedsView {
             imagesScrollView.addSubview(imageView)
             
         } else {
-            imagesScrollView.contentSize.width = imagesScrollView.frame.width * CGFloat(presenter.images.count)
-            pageControl.numberOfPages = presenter.images.count
+            imagesScrollView.contentSize.width = imagesScrollView.frame.width * CGFloat(presenter.imagesToShow.count)
+            pageControl.numberOfPages = presenter.imagesToShow.count
             //pageControl.currentPage = 0
             
-            for i in 0..<presenter.images.count {
+            for i in 0..<presenter.imagesToShow.count {
                 let imageView = UIImageView()
                 imageView.contentMode = .scaleAspectFill
                 imageView.clipsToBounds = true
-                loadImage(imageUrl: presenter.images[i].url, imageView: imageView)
+                loadImage(imageUrl: presenter.imagesToShow[i].url, imageView: imageView)
                 let xPosition = imagesScrollView.frame.width * CGFloat(i)
                 imageView.frame = CGRect(x: xPosition, y: 0, width: self.imagesScrollView.frame.width, height: self.imagesScrollView.frame.height)
                 

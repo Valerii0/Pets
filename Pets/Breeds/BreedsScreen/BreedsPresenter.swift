@@ -18,9 +18,11 @@ class BreedsPresenter {
     private weak var view: BreedsView?
     private var coordinator: MainCoordinator?
     private let limit = 5
-    //private var breedId: String?
     private var breeds = [Breed]()
-    var images = [Image]()
+    private var images = [Image]()
+    var imagesToShow: [Image] {
+        return images
+    }
 
     init(view: BreedsView, coordinator: MainCoordinator) {
         self.view = view
@@ -29,7 +31,7 @@ class BreedsPresenter {
     
     func getBreeds() {
         BreedsRequestService.getBreeds(limit: nil, page: nil) { (breeds, error) in
-            if let breeds = breeds {
+            if let breeds = breeds, breeds.count > 0 {
                 self.breeds = breeds
                 self.selectBreedByIndex(index: 0)
             } else if let error = error {

@@ -16,18 +16,22 @@ protocol VoteView: class {
 class VotePresenter {
     private weak var view: VoteView?
     private var coordinator: MainCoordinator?
-    private var image: Image?
+    private let maxLimit = 10
+    private let minLimit = 5
+    private var images = [Image]()
+    private var firstLoad: Bool = true
     
     init(view: VoteView, coordinator: MainCoordinator) {
         self.view = view
         self.coordinator = coordinator
     }
     
-    func loadImage() {
-        ImagesRequestService.getImages(limit: 1, page: nil, size: ImageSizes.full.rawValue, order: nil, mimeTypes: ImageTypes.jpg.rawValue, categoryIds: nil, breedIds: nil) { (images, error) in
-            if let images = images, let image = images.first {
-                self.image = image
-                self.view?.loadImage(imageUrl: image.url)
+    func loadImages() {
+        ImagesRequestService.getImages(limit: maxLimit, page: nil, size: ImageSizes.full.rawValue, order: nil, mimeTypes: ImageTypes.jpg.rawValue, categoryIds: nil, breedIds: nil) { (images, error) in
+            if let images = images, images.count > 0 {
+                self.images.append(contentsOf: images)
+                self.preLoadImages(images: images)
+                self.checkFirstLoad()
             } else if let error = error {
                 DispatchQueue.main.async {
                     self.view?.showError(title: "Error", message: error.localizedDescription)
@@ -36,17 +40,44 @@ class VotePresenter {
         }
     }
     
-    func postVote(isLiked: Bool) {
-        if let image = image {
-            let vote = PostVote(image_id: image.id, value: isLiked, sub_id: AccountManager.UserId())
-            VotesRequestService.postVote(vote: vote) { (error) in
-                if let error = error {
-                    DispatchQueue.main.async {
-                        self.view?.showError(title: "Error", message: error.localizedDescription)
-                    }
+    private func preLoadImages(images: [Image]) {
+        images.forEach({ image in
+            ImageCache.shared.loadImage(imageUrl: image.url) { (image, url) in
+                print(url)
+            }
+        })
+    }
+    
+    private func checkFirstLoad() {
+        if firstLoad {
+            firstLoad = false
+            view?.loadImage(imageUrl: images.first?.url ?? "")
+        }
+    }
+    
+    func actionPressed(isLiked: Bool) {
+        if let image = images.first {
+            postVote(isLiked: isLiked, image: image)
+            images.removeFirst()
+        }
+        view?.loadImage(imageUrl: images.first?.url ?? "")
+        loadMoreIfNeeded()
+    }
+    
+    private func postVote(isLiked: Bool, image: Image) {
+        let vote = PostVote(image_id: image.id, value: isLiked, sub_id: AccountManager.UserId())
+        VotesRequestService.postVote(vote: vote) { (error) in
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.view?.showError(title: "Error", message: error.localizedDescription)
                 }
             }
         }
-        loadImage()
+    }
+    
+    private func loadMoreIfNeeded() {
+        if images.count <= minLimit {
+            loadImages()
+        }
     }
 }

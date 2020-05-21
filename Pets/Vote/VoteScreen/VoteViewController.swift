@@ -18,7 +18,7 @@ class VoteViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        presenter.loadImage()
+        presenter.loadImages()
     }
     
     private func setUpUI() {
@@ -40,11 +40,11 @@ class VoteViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func dislikeAction(_ sender: UIButton) {
-        presenter.postVote(isLiked: false)
+        presenter.actionPressed(isLiked: false)
     }
     
     @IBAction func likeAction(_ sender: UIButton) {
-        presenter.postVote(isLiked: true)
+        presenter.actionPressed(isLiked: true)
     }
 }
 
@@ -58,8 +58,8 @@ extension VoteViewController: VoteView {
             DispatchQueue.main.async {
                 self.petImage.image == nil ? self.petImage.image = image :
                     UIView.transition(with: self.petImage, duration: 0.5, options: .transitionCurlUp, animations: {
-                    self.petImage.image = image
-                })
+                        self.petImage.image = image
+                    })
             }
         }
     }
