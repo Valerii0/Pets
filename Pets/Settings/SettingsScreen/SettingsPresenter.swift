@@ -82,7 +82,7 @@ class SettingsPresenter {
         var dataSource = [String]()
         let sortedScores = scores.sorted(by: {$0.image_id.localizedStandardCompare($1.image_id) == .orderedDescending})
         sortedScores.forEach { (score) in
-            let scoreText = "\(score.image_id) \(SettingsConstants.points) \(score.created_at.stringDate(dateFormatFrom: SettingsConstants.dateFormatFrom.rawValue, dateFormatTo: SettingsConstants.dateFormatTo.rawValue))"
+            let scoreText = "\(score.image_id) \(SettingsConstants.points.rawValue) \(score.created_at.stringDate(dateFormatFrom: SettingsConstants.dateFormatFrom.rawValue, dateFormatTo: SettingsConstants.dateFormatTo.rawValue))"
             dataSource.append(scoreText)
         }
         return dataSource
