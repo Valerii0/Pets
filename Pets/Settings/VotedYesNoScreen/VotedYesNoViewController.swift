@@ -28,7 +28,7 @@ class VotedYesNoViewController: UIViewController, Storyboarded {
         setUpNavigationBarItemsColor()
         setUpPetImageView(imageView: petImage)
         setUpStateView()
-        setUpButton(button: deleteButton, imagePath: "Button Delete")
+        setUpButton(button: deleteButton, imagePath: AssetsPathConstants.buttonDelete.rawValue)
         animateShow()
     }
     
@@ -61,15 +61,15 @@ class VotedYesNoViewController: UIViewController, Storyboarded {
     private func configureStateImage() {
         switch presenter.provideState() {
         case .yes:
-            self.stateImage.image = UIImage(named: "Liked")
+            self.stateImage.image = UIImage(named: AssetsPathConstants.likedTitle.rawValue)
         case .no:
-            self.stateImage.image = UIImage(named: "Disliked")
+            self.stateImage.image = UIImage(named: AssetsPathConstants.dislikedTitle.rawValue)
         }
     }
     
     private func configureDeleted() {
         stateView.backgroundColor = CommonValues.standardBlue
-        stateImage.image = UIImage(named: "Deleted")
+        stateImage.image = UIImage(named: AssetsPathConstants.deletedTitle.rawValue)
     }
     
     @IBAction func deleteAction(_ sender: UIButton) {

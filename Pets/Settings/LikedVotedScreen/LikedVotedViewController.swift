@@ -13,9 +13,6 @@ class LikedVotedViewController: UIViewController, Storyboarded {
     
     var presenter: LikedVotedPresenter!
     
-    private let countCellPerRow = 3
-    private let indentWith: CGFloat = 3
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -31,14 +28,9 @@ class LikedVotedViewController: UIViewController, Storyboarded {
     }
     
     private func setUpSortButton() {
-        let sortImage = UIImage(named: "Order Icon Orange")?.withRenderingMode(.alwaysOriginal)
+        let sortImage = UIImage(named: AssetsPathConstants.orderIconOrange.rawValue)?.withRenderingMode(.alwaysOriginal)
         let sortButton = UIBarButtonItem(image: sortImage, style: .plain, target: self, action: #selector(sortTapped(sender:)))
         navigationItem.rightBarButtonItem = sortButton
-        //                let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(closeViewController))
-        //                navigationItem.leftBarButtonItem = cancel
-        //            @objc private func closeViewController() {
-        //                dismiss(animated: true, completion: nil)
-        //            }
     }
     
     @objc private func sortTapped(sender: UIBarButtonItem) {
@@ -47,7 +39,7 @@ class LikedVotedViewController: UIViewController, Storyboarded {
     
     private func setUpCollectionView(collectionView: UICollectionView) {
         collectionView.layoutIfNeeded()
-        let insert: CGFloat = indentWith//(collectionView.frame.width / CGFloat(countCellPerRow + 1)) / CGFloat(countCellPerRow + 1)
+        let insert: CGFloat = LikedVotedConstants.indentWith
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: insert, left: insert, bottom: insert, right: insert)
         layout.minimumLineSpacing = insert
@@ -78,7 +70,7 @@ extension LikedVotedViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = (collectionView.frame.width - (CGFloat(countCellPerRow + 1) * indentWith)) / CGFloat(countCellPerRow)
+        let width: CGFloat = (collectionView.frame.width - (CGFloat(LikedVotedConstants.countCellPerRow + 1) * LikedVotedConstants.indentWith)) / CGFloat(LikedVotedConstants.countCellPerRow)
         let height: CGFloat = width
         return CGSize(width: width, height: height)
     }

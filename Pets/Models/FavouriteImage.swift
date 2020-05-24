@@ -9,6 +9,6 @@
 import Foundation
 
 class FavouriteImage: Codable {
-    var id: String
-    var url: String
+    var id: String?
+    var url: String?
 }

@@ -56,7 +56,7 @@ class LikedVotedPresenter {
     func imageUrl(index: Int) -> String {
         switch state {
         case .liked:
-            return favourites[index].image.url
+            return favourites[index].image?.url ?? "\(AccountManager.imagesUrl())\(favourites[index].image_id).jpg"
         case .voted:
             return "\(AccountManager.imagesUrl())\(votes[index].image_id).jpg"
         }
@@ -87,7 +87,7 @@ class LikedVotedPresenter {
     }
     
     private func getFavourites() {
-        FavouritesRequestService.getFavourites(limit: limit, page: page, order: "", size: "") { (favourites, error) in
+        FavouritesRequestService.getFavourites(limit: limit, page: page) { (favourites, error) in
             if let favourites = favourites, favourites.count > 0 {
                 self.page += 1
                 self.favourites.append(contentsOf: favourites)
@@ -96,7 +96,7 @@ class LikedVotedPresenter {
                 }
             } else if let error = error {
                 DispatchQueue.main.async {
-                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                    self.view?.showError(title: CommonValues.errorTitle, message: error.localizedDescription)
                 }
             } else {
                 self.isImagesExist = false
@@ -114,7 +114,7 @@ class LikedVotedPresenter {
                 }
             } else if let error = error {
                 DispatchQueue.main.async {
-                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                    self.view?.showError(title: CommonValues.errorTitle, message: error.localizedDescription)
                 }
             } else {
                 self.isImagesExist = false
@@ -123,7 +123,7 @@ class LikedVotedPresenter {
     }
     
     private func pushDeleteViewController(index: Int) {
-        coordinator?.pushDeleteViewController(imageId: String(favourites[index].id), imageUrl: favourites[index].image.url, state: .delete, delegate: self)
+        coordinator?.pushDeleteViewController(imageId: String(favourites[index].id), imageUrl: imageUrl(index: index), state: .delete, delegate: self)
     }
     
     private func pushVotedYesNoViewController(index: Int) {

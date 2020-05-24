@@ -50,12 +50,6 @@ extension SelectionViewController: UITableViewDelegate, UITableViewDataSource {
         return CommonValues.standardTableViewCellHeight
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let view = UIView()
-//        view.backgroundColor = .clear
-//        return view
-//    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         presenter.changeIndex(index: indexPath.row)

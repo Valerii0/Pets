@@ -16,8 +16,8 @@ protocol VoteView: class {
 class VotePresenter {
     private weak var view: VoteView?
     private var coordinator: MainCoordinator?
-    private let maxLimit = 10
-    private let minLimit = 5
+    private let maxLimit = VoteConstants.maxLimit
+    private let minLimit = VoteConstants.minLimit
     private var images = [Image]()
     private var firstLoad: Bool = true
     
@@ -34,7 +34,7 @@ class VotePresenter {
                 self.checkFirstLoad()
             } else if let error = error {
                 DispatchQueue.main.async {
-                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                    self.view?.showError(title: CommonValues.errorTitle, message: error.localizedDescription)
                 }
             }
         }
@@ -69,7 +69,7 @@ class VotePresenter {
         VotesRequestService.postVote(vote: vote) { (error) in
             if let error = error {
                 DispatchQueue.main.async {
-                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                    self.view?.showError(title: CommonValues.errorTitle, message: error.localizedDescription)
                 }
             }
         }

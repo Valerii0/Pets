@@ -23,12 +23,15 @@ class LogInViewController: UIViewController, Storyboarded {
     
     private func setUpUI() {
         coloredBg()
-        logoImage.image = UIImage(named: AssetsPathConstants.petsLogo.rawValue)
-        logoImage.contentMode = .scaleAspectFit
-        
+        setUpImage()
         setUpButtons()
         setUpTextField(textField: idTextField)
         hideKeyboardWhenTappedAround()
+    }
+    
+    private func setUpImage() {
+        logoImage.image = UIImage(named: AssetsPathConstants.petsLogo.rawValue)
+        logoImage.contentMode = .scaleAspectFit
     }
     
     private func setUpButtons() {
@@ -83,7 +86,7 @@ class LogInViewController: UIViewController, Storyboarded {
         if text.count >= LogInConstants.minUserIdLength && text.count <= LogInConstants.maxUserIdLength {
             presenter.logIn(id: text)
         } else {
-            self.showAlert(title: "Error", message: "Please fill at least \(LogInConstants.minUserIdLength) characters, but not more \(LogInConstants.maxUserIdLength).")
+            self.showAlert(title: CommonValues.errorTitle, message: "\(LogInConstants.errFirstPart) \(LogInConstants.minUserIdLength) \(LogInConstants.errSecondPart) \(LogInConstants.maxUserIdLength) \(LogInConstants.errThirdPart)")
         }
     }
     

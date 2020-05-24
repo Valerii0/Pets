@@ -9,7 +9,7 @@
 import Foundation
 
 final class FavouritesRequestService {
-    static func getFavourites(limit: Int, page: Int, order: String, size: String, callBack: @escaping (_ favourites: [Favourite]?, _ error: Error?) -> Void) {
+    static func getFavourites(limit: Int, page: Int, callBack: @escaping (_ favourites: [Favourite]?, _ error: Error?) -> Void) {
         var urlString = AccountManager.ApiUrl()
         urlString.append(Api.version.rawValue)
         urlString.append(Api.favourites.rawValue)
@@ -20,7 +20,6 @@ final class FavouritesRequestService {
             URLQueryItem(name: "page", value: "\(page)"),
             URLQueryItem(name: "sub_id", value: AccountManager.UserId())
         ]
-        //limit: Int, page: Int, order: String, size: String, subId: Int,
         
         var request = URLRequest(url: (urlComponents?.url)!)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

@@ -46,25 +46,16 @@ final class MainCoordinator: Coordinatable {
         self.tabBarController.tabBar.tintColor = CommonValues.buttonsColor
         self.signInRouter = RouterType.signIn.router
         self.signInRouter.navigationController.navigationBar.isHidden = true
-        
         self.tabVoteRouter = RouterType.tabVote.router
         self.tabVoteRouter.navigationController.navigationBar.backgroundColor = .clear
-        
         self.tabBreedsRouter = RouterType.tabBreeds.router
         self.tabBreedsRouter.navigationController.navigationBar.backgroundColor = .clear
-        //self.tabBreedsRouter.navigationController.navigationBar.isHidden = true
-        
         self.tabImagesRouter = RouterType.tabImages.router
         self.tabImagesRouter.navigationController.navigationBar.backgroundColor = .clear
-        //self.tabImagesRouter.navigationController.navigationBar.isHidden = true
-        
         self.tabQuizRouter = RouterType.tabQuiz.router
         self.tabQuizRouter.navigationController.navigationBar.backgroundColor = .clear
-        //self.tabQuizRouter.navigationController.navigationBar.isHidden = true
-        
         self.tabSettingsRouter = RouterType.tabSettings.router
         self.tabSettingsRouter.navigationController.navigationBar.backgroundColor = .clear
-        //self.tabSettingsRouter.navigationController.navigationBar.isHidden = true
     }
     
     func configure() {

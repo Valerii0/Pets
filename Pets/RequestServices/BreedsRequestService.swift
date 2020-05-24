@@ -15,10 +15,6 @@ final class BreedsRequestService {
         urlString.append(Api.breeds.rawValue)
         
         var urlComponents = URLComponents(string: urlString)
-//        urlComponents?.queryItems = [
-//
-//
-//        ]
         
         if let limit = limit {
             urlComponents?.queryItems?.append(URLQueryItem(name: "limit", value: "\(limit)"))
@@ -38,8 +34,8 @@ final class BreedsRequestService {
                 callBack(nil, error)
             } else if let data = data {
                 do {
-                    let breed = try JSONDecoder().decode([Breed].self, from: data)
-                    callBack(breed, nil)
+                    let breeds = try JSONDecoder().decode([Breed].self, from: data)
+                    callBack(breeds, nil)
                 } catch {
                     callBack(nil, error)
                 }

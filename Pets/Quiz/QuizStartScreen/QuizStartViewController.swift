@@ -22,11 +22,14 @@ class QuizStartViewController: UIViewController, Storyboarded {
     private func setUpUI() {
         coloredBg()
         addLogoToNavigation()
-        titleImage.image = UIImage(named: "Guess The Breed")?.withRenderingMode(.alwaysTemplate)
+        setUpTitleImage()
+        setUpButton(button: startButton, title: QuizStartConstants.buttonTitle.rawValue)
+    }
+    
+    private func setUpTitleImage() {
+        titleImage.image = UIImage(named: AssetsPathConstants.guessTheBreed.rawValue)?.withRenderingMode(.alwaysTemplate)
         titleImage.contentMode = .scaleAspectFit
         titleImage.tintColor = CommonValues.buttonsColor
-        
-        setUpButton(button: startButton, title: "Let's go!")
     }
     
     private func setUpButton(button: UIButton, title: String) {

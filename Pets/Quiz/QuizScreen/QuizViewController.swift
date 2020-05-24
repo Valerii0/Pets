@@ -20,7 +20,7 @@ class QuizViewController: UIViewController, Storyboarded {
     var presenter: QuizPresenter!
     
     private var timer: Timer?
-    private var timeLeft: Int = 60
+    private var timeLeft: Int = QuizConstants.timeLeft
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,6 @@ class QuizViewController: UIViewController, Storyboarded {
     
     private func setUpUI() {
         coloredBg()
-        //addLogoToNavigation()
         setUpPetImageView(imageView: breedImage)
         setUpLabel(label: progressLabel, title: "\(timeLeft)")
         setUpButtons()
@@ -41,7 +40,6 @@ class QuizViewController: UIViewController, Storyboarded {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.setUpTimer()
             self.progressView.progressAnimation(duration: TimeInterval(self.timeLeft))
-            //self.progressView.makeAnimationRoad(duration: TimeInterval(self.timeLeft))
         }
     }
     
@@ -78,7 +76,7 @@ class QuizViewController: UIViewController, Storyboarded {
         if timeLeft <= 0 {
             timer?.invalidate()
             timer = nil
-            showAlertWithOkAction(title: "Done!", message: "Your score: \(presenter.finalScore)") { (finished) in
+            showAlertWithOkAction(title: QuizConstants.alertTitle.rawValue, message: "\(QuizConstants.alertMessage.rawValue) \(presenter.finalScore)") { (finished) in
                 self.presenter.finish()
             }
         }

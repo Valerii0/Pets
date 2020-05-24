@@ -17,7 +17,7 @@ protocol BreedsView: class {
 class BreedsPresenter {
     private weak var view: BreedsView?
     private var coordinator: MainCoordinator?
-    private let limit = 5
+    private let limit = BreedsConstants.imagesLimit
     private var breeds = [Breed]()
     private var images = [Image]()
     var imagesToShow: [Image] {
@@ -36,7 +36,7 @@ class BreedsPresenter {
                 self.selectBreedByIndex(index: 0)
             } else if let error = error {
                 DispatchQueue.main.async {
-                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                    self.view?.showError(title: CommonValues.errorTitle, message: error.localizedDescription)
                 }
             }
         }
@@ -51,7 +51,7 @@ class BreedsPresenter {
                 }
             } else if let error = error {
                 DispatchQueue.main.async {
-                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                    self.view?.showError(title: CommonValues.errorTitle, message: error.localizedDescription)
                 }
             }
         }

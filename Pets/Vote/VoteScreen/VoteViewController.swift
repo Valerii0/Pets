@@ -24,14 +24,13 @@ class VoteViewController: UIViewController, Storyboarded {
     private func setUpUI() {
         coloredBg()
         addLogoToNavigation()
-        
         setUpPetImageView(imageView: petImage)
         setUpButtons()
     }
     
     private func setUpButtons() {
-        setUpButton(button: dislikeButton, imagePath: "Button Dislike")
-        setUpButton(button: likeButton, imagePath: "Button Like (Green heart)")
+        setUpButton(button: dislikeButton, imagePath: AssetsPathConstants.buttonDislike.rawValue)
+        setUpButton(button: likeButton, imagePath: AssetsPathConstants.buttonLikeGreen.rawValue)
     }
     
     private func setUpButton(button: UIButton, imagePath: String) {

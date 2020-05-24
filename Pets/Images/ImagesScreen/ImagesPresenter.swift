@@ -50,7 +50,7 @@ class ImagesPresenter {
                 self.categories = categories
             } else if let error = error {
                 DispatchQueue.main.async {
-                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                    self.view?.showError(title: CommonValues.errorTitle, message: error.localizedDescription)
                 }
             }
         }
@@ -62,7 +62,7 @@ class ImagesPresenter {
                 self.breeds = breeds
             } else if let error = error {
                 DispatchQueue.main.async {
-                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                    self.view?.showError(title: CommonValues.errorTitle, message: error.localizedDescription)
                 }
             }
         }
@@ -78,7 +78,7 @@ class ImagesPresenter {
                 }
             } else if let error = error {
                 DispatchQueue.main.async {
-                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                    self.view?.showError(title: CommonValues.errorTitle, message: error.localizedDescription)
                 }
             } else {
                 self.isImagesExist = false

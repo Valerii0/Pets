@@ -14,5 +14,5 @@ class Favourite: Codable {
     var image_id: String
     var sub_id: String
     var created_at: String
-    var image: FavouriteImage
+    var image: FavouriteImage?
 }

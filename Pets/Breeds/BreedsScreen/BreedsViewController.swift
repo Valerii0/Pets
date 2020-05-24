@@ -27,18 +27,17 @@ class BreedsViewController: UIViewController, Storyboarded {
     private func setUpUI() {
         coloredBg()
         addLogoToNavigation()
-        
         setUpInfoButton()
         setUpImagesScrollView()
         setUpPageControl()
-        setUpButton(button: breedsButton, title: "Choose breed")
+        setUpButton(button: breedsButton, title: BreedsConstants.buttonTitle.rawValue)
         setUpInfoView()
         setUpNameLabel()
         setUpTextView()
     }
     
     private func setUpInfoButton() {
-        let infoImage = UIImage(named: "Icon Info Orange")?.withRenderingMode(.alwaysOriginal)
+        let infoImage = UIImage(named: AssetsPathConstants.infoIcon.rawValue)?.withRenderingMode(.alwaysOriginal)
         let infoButton = UIBarButtonItem(image: infoImage, style: .plain, target: self, action: #selector(infoTapped(sender:)))
         navigationItem.rightBarButtonItem = infoButton
     }
@@ -51,7 +50,6 @@ class BreedsViewController: UIViewController, Storyboarded {
         imagesScrollView.layer.cornerRadius = CommonValues.standardCornerRadius
         imagesScrollView.isPagingEnabled = true
         imagesScrollView.showsHorizontalScrollIndicator = false
-        //imagesScrollView.setZoomScale(1.0, animated: true)
         imagesScrollView.delegate = self
     }
     
@@ -94,19 +92,53 @@ class BreedsViewController: UIViewController, Storyboarded {
         breedLabel.text = breed.name
         
         var text = ""
-        if let description = breed.description {
-            text.append("• \(description)\n\n")
+        if let description = breed.description, description.count > 0 {
+            text.append("\(BreedsConstants.prefixSymbol.rawValue) \(description)\(BreedsConstants.dividerSymbol.rawValue)")
         }
-        if let temperament = breed.temperament {
-            text.append("• \(temperament)\n\n")
+        if let temperament = breed.temperament, temperament.count > 0 {
+            text.append("\(BreedsConstants.prefixSymbol.rawValue) \(temperament)\(BreedsConstants.dividerSymbol.rawValue)")
         }
-        if let origin = breed.origin {
-            text.append("• \(origin)\n\n")
+        if let origin = breed.origin, origin.count > 0 {
+            text.append("\(BreedsConstants.prefixSymbol.rawValue) \(origin)\(BreedsConstants.dividerSymbol.rawValue)")
         }
-        if let life_span = breed.life_span {
-            text.append("• \(life_span) years\n\n")
+        if let life_span = breed.life_span, life_span.count > 0 {
+            text.append("\(BreedsConstants.prefixSymbol.rawValue) \(life_span) \(BreedsConstants.years.rawValue)\(BreedsConstants.dividerSymbol.rawValue)")
         }
         breedTextView.text = text
+    }
+    
+    private func clearScrollView() {
+        imagesScrollView.subviews.forEach({ $0.removeFromSuperview() })
+        imagesScrollView.contentSize.width = imagesScrollView.frame.width * CGFloat(0)
+    }
+    
+    private func configureScrollView() {
+        imagesScrollView.contentSize.width = imagesScrollView.frame.width * CGFloat(presenter.imagesToShow.count)
+        pageControl.numberOfPages = presenter.imagesToShow.count > 1 ? presenter.imagesToShow.count : 1
+        
+        if presenter.imagesToShow.count == 0 {
+            fillScrollView(index: nil)
+        } else {
+            for imageIndex in 0..<presenter.imagesToShow.count {
+                fillScrollView(index: imageIndex)
+            }
+        }
+    }
+    
+    private func fillScrollView(index: Int?) {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        var xPosition: CGFloat = 0.0
+        if let index = index {
+            loadImage(imageUrl: presenter.imagesToShow[index].url, imageView: imageView)
+            xPosition = imagesScrollView.frame.width * CGFloat(index)
+        } else {
+            imageView.image = CommonValues.defaultImage
+            xPosition = imagesScrollView.frame.width * CGFloat(0)
+        }
+        imageView.frame = CGRect(x: xPosition, y: 0, width: self.imagesScrollView.frame.width, height: self.imagesScrollView.frame.height)
+        imagesScrollView.addSubview(imageView)
     }
     
     @IBAction func breedsAction(_ sender: UIButton) {
@@ -127,35 +159,8 @@ extension BreedsViewController: BreedsView {
     }
     
     func reloadImages() {
-        imagesScrollView.subviews.forEach({ $0.removeFromSuperview() })
-        imagesScrollView.contentSize.width = imagesScrollView.frame.width * CGFloat(0)
-        if presenter.imagesToShow.count == 0 {
-            imagesScrollView.contentSize.width = imagesScrollView.frame.width * CGFloat(0)
-            pageControl.numberOfPages = 1
-            
-            let imageView = UIImageView()
-            imageView.clipsToBounds = true
-            imageView.image = CommonValues.defaultImage
-            let xPosition = imagesScrollView.frame.width * CGFloat(0)
-            imageView.frame = CGRect(x: xPosition, y: 0, width: self.imagesScrollView.frame.width, height: self.imagesScrollView.frame.height)
-            imagesScrollView.addSubview(imageView)
-            
-        } else {
-            imagesScrollView.contentSize.width = imagesScrollView.frame.width * CGFloat(presenter.imagesToShow.count)
-            pageControl.numberOfPages = presenter.imagesToShow.count
-            //pageControl.currentPage = 0
-            
-            for i in 0..<presenter.imagesToShow.count {
-                let imageView = UIImageView()
-                imageView.contentMode = .scaleAspectFill
-                imageView.clipsToBounds = true
-                loadImage(imageUrl: presenter.imagesToShow[i].url, imageView: imageView)
-                let xPosition = imagesScrollView.frame.width * CGFloat(i)
-                imageView.frame = CGRect(x: xPosition, y: 0, width: self.imagesScrollView.frame.width, height: self.imagesScrollView.frame.height)
-                
-                imagesScrollView.addSubview(imageView)
-            }
-        }
+        clearScrollView()
+        configureScrollView()
     }
     
     func loadBreedInfo(breed: Breed) {

@@ -18,19 +18,18 @@ class UserDataTableViewCell: UITableViewCell {
     }
     
     private func setUpUI() {
-        //self.backgroundColor = .clear
-        contentView.backgroundColor = CommonValues.bgColor//CommonValues.buttonsColor//UIColor(red: 54/255.0, green: 19/255.0, blue: 136/255.0, alpha: 1)
+        contentView.backgroundColor = CommonValues.bgColor
         setUpTitleLabel()
         setUpNextImage()
     }
     
     private func setUpTitleLabel() {
         titleLabel.contentMode = .left
-        titleLabel.textColor = CommonValues.buttonsColor//.white
+        titleLabel.textColor = CommonValues.buttonsColor
     }
     
     private func setUpNextImage() {
-        nextImage.image = UIImage(named: "Arrow Light")
+        nextImage.image = UIImage(named: AssetsPathConstants.arrow.rawValue)
     }
     
     func configure(title: String) {

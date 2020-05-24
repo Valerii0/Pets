@@ -23,12 +23,15 @@ class ChooseYourSideViewController: UIViewController, Storyboarded {
     
     private func setUpUI() {
         coloredBg()
+        setUpImages()
+        setUpButtons()
+    }
+    
+    private func setUpImages() {
         logoImage.image = UIImage(named: AssetsPathConstants.petsLogo.rawValue)
         logoImage.contentMode = .scaleAspectFit
         titleImage.image = UIImage(named: AssetsPathConstants.chooseYourSide.rawValue)
         titleImage.contentMode = .scaleAspectFit
-        
-        setUpButtons()
     }
     
     private func setUpButtons() {

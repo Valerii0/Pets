@@ -9,7 +9,7 @@
 import Foundation
 
 final class CategoriesRequestService {
-    static func getCategories(callBack: @escaping (_ category: [Category]?, _ error: Error?) -> Void) {
+    static func getCategories(callBack: @escaping (_ categories: [Category]?, _ error: Error?) -> Void) {
         var urlString = AccountManager.ApiUrl()
         urlString.append(Api.version.rawValue)
         urlString.append(Api.categories.rawValue)
@@ -24,8 +24,8 @@ final class CategoriesRequestService {
                 callBack(nil, error)
             } else if let data = data {
                 do {
-                    let category = try JSONDecoder().decode([Category].self, from: data)
-                    callBack(category, nil)
+                    let categories = try JSONDecoder().decode([Category].self, from: data)
+                    callBack(categories, nil)
                 } catch {
                     callBack(nil, error)
                 }

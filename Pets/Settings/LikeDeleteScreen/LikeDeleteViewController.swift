@@ -39,9 +39,9 @@ class LikeDeleteViewController: UIViewController, Storyboarded {
     private func setUpButtonByState() {
         switch presenter.provideState() {
         case .like:
-            setUpButton(button: likeDeleteButton, imagePath: "Button Like (Red heart)")
+            setUpButton(button: likeDeleteButton, imagePath: AssetsPathConstants.buttonLikeRed.rawValue)
         case .delete:
-            setUpButton(button: likeDeleteButton, imagePath: "Button Delete")
+            setUpButton(button: likeDeleteButton, imagePath: AssetsPathConstants.buttonDelete.rawValue)
         }
     }
     
@@ -53,9 +53,9 @@ class LikeDeleteViewController: UIViewController, Storyboarded {
     private func setUpStateImageByState() {
         switch presenter.provideState() {
         case .like:
-            self.stateImage.image = UIImage(named: "Liked")
+            self.stateImage.image = UIImage(named: AssetsPathConstants.likedTitle.rawValue)
         case .delete:
-            self.stateImage.image = UIImage(named: "Deleted")
+            self.stateImage.image = UIImage(named: AssetsPathConstants.deletedTitle.rawValue)
         }
     }
     

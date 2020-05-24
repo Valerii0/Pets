@@ -17,9 +17,6 @@ class ImagesViewController: UIViewController, Storyboarded {
     
     var presenter: ImagesPresenter!
     
-    private let countCellPerRow = 3
-    private let indentWith: CGFloat = 3
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -56,7 +53,6 @@ class ImagesViewController: UIViewController, Storyboarded {
         label.textColor = CommonValues.buttonsColor
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
-        //label.numberOfLines = 0
         label.text = title
     }
     
@@ -76,7 +72,7 @@ class ImagesViewController: UIViewController, Storyboarded {
     
     private func setUpCollectionView(collectionView: UICollectionView) {
         collectionView.layoutIfNeeded()
-        let insert: CGFloat = indentWith//(collectionView.frame.width / CGFloat(countCellPerRow + 1)) / CGFloat(countCellPerRow + 1)
+        let insert: CGFloat = ImagesConstants.indentWith
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: insert, left: insert, bottom: insert, right: insert)
         layout.minimumLineSpacing = insert
@@ -89,14 +85,6 @@ class ImagesViewController: UIViewController, Storyboarded {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-    
-//    @IBAction func orderAction(_ sender: UIButton) {
-//        presenter.pushImagesFilterSelectionViewController(filter: .order)
-//    }
-//
-//    @IBAction func typeAction(_ sender: UIButton) {
-//        presenter.pushImagesFilterSelectionViewController(filter: .type)
-//    }
     
     @IBAction func categoryAction(_ sender: UIButton) {
         presenter.pushImagesFilterSelectionViewController(filter: .category)
@@ -123,7 +111,7 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = (collectionView.frame.width - (CGFloat(countCellPerRow + 1) * indentWith)) / CGFloat(countCellPerRow)
+        let width: CGFloat = (collectionView.frame.width - (CGFloat(ImagesConstants.countCellPerRow + 1) * ImagesConstants.indentWith)) / CGFloat(ImagesConstants.countCellPerRow)
         let height: CGFloat = width
         return CGSize(width: width, height: height)
     }

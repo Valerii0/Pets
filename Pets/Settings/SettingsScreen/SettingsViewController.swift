@@ -35,8 +35,6 @@ class SettingsViewController: UIViewController, Storyboarded {
         tableView.dataSource = self
         tableView.backgroundColor = CommonValues.standardGrayColor
         tableView.tableFooterView = UIView()
-        //tableView.separatorStyle = .none
-        //tableView.layer.cornerRadius = AppConstants.CommonConstants.learningCornerRadius
         tableView.register(UINib(nibName: SettingsConstants.userDataTableViewCell.rawValue, bundle: nil),
                            forCellReuseIdentifier: SettingsConstants.userDataTableViewCell.rawValue)
         tableView.register(UINib(nibName: SettingsConstants.appStateTableViewCell.rawValue, bundle: nil),
@@ -138,7 +136,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         case .info:
-            print("cell.configure(title: SettingsConstants.key.rawValue)")
+            print("info")
         }
     }
 }

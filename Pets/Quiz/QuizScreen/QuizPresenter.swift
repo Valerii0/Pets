@@ -46,7 +46,7 @@ class QuizPresenter {
                 self.checkBreedsCount()
             } else if let error = error {
                 DispatchQueue.main.async {
-                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                    self.view?.showError(title: CommonValues.errorTitle, message: error.localizedDescription)
                 }
             }
         }
@@ -58,7 +58,7 @@ class QuizPresenter {
                 self.view?.loadImage(url: image.url)
             } else if let error = error {
                 DispatchQueue.main.async {
-                    self.view?.showError(title: "Error", message: error.localizedDescription)
+                    self.view?.showError(title: CommonValues.errorTitle, message: error.localizedDescription)
                 }
             }
         }
